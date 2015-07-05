@@ -12,7 +12,11 @@ import java.net.HttpURLConnection;
  */
 public class StreamReader {
 
-    public static String getBodyFromConnection(HttpURLConnection connection) {
+    /**
+     * @param connection The connection object should be already connected to the host.
+     * @return The return value is the response body as a String.
+     */
+    public static String getBodyAsStringFromConnection(HttpURLConnection connection) {
         try {
             InputStreamReader in = new InputStreamReader((InputStream) connection.getContent());
             BufferedReader buff = new BufferedReader(in);

@@ -14,6 +14,23 @@ import static org.junit.Assert.*;
 public class ConnectionTest {
 
     @Test
+    public void testIsRedirectionLoop() {
+        Connection connection = new Connection();
+
+        // redirectionLimit should be bigger than zero.
+        connection.redirectionCounter = 0;
+        assertFalse(connection.isRedirectionLoop());
+
+        connection.redirectionCounter = 10;
+        connection.redirectionLimit = 10;
+        assertTrue(connection.isRedirectionLoop());
+
+        connection.redirectionCounter = 9;
+        connection.redirectionLimit = 10;
+        assertFalse(connection.isRedirectionLoop());
+    }
+
+    @Test
     public void testConnectWithAllowedRedirects() throws Exception {
         Connection connection = new Connection();
         boolean response;
