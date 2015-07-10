@@ -147,7 +147,7 @@ public class Connection {
      * It checks that response header contains request for redirection.
      *
      * @param connection
-     * @return It is true wheb redirection is required by response.
+     * @return It is true when redirection is required by response.
      */
     protected boolean isRedirectionRequired(HttpURLConnection connection) {
         return connection.getHeaderField("location") != null;
