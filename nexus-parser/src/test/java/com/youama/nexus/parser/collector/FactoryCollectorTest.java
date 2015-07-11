@@ -16,6 +16,5 @@ public class FactoryCollectorTest extends TestCase {
 
         linkCollector.setSource("a");
         assertEquals("a", linkCollector.getSource());
-        linkCollector.getSource();
     }
 }
