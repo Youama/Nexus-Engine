@@ -8,7 +8,7 @@ public class Log {
 
     /**
      * @todo It should save all messages into log files in the future instead of print out.
-     * @param message
+     * @param message Exception object.
      */
     public static void warning(Exception message) {
         System.out.println(message);
@@ -16,8 +16,8 @@ public class Log {
 
     /**
      * @todo It should save all messages into log files in the future instead of print out.
-     * @param message
-     * @param className
+     * @param message Exception object.
+     * @param className The name of the class when the exception is happened.
      */
     public static void warning(Exception message, String className) {
         System.out.println(className);
@@ -26,8 +26,8 @@ public class Log {
 
     /**
      * @todo It should save all messages into log files in the future instead of print out.
-     * @param message
-     * @param className
+     * @param message Simple description.
+     * @param className The name of the class when message comes from.
      */
     public static void notice(String message, String className) {
         System.out.println(className);

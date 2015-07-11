@@ -32,6 +32,11 @@ public class Connection {
     protected ArrayList<String> urlHistory = new ArrayList<String>();
 
     /**
+     * It enables HTTP and HTTPS redirection.
+     */
+    protected boolean redirectionEnabled = true;
+
+    /**
      * The limit number. How many redirection should be allowed.
      */
     protected int redirectionLimit = 10;
@@ -75,6 +80,33 @@ public class Connection {
     }
 
     /**
+     * It sets redirection in property to enabled or disabled.
+     *
+     * @param redirectionEnabled It has to be true to enable redirection.
+     */
+    protected void setRedirectionEnabled(boolean redirectionEnabled) {
+        this.redirectionEnabled = redirectionEnabled;
+    }
+
+    /**
+     * It retrieves the stored status codes from responses.
+     *
+     * @return The status codes from response.
+     */
+    public ArrayList<Integer> getStatusHistory() {
+        return statusHistory;
+    }
+
+    /**
+     * It retrieves the stored urls from responses.
+     *
+     * @return The urls of connection.
+     */
+    public ArrayList<String> getUrlHistory() {
+        return urlHistory;
+    }
+
+    /**
      * @return The connection object. It can be null.
      */
     public HttpURLConnection getConnection() {
@@ -88,7 +120,20 @@ public class Connection {
      * @param stringUrl Regular HTTP or HTTPS url.
      * @return It is false when the connection has failed.
      */
-    public boolean connectWithAllowedRedirects(String stringUrl) {
+    public boolean connectWithEnabledRedirects(String stringUrl) {
+        redirectionEnabled = true;
+        return makeNewGetConnection(stringUrl);
+    }
+
+    /**
+     * Connects to the host by URL. This connection method does not allow the redirection. Anyway, connection object
+     * will be stored in the property for later streaming.
+     *
+     * @param stringUrl Regular HTTP or HTTPS url.
+     * @return It is false when the connection has failed.
+     */
+    public boolean connectWithoutRedirects(String stringUrl) {
+        redirectionEnabled = false;
         return makeNewGetConnection(stringUrl);
     }
 
@@ -111,19 +156,23 @@ public class Connection {
             connection.setReadTimeout(readTimeout);
             connection.disconnect();
 
-            addToHistory(connection);
+            if (connection.getResponseCode() >= 0) {
+                addToHistory(connection);
 
-            if (isRedirectionLoop()) {
-                Log.notice(stringUrl + " has redirection", getClass().getName());
-                return false;
-            } else if (isRedirectionRequired(connection)) {
-                redirectionCounter++;
-                return makeNewGetConnection(connection.getHeaderField("location"));
-            } else {
-                this.connection = connection;
+                if (isRedirectionLoop()) {
+                    Log.notice(stringUrl + " has redirection", getClass().getName());
+                    return false;
+                } else if (redirectionEnabled && isRedirectionRequired(connection)) {
+                    redirectionCounter++;
+                    return makeNewGetConnection(connection.getHeaderField("location"));
+                } else {
+                    this.connection = connection;
+                }
+
+                return true;
             }
 
-            return true;
+            return false;
 
         } catch (MalformedURLException e) {
             Log.warning(e, getClass().getName());
@@ -154,13 +203,17 @@ public class Connection {
     }
 
     /**
-     * It adds the current URL and repsonse status to the property.
+     * It adds the current URL and response status to the property.
      *
      * @param connection
      * @throws IOException
      */
-    protected void addToHistory(HttpURLConnection connection) throws IOException {
-        statusHistory.add(connection.getResponseCode());
-        urlHistory.add(connection.getURL().toString());
+    protected void addToHistory(HttpURLConnection connection) {
+        try {
+            statusHistory.add(connection.getResponseCode());
+            urlHistory.add(connection.getURL().toString());
+        } catch (IOException e) {
+            Log.warning(e, getClass().getName());
+        }
     }
 }
