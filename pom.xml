@@ -12,6 +12,7 @@
         <module>nexus-core</module>
         <module>nexus-scheduler</module>
         <module>nexus-crawler</module>
+        <module>nexus-parser</module>
     </modules>
 
 
