@@ -11,10 +11,8 @@ public class FactoryCollectorTest extends TestCase {
 
     @Test
     public void testGetCollector() {
-        ICollector linkCollector = FactoryCollector.getCollector(FactoryCollector.TYPE_LINK);
+        String source = "";
+        ICollector linkCollector = FactoryCollector.getCollector(FactoryCollector.TYPE_LINK, source);
         assertTrue(linkCollector instanceof LinkCollector);
-
-        linkCollector.setSource("a");
-        assertEquals("a", linkCollector.getSource());
     }
 }

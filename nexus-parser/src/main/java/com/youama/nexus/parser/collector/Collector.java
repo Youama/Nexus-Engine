@@ -1,5 +1,11 @@
 package com.youama.nexus.parser.collector;
 
+import com.youama.nexus.parser.HTMLBuilder;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,32 +14,15 @@ import java.util.List;
  */
 public abstract class Collector implements ICollector {
 
-    /**
-     * Any kind of text based source: HTML, JSON, XML, etc.
-     */
-    protected String source;
+    protected Document DOM;
 
     /**
      * The parsed, collected data in a list of objects.
      */
-    protected List<CollectedItem> parsedItems;
+    protected List<CollectedItem> parsedItems = new ArrayList<CollectedItem>();
 
-    /**
-     * It stores the source in the property.
-     *
-     * @param source HTML, XML, JSON, etc. as String.
-     */
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    /**
-     * It retrieves the untouched text based source.
-     *
-     * @return The value from the property.
-     */
-    public String getSource() {
-        return source;
+    public Collector(String textBasedHTMLSource) {
+        DOM = HTMLBuilder.getDOM(textBasedHTMLSource);
     }
 
     /**
@@ -41,7 +30,55 @@ public abstract class Collector implements ICollector {
      *
      * @return The value from the property.
      */
-    public List<CollectedItem> getParsedItems() {
+    public List<CollectedItem> getItems() {
         return parsedItems;
+    }
+
+    protected void collectAttributeValueBy(String tagName, String attributeKeyName) {
+        Elements elements = DOM.getElementsByTag(tagName);
+        CollectedItem item = new CollectedItem();
+
+        for (Element element : elements) {
+            item.addItem(element.attr(attributeKeyName));
+        }
+        if (item.hasData()) parsedItems.add(item);
+    }
+
+    protected void collectAttributeValueBy(String tagName, String attributeKeyName,
+                                                          List<String> attributeKeyFilters,
+                                                          List<String> attributeValueFilters) {
+
+        if (attributeKeyFilters.size() == attributeValueFilters.size()) {
+            Elements elements = DOM.getElementsByTag(tagName);
+            CollectedItem item = new CollectedItem();
+
+            for (Element element : elements) {
+                boolean matchingByRule = true;
+                for (int i = 0; i < attributeKeyFilters.size(); i++) {
+                    String attributeKey = attributeKeyFilters.get(i);
+                    String attributeValue = attributeValueFilters.get(i);
+                    boolean attributeIsMatching = true;
+                    boolean valueIsMatching = true;
+
+                    if (attributeKey.length() > 0 && !element.hasAttr(attributeKey)) {
+                        attributeIsMatching = false;
+                    }
+
+                    if (attributeValue.length() > 0 && !element.attr(attributeKey).toLowerCase()
+                            .equals(attributeValue)) {
+                        valueIsMatching = false;
+                    }
+
+                    if (!valueIsMatching || !attributeIsMatching) {
+                        matchingByRule = false;
+                        break;
+                    }
+                }
+
+                if (matchingByRule) item.addItem(element.attr(attributeKeyName));
+            }
+
+            if (item.hasData()) parsedItems.add(item);
+        }
     }
 }

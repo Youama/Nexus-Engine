@@ -9,28 +9,20 @@ import java.util.List;
 public interface ICollector {
 
     /**
-     * Any kind of text based source as String, e.g.: HTML.
-     *
-     * @param source HTML, XML, JSON, etc. as String.
+     * Initiate the default parsing process.
      */
-    void setSource(String source);
+    void parse();
 
     /**
-     * It retrieves the untouched text based source.
-     *
-     * @return The value from the property.
+     * Initiate the selected parsing process
+     * @param rule
      */
-    String getSource();
-
-    /**
-     * Initiate the parsing process.
-     */
-    void doParse();
+    void parseByRule(int rule);
 
     /**
      * It retrieves the collected, parsed data in a list of objects.
      *
      * @return The value from the property.
      */
-    List<CollectedItem> getParsedItems();
+    List<CollectedItem> getItems();
 }

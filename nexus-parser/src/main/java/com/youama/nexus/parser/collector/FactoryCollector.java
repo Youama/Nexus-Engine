@@ -21,9 +21,9 @@ public class FactoryCollector {
      * @param collectorType It can be given by constants of the FactoryCollector.
      * @return Implementation of the ICollector interface.
      */
-    public static ICollector getCollector(int collectorType) {
+    public static ICollector getCollector(int collectorType, String source) {
         switch (collectorType) {
-            case TYPE_LINK: return new LinkCollector();
+            case TYPE_LINK: return new LinkCollector(source);
             default: return null;
         }
     }

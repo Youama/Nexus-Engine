@@ -36,6 +36,10 @@ public class CollectedItem {
         this.data.add(data);
     }
 
+    public boolean hasData() {
+        return data.size() > 0;
+    }
+
     /**
      * It retrieves the data property.
      * @return
