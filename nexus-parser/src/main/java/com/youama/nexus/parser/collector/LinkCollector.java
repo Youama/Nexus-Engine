@@ -1,7 +1,8 @@
 package com.youama.nexus.parser.collector;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.youama.nexus.core.validator.URLValidator;
+
+import java.util.*;
 
 /**
  * @author David Belicza <87.bdavid@gmail.com>
@@ -29,8 +30,31 @@ public class LinkCollector extends Collector implements ICollector {
                 attributeValueFilters.add("nofollow");
                 collectAttributeValueBy("a", "href", attributeKeyFilters, attributeValueFilters);
                 break;
+            case HelperCollector.LINK_VALID:
+                collectAttributeValueBy("a", "href");
+                validateLinks();
+                break;
             default:
                 collectAttributeValueBy("a", "href");
+        }
+    }
+
+    protected void validateLinks() {
+        List<String> links = parsedItems.get(0).getData();
+        List<String> validatedLinks = links;
+
+        for (int i = 0; i < links.size(); i++) {
+            if (!URLValidator.isValidLinkSyntax(links.get(i))) {
+                validatedLinks.remove(i);
+            }
+        }
+
+        validatedLinks.removeAll(Arrays.asList("", null));
+
+        if (validatedLinks.size() != links.size()) {
+            CollectedItem linkCollection = new CollectedItem();
+            linkCollection.addItem(validatedLinks);
+            parsedItems.add(linkCollection);
         }
     }
 }

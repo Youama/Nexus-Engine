@@ -34,7 +34,12 @@ public abstract class Collector implements ICollector {
         return parsedItems;
     }
 
+    protected void resetParsedItems() {
+        parsedItems.removeAll(parsedItems);
+    }
+
     protected void collectAttributeValueBy(String tagName, String attributeKeyName) {
+        resetParsedItems();
         Elements elements = DOM.getElementsByTag(tagName);
         CollectedItem item = new CollectedItem();
 
@@ -48,6 +53,7 @@ public abstract class Collector implements ICollector {
                                                           List<String> attributeKeyFilters,
                                                           List<String> attributeValueFilters) {
 
+        resetParsedItems();
         if (attributeKeyFilters.size() == attributeValueFilters.size()) {
             Elements elements = DOM.getElementsByTag(tagName);
             CollectedItem item = new CollectedItem();

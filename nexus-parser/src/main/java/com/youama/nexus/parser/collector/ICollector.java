@@ -15,6 +15,7 @@ public interface ICollector {
 
     /**
      * Initiate the selected parsing process
+     *
      * @param rule
      */
     void parseByRule(int rule);

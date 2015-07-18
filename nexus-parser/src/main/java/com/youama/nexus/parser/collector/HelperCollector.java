@@ -8,4 +8,5 @@ final public class HelperCollector {
 
     final public static int LINK_ALL = 1;
     final public static int LINK_NO_FOLLOW = 2;
+    final public static int LINK_VALID = 3;
 }
