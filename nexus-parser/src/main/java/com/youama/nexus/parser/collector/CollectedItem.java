@@ -42,7 +42,7 @@ public class CollectedItem {
 
     /**
      * It retrieves the data property.
-     * @return
+     * @return The stored data from the property.
      */
     public List<String> getData() {
         return data;

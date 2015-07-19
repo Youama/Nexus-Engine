@@ -1,24 +1,33 @@
 package com.youama.nexus.parser.collector;
 
 /**
+ * It is a factory class for retrieving the different kind of Collector classes.
+ *
  * @author David Belicza <87.bdavid@gmail.com>
  * @since 2015.07.11.
  */
 public class FactoryCollector {
 
     /**
-     * Collects links.
+     * For link collector.
      */
     public static final int TYPE_LINK = 1;
 
+    /**
+     * For text collector.
+     */
     public static final int TYPE_TEXT = 2;
 
+    /**
+     * For image url collector.
+     */
     public static final int TYPE_IMAGE = 3;
 
     /**
-     * It retrieves the collector object by collector type.
+     * It retrieves the collector object by collector type ID and the source.
      *
-     * @param collectorType It can be given by constants of the FactoryCollector.
+     * @param collectorType It is given by constants of the FactoryCollector.
+     * @param source The source code.
      * @return Implementation of the ICollector interface.
      */
     public static ICollector getCollector(int collectorType, String source) {

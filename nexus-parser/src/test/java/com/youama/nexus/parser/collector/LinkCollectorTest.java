@@ -3,14 +3,11 @@ package com.youama.nexus.parser.collector;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import sun.misc.IOUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +34,30 @@ public class LinkCollectorTest extends TestCase {
     }
 
     @Test
+    public void testValidateLinks() {
+        List<CollectedItem> items;
+        LinkCollector linkCollector = new LinkCollector(stringHTMLSource);
+        linkCollector.parse();
+
+        linkCollector.validateLinks(false);
+        items = linkCollector.getItems();
+        assertEquals(5, items.get(0).getData().size());
+
+        linkCollector.validateLinks(true);
+        items = linkCollector.getItems();
+        assertEquals(4, items.get(0).getData().size());
+    }
+
+    @Test
     public void testParse() {
+        LinkCollector linkCollector = new LinkCollector(stringHTMLSource);
+        linkCollector.parse();
+        List<CollectedItem> items = linkCollector.getItems();
+        assertEquals(8, items.get(0).getData().size());
+    }
+
+    @Test
+    public void testParseByRule() {
 
         LinkCollector linkCollector = new LinkCollector(stringHTMLSource);
         List<CollectedItem> items;
@@ -50,10 +70,15 @@ public class LinkCollectorTest extends TestCase {
         // All kind of links
         linkCollector.parseByRule(HelperCollector.LINK_ALL);
         items = linkCollector.getItems();
-        assertEquals(6, items.get(0).getData().size());
+        assertEquals(8, items.get(0).getData().size());
 
         // Only valid links
         linkCollector.parseByRule(HelperCollector.LINK_VALID);
+        items = linkCollector.getItems();
+        assertEquals(5, items.get(0).getData().size());
+
+        // Only valid and non-resource links
+        linkCollector.parseByRule(HelperCollector.LINK_VALID_NO_RESOURCES);
         items = linkCollector.getItems();
         assertEquals(4, items.get(0).getData().size());
     }

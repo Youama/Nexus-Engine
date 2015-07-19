@@ -175,10 +175,10 @@ public class Connection {
             return false;
 
         } catch (MalformedURLException e) {
-            Log.warning(e, getClass().getName());
+            Log.warning(e, getClass().getName(), false);
             return false;
         } catch (IOException e) {
-            Log.warning(e, getClass().getName());
+            Log.warning(e, getClass().getName(), false);
             return false;
         }
     }

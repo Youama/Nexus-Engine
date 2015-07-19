@@ -13,7 +13,9 @@ import java.net.HttpURLConnection;
 public class StreamReader {
 
     /**
-     * @param connection The connection object should be already connected to the host.
+     * It retrieves the response body as a String from a HttpURLConnection object.
+     *
+     * @param connection The connection object should be already connected at least once to the host.
      * @return The return value is the response body as a String.
      */
     public static String getBodyAsStringFromConnection(HttpURLConnection connection) {

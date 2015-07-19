@@ -22,7 +22,7 @@ public class CollectedItemTest extends TestCase {
         item.addItem("something/thing2.png");
         assertEquals("something/thing2.png", item.data.get(1));
 
-        // For addItem overLoad
+        // For addItem overload
         CollectedItem item2 = new CollectedItem();
         List<String> items = new ArrayList<String>();
         items.add("something/thing.png");
@@ -33,7 +33,16 @@ public class CollectedItemTest extends TestCase {
     }
 
     @Test
-    public void testGetItem() {
+    public void testHasData() {
+        CollectedItem item = new CollectedItem();
+        assertFalse(item.hasData());
+
+        item.addItem("value");
+        assertTrue(item.hasData());
+    }
+
+    @Test
+    public void testGetData() {
         CollectedItem item = new CollectedItem();
         item.addItem("something/thing.png");
         assertEquals(1, item.getData().size());
