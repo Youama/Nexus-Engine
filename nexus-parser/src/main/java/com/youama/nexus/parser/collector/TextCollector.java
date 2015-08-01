@@ -1,7 +1,11 @@
 package com.youama.nexus.parser.collector;
 
+import com.youama.nexus.core.item.BasicItem;
+import com.youama.nexus.core.text.WordUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
+
+import java.util.List;
 
 /**
  * @author David Belicza <87.bdavid@gmail.com>
@@ -25,32 +29,23 @@ public class TextCollector extends Collector implements ICollector {
     public void parseByRule(int rule) {
         switch (rule) {
             case HelperCollector.TEXT_ALL:
-                collectAllText();
+                collectText("html");
                 break;
             case HelperCollector.TEXT_BODY:
-                collectBodyText();
+                collectText("body");
         }
     }
 
-    protected void collectAllText() {
+    protected void collectText(String htmlTag) {
         resetParsedItems();
-        Elements elements = DOM.getElementsByTag("body");
+        Elements elements = DOM.getElementsByTag(htmlTag);
 
         if (elements != null) {
-            String body = elements.get(0).toString();
-            String fullText = Jsoup.parse(body).text();
-            System.out.println(fullText);
-        }
-    }
-
-    protected void collectBodyText() {
-        resetParsedItems();
-        Elements elements = DOM.getElementsByTag("body");
-
-        if (elements != null) {
-            String body = elements.get(0).toString();
-            String fullText = Jsoup.parse(body).text();
-            System.out.println(fullText);
+            String parentTag = elements.get(0).toString();
+            List<BasicItem> sentences = WordUtil.getSentencesFromText(Jsoup.parse(parentTag).text());
+            if (sentences != null) {
+                parsedItems = sentences;
+            }
         }
     }
 }

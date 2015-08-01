@@ -1,5 +1,6 @@
 package com.youama.nexus.parser.collector;
 
+import com.youama.nexus.core.item.BasicItem;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * @author David Belicza <87.bdavid@gmail.com>
@@ -33,8 +35,28 @@ public class TextCollectorTest extends TestCase {
     }
 
     @Test
-    public void testCollectAllText() {
+    public void testCollectText() {
         TextCollector textCollector = new TextCollector(stringHTMLSource);
-        textCollector.collectAllText();
+
+        // 5 sentences
+        textCollector.collectText("p");
+        assertEquals(5, textCollector.getItems().size());
+
+        // 30 sentences
+        textCollector.collectText("body");
+        assertEquals(30, textCollector.getItems().size());
+    }
+
+    @Test
+    public void testParseByRule() {
+        TextCollector textCollector = new TextCollector(stringHTMLSource);
+
+        // 30 sentences
+        textCollector.parseByRule(HelperCollector.TEXT_ALL);
+        assertEquals(30, textCollector.getItems().size());
+
+        // 30 sentences
+        textCollector.parseByRule(HelperCollector.TEXT_BODY);
+        assertEquals(30, textCollector.getItems().size());
     }
 }
