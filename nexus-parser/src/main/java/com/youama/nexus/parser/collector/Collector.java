@@ -1,5 +1,6 @@
 package com.youama.nexus.parser.collector;
 
+import com.youama.nexus.core.item.BasicItem;
 import com.youama.nexus.parser.HTMLBuilder;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,7 +26,7 @@ public abstract class Collector implements ICollector {
     /**
      * The parsed, collected data in a list of objects. This is the result of the parsing.
      */
-    protected List<CollectedItem> parsedItems = new ArrayList<CollectedItem>();
+    protected List<BasicItem> parsedItems = new ArrayList<BasicItem>();
 
     /**
      * It makes the DOM from the source and sets it to the property.
@@ -41,7 +42,7 @@ public abstract class Collector implements ICollector {
      *
      * @return The value from the property.
      */
-    public List<CollectedItem> getItems() {
+    public List<BasicItem> getItems() {
         return parsedItems;
     }
 
@@ -62,7 +63,7 @@ public abstract class Collector implements ICollector {
     protected void collectAttributeValueBy(String tagName, String attributeKeyName) {
         resetParsedItems();
         Elements elements = DOM.getElementsByTag(tagName);
-        CollectedItem item = new CollectedItem();
+        BasicItem item = new BasicItem();
 
         for (Element element : elements) {
             item.addItem(element.attr(attributeKeyName));
@@ -92,7 +93,7 @@ public abstract class Collector implements ICollector {
         resetParsedItems();
         if (attributeKeyFilters.size() == attributeValueFilters.size()) {
             Elements elements = DOM.getElementsByTag(tagName);
-            CollectedItem item = new CollectedItem();
+            BasicItem item = new BasicItem();
 
             for (Element element : elements) {
                 boolean matchingByRule = true;

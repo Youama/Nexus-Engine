@@ -1,5 +1,6 @@
-package com.youama.nexus.parser.collector;
+package com.youama.nexus.core.item;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -10,41 +11,41 @@ import java.util.List;
  * @author David Belicza <87.bdavid@gmail.com>
  * @since 2015.07.11.
  */
-public class CollectedItemTest extends TestCase {
+public class BasicItemTest extends TestCase {
 
     @Test
     public void testAddItem() {
         // For addItem
-        CollectedItem item = new CollectedItem();
+        BasicItem item = new BasicItem();
         item.addItem("something/thing.png");
-        assertEquals("something/thing.png", item.data.get(0));
+        Assert.assertEquals("something/thing.png", item.data.get(0));
 
         item.addItem("something/thing2.png");
-        assertEquals("something/thing2.png", item.data.get(1));
+        Assert.assertEquals("something/thing2.png", item.data.get(1));
 
         // For addItem overload
-        CollectedItem item2 = new CollectedItem();
+        BasicItem item2 = new BasicItem();
         List<String> items = new ArrayList<String>();
         items.add("something/thing.png");
         items.add("something/thing2.png");
         item2.addItem(items);
-        assertEquals(2, item2.data.size());
-        assertEquals("something/thing2.png", item2.data.get(1));
+        Assert.assertEquals(2, item2.data.size());
+        Assert.assertEquals("something/thing2.png", item2.data.get(1));
     }
 
     @Test
     public void testHasData() {
-        CollectedItem item = new CollectedItem();
-        assertFalse(item.hasData());
+        BasicItem item = new BasicItem();
+        Assert.assertFalse(item.hasData());
 
         item.addItem("value");
-        assertTrue(item.hasData());
+        Assert.assertTrue(item.hasData());
     }
 
     @Test
     public void testGetData() {
-        CollectedItem item = new CollectedItem();
+        BasicItem item = new BasicItem();
         item.addItem("something/thing.png");
-        assertEquals(1, item.getData().size());
+        Assert.assertEquals(1, item.getData().size());
     }
 }

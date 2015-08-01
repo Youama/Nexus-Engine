@@ -27,4 +27,14 @@ final public class HelperCollector {
      * Gathers all correct links what are point to another pages not resources like css, js, etc.
      */
     final public static int LINK_VALID_NO_RESOURCES = 4;
+
+    /**
+     * Gathers all text from the HTML source.
+     */
+    final public static int TEXT_ALL = 5;
+
+    /**
+     * Gathers all text from the body of the HTML source.
+     */
+    final public static int TEXT_BODY = 6;
 }

@@ -1,5 +1,7 @@
 package com.youama.nexus.parser.collector;
 
+import com.youama.nexus.core.item.BasicItem;
+
 import java.util.List;
 
 /**
@@ -29,5 +31,5 @@ public interface ICollector {
      *
      * @return The value from the property.
      */
-    List<CollectedItem> getItems();
+    List<BasicItem> getItems();
 }

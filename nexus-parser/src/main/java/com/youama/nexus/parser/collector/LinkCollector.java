@@ -1,5 +1,6 @@
 package com.youama.nexus.parser.collector;
 
+import com.youama.nexus.core.item.BasicItem;
 import com.youama.nexus.core.validator.URLSyntaxValidator;
 
 import java.util.*;
@@ -88,7 +89,7 @@ public class LinkCollector extends Collector implements ICollector {
         links.removeAll(Arrays.asList("", null));
 
         if (originalSize != links.size()) {
-            CollectedItem linkCollection = new CollectedItem();
+            BasicItem linkCollection = new BasicItem();
             linkCollection.addItem(links);
             parsedItems.add(linkCollection);
         }

@@ -1,4 +1,4 @@
-package com.youama.nexus.parser.collector;
+package com.youama.nexus.core.item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
  * sharing links for example.
  *
  * @author David Belicza <87.bdavid@gmail.com>
- * @since 2015.07.11.
+ * @since 2015.08.01.
  */
-public class CollectedItem {
+public class BasicItem {
 
     /**
      * It contains sub-items. All items are String.

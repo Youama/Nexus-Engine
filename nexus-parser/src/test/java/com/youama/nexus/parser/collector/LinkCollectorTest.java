@@ -1,5 +1,6 @@
 package com.youama.nexus.parser.collector;
 
+import com.youama.nexus.core.item.BasicItem;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class LinkCollectorTest extends TestCase {
 
     @Test
     public void testValidateLinks() {
-        List<CollectedItem> items;
+        List<BasicItem> items;
         LinkCollector linkCollector = new LinkCollector(stringHTMLSource);
         linkCollector.parse();
 
@@ -52,7 +53,7 @@ public class LinkCollectorTest extends TestCase {
     public void testParse() {
         LinkCollector linkCollector = new LinkCollector(stringHTMLSource);
         linkCollector.parse();
-        List<CollectedItem> items = linkCollector.getItems();
+        List<BasicItem> items = linkCollector.getItems();
         assertEquals(8, items.get(0).getData().size());
     }
 
@@ -60,7 +61,7 @@ public class LinkCollectorTest extends TestCase {
     public void testParseByRule() {
 
         LinkCollector linkCollector = new LinkCollector(stringHTMLSource);
-        List<CollectedItem> items;
+        List<BasicItem> items;
 
         // All no-follow links
         linkCollector.parseByRule(HelperCollector.LINK_NO_FOLLOW);
