@@ -1,6 +1,5 @@
 package com.youama.nexus.parser.collector;
 
-import com.youama.nexus.core.item.BasicItem;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 /**
  * @author David Belicza <87.bdavid@gmail.com>
