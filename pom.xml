@@ -63,4 +63,19 @@
             <version>5.1.36</version>
         </dependency>
     </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <reportOutputDirectory>javadoc</reportOutputDirectory>
+                    <stylesheetfile>javadoc/nexus-engine.css</stylesheetfile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
