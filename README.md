@@ -1,5 +1,7 @@
 # Nexus Engine
 
+[![Join the chat at https://gitter.im/Youama/Nexus-Engine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Youama/Nexus-Engine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## CI and Docs
 
 Javadoc: http://youama.github.io/nexus-engine-javadoc/
