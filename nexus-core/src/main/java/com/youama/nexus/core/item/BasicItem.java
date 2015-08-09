@@ -36,12 +36,18 @@ public class BasicItem {
         this.data.add(data);
     }
 
+    /**
+     * It retrieves that it has any item or it doesn't have.
+     *
+     * @return It is true when it has data.
+     */
     public boolean hasData() {
         return data.size() > 0;
     }
 
     /**
      * It retrieves the data property.
+     *
      * @return The stored data from the property.
      */
     public List<String> getData() {

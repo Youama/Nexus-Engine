@@ -1,7 +1,5 @@
 package com.youama.nexus.scheduler.entity.task;
 
-import com.youama.nexus.core.entity.version.VersionEntity;
-import com.youama.nexus.core.entity.version.VersionService;
 import com.youama.nexus.core.system.Nexus;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -15,19 +13,9 @@ public class TaskServiceTest extends TestCase {
     @Test
     public void testSave() {
 
-        Nexus.initiateSystem();
         TaskService service = (TaskService) Nexus.getService(TaskService.class);
         TaskEntity taskEntity = new TaskEntity();
         service.save(taskEntity);
-
-        /*
-        ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-        Task task = (Task) context.getBean("schedulerTask");
-
-        TaskEntity taskEntity = new TaskEntity();
-
-        task.save(taskEntity);
-        */
     }
 
 }

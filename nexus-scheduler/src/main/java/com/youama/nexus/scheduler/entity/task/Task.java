@@ -9,5 +9,6 @@ import org.hibernate.SessionFactory;
 public interface Task {
 
     void setSessionFactory(SessionFactory sessionFactory);
+
     void save(TaskEntity taskEntity);
 }
