@@ -8,7 +8,7 @@ final class System {
 
     private static System instance = null;
 
-    private ServiceProvider serviceProvider;
+    private ServiceProvider serviceProvider = null;
 
     static System getInstance() {
         if(instance == null) {
@@ -23,6 +23,7 @@ final class System {
     }
 
     ServiceProvider getServiceProvider() {
+        if (serviceProvider == null) initServices();
         return serviceProvider;
     }
 
