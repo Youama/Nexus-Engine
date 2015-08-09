@@ -8,11 +8,19 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Task")
+@Table(name = "Tasks")
 public class TaskEntity {
 
     @Id
     @Column(name="taskId")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long taskId;
+
+    public void setTaskId(long taskId) {
+        this.taskId = taskId;
+    }
+
+    public long getTaskId() {
+        return taskId;
+    }
 }

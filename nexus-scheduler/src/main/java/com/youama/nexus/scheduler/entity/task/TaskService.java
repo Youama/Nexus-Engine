@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
  * @author David Belicza <87.bdavid@gmail.com>
  * @since 2015.08.02.
  */
-public class TaskDAO implements ITaskDAO {
+public class TaskService implements Task {
 
     private SessionFactory sessionFactory;
 

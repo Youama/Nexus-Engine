@@ -48,11 +48,11 @@ public class Log {
     }
 
     /**
-     * It logs notify message with class name.
+     * It logs notify log with class name.
      *
      * @todo It should save all messages into log files in the future instead of print out.
      * @param message Simple description.
-     * @param className The name of the class when message comes from.
+     * @param className The name of the class when log comes from.
      */
     public static void notice(String message, String className) {
         System.out.println(className);

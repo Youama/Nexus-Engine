@@ -4,22 +4,22 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
  * @author David Belicza <87.bdavid@gmail.com>
  * @since 2015.08.02.
  */
-public class VersionDAO implements IVersionDAO {
+public class VersionService implements Version {
 
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
     public void save(VersionEntity versionEntity) {
