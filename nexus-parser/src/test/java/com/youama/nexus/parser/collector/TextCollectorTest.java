@@ -40,21 +40,21 @@ public class TextCollectorTest extends TestCase {
         textCollector.collectText("p");
         assertEquals(5, textCollector.getItems().size());
 
-        // 30 sentences
+        // 25 sentences
         textCollector.collectText("body");
-        assertEquals(30, textCollector.getItems().size());
+        assertEquals(25, textCollector.getItems().size());
     }
 
     @Test
     public void testParseByRule() {
         TextCollector textCollector = new TextCollector(stringHTMLSource);
 
-        // 30 sentences
+        // 25 sentences
         textCollector.parseByRule(HelperCollector.TEXT_ALL);
-        assertEquals(30, textCollector.getItems().size());
+        assertEquals(25, textCollector.getItems().size());
 
-        // 30 sentences
+        // 25 sentences
         textCollector.parseByRule(HelperCollector.TEXT_BODY);
-        assertEquals(30, textCollector.getItems().size());
+        assertEquals(25, textCollector.getItems().size());
     }
 }
