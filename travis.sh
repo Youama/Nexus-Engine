@@ -39,6 +39,9 @@ cp index-all.html index.html
 
 echo -e "\n${HGL}...publishing the new JAVA doc${NC}\n"
 # publish the new docusmentation
+git add .
+git add -u .
+git commit -m "Auto commit from Nexus Engine build"
 git push
 
 echo -e "\n${HGL}JAVA doc has been generated and buplished automatically${NC}\n"
