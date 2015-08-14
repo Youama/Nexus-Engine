@@ -1,7 +1,10 @@
 *.idea
 *.iml
+
 *~
+
 /target
 /*/target
-/javadoc
 
+/javadoc/apidocs
+/javadoc_old
