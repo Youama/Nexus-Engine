@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.08.01.
  */
 public class TextCollectorTest extends TestCase {

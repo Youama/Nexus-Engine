@@ -5,7 +5,7 @@ package com.youama.nexus.core.system;
  * singleton. The visibility of the methods of this System class are package level. These methods are not available
  * from other packages.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.08.09.
  */
 final class System {

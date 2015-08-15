@@ -31,21 +31,26 @@ echo -e "\n${HGL}...create new JAVA doc${NC}\n"
 # generate javadoc from the source code
 mvn javadoc:javadoc
 
-# copy the old repo headers to the newly generated javadoc
-cp javadoc_old/nexus-engine-javadoc/.gitignore javadoc/apidocs/.gitignore
-cp -r javadoc_old/nexus-engine-javadoc/.git javadoc/apidocs/.git
+if [ -d "javadoc/apidocs" ]
+then
+	# copy the old repo headers to the newly generated javadoc
+	cp javadoc_old/nexus-engine-javadoc/.gitignore javadoc/apidocs/.gitignore
+	cp -r javadoc_old/nexus-engine-javadoc/.git javadoc/apidocs/.git
 
-# remove the iframe from javadoc
-cd javadoc/apidocs
-rm index.html
-cp index-all.html index.html
+	# remove the iframe from javadoc
+	cd javadoc/apidocs
+	rm index.html
+	cp index-all.html index.html
 
-echo -e "\n${HGL}...publishing the new JAVA doc${NC}\n"
-# publish the new docusmentation
-git add .
-git add -u .
-git commit -m "Auto commit from Nexus Engine build"
-git push -q
+	echo -e "\n${HGL}...publishing the new JAVA doc${NC}\n"
+	# publish the new docusmentation
+	git add .
+	git add -u .
+	git commit -m "Auto commit from Nexus Engine build"
+	git push -q
 
-echo -e "\n${HGL}JAVA doc has been generated and buplished automatically${NC}\n\n"
-echo -e "2015 ${HGL}Nexus Engine${NC}\n"
+	echo -e "\n${HGL}JAVA doc has been generated and buplished automatically${NC}\n\n"
+	echo -e "2015 ${HGL}Nexus Engine${NC}\n"
+else
+	echo -e "\n${HGL}ERROR: JAVA doc is not created${NC}\n"
+fi

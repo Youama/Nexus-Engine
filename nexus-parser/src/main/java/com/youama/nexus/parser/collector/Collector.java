@@ -13,7 +13,7 @@ import java.util.List;
  * This class is an abstract implementation of the ICollector interface. This class implements the common logic of the
  * Collector classes.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.11.
  */
 public abstract class Collector implements ICollector {

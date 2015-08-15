@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.12.
  */
 public class LinkCollectorTest extends TestCase {

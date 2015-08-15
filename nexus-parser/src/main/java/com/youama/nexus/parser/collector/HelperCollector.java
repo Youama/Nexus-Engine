@@ -3,7 +3,7 @@ package com.youama.nexus.parser.collector;
 /**
  * Constants of this class should be used for Collector objects.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.12.
  */
 final public class HelperCollector {

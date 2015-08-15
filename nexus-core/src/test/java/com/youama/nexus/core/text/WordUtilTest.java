@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.List;
 
 /**
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.08.01.
  */
 public class WordUtilTest extends TestCase {

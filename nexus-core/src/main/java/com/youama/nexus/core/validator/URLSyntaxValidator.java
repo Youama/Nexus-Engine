@@ -3,7 +3,7 @@ package com.youama.nexus.core.validator;
 /**
  * This class methods validate the URLs Strings.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.18.
  */
 final public class URLSyntaxValidator {

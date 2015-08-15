@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.18.
  */
 public class URLSyntaxValidatorTest extends TestCase {

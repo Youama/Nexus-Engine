@@ -8,7 +8,7 @@ import java.util.List;
  * Interface for Collector classes. Collectors can collect specified data from a source and they can retrieve them.
  * The parsing logic is protected or private and they are unique for each kind of Collectors.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.11.
  */
 public interface ICollector {

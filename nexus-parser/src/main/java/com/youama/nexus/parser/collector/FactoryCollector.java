@@ -3,7 +3,7 @@ package com.youama.nexus.parser.collector;
 /**
  * It is a factory class for retrieving the different kind of Collector classes.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.11.
  */
 public class FactoryCollector {

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * This class handles a single HTTP or HTTPS connection. It support redirection and history recording.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.06.28.
  */
 public class Connection {
@@ -195,7 +195,7 @@ public class Connection {
     /**
      * It checks that response header contains request for redirection.
      *
-     * @param connection
+     * @param connection The connection object.
      * @return It is true when redirection is required by response.
      */
     protected boolean isRedirectionRequired(HttpURLConnection connection) {
@@ -205,8 +205,7 @@ public class Connection {
     /**
      * It adds the current URL and response status to the property.
      *
-     * @param connection
-     * @throws IOException
+     * @param connection The connection object.
      */
     protected void addToHistory(HttpURLConnection connection) {
         try {

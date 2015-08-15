@@ -64,8 +64,15 @@
         </dependency>
     </dependencies>
 
-    <reporting>
+    <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -73,14 +80,11 @@
                 <configuration>
                     <aggregate>true</aggregate>
                     <reportOutputDirectory>javadoc</reportOutputDirectory>
+                    <outputDirectory>javadoc</outputDirectory>
                     <stylesheetfile>javadoc/nexus-engine.css</stylesheetfile>
                 </configuration>
             </plugin>
-        </plugins>
-    </reporting>
 
-    <build>
-        <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * This class handles the HTTP connection.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.06.28.
  */
 public class Connect {

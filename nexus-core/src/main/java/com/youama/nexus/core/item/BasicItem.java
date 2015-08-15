@@ -8,7 +8,7 @@ import java.util.List;
  * single HTML link or a single image URL. Many instances of this item represent a full HTML page. Images, sentences,
  * sharing links for example.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.08.01.
  */
 public class BasicItem {

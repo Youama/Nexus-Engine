@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 /**
  * It builds DOM from String.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.12.
  */
 public class HTMLBuilder {

@@ -9,7 +9,7 @@ import java.util.*;
  * This class implements the Collector and ICollector. LinkCollector collects links by different rules. This class
  * should not be referenced directly, it is handled by the FactoryCollector class.
  *
- * @author David Belicza <87.bdavid@gmail.com>
+ * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.11.
  */
 public class LinkCollector extends Collector implements ICollector {
