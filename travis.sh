@@ -3,21 +3,6 @@
 # author: David Belicza
 # Javadoc generator and publisher script for Nexus Engine
 
-# highlight
-HGL='\e[93m'
-# end of color
-NC='\033[0m' 
-
-# adding a virtual user
-git config --global user.email "robot@youama.com"
-git config --global user.name "Mr. Robot"
-
-echo -e "\n${HGL}GENERATING OF JAVA DOCS${NC}\n"
-
-# re-create the directory for the old repo
-rm -rf javadoc_old
-mkdir javadoc_old
-
 # get the Java version.
 # Java 1.5 will give 15.
 # Java 1.6 will give 16.
@@ -25,10 +10,26 @@ mkdir javadoc_old
 # Java 1.8 will give 18.
 VER=`java -version 2>&1 | sed 's/java version "\(.*\)\.\(.*\)\..*"/\1\2/; 1q'`
 
-# only when JAVA SE (Oracle JDK 8)
-if [ $VER == "18" ]
+# only when JAVA SE (Oracle JDK 8) and Master branch
+if [ $VER == "18" ] || [ $TRAVIS_BRANCH == "master" ]
 then
+	# highlight
+	HGL='\e[93m'
+	# end of color
+	NC='\033[0m' 
+	
+	echo -e "\n${HGL}GENERATING OF JAVA DOCS${NC}\n"
+	
+	# re-create the directory for the old repo
+	rm -rf javadoc_old
+	mkdir javadoc_old
+
 	echo -e "\n${HGL}...looking for the nexus-engine-javadoc repo${NC}\n"
+	
+	# adding a virtual user
+	git config --global user.email "robot@youama.com"
+	git config --global user.name "Mr. Robot"
+
 	# clone the javadoc repo to the previously created directory
 	cd javadoc_old
 	git clone https://DoveID:$UTOKEN@github.com/Youama/nexus-engine-javadoc.git -q &> /dev/null
