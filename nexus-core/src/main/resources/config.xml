@@ -12,8 +12,4 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <bean id="coreVersion" class="com.youama.nexus.core.entity.version.VersionService">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-    </bean>
-
 </beans>

@@ -1,18 +1,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-	http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <context:property-placeholder location="database/database.properties"/>
+    <bean id="nexusConfig" class="com.youama.nexus.core.system.SystemUtil"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${nexus.production.db.driver}" />
-        <property name="url" value="${nexus.production.db.url}" />
-        <property name="username" value="${nexus.production.db.user}" />
-        <property name="password" value="${nexus.production.db.password}" />
+        <property name="driverClassName" value="#{nexusConfig.getDBDriver()}" />
+        <property name="url" value="#{nexusConfig.getDBUrl()}" />
+        <property name="username" value="#{nexusConfig.getDBUser()}" />
+        <property name="password" value="#{nexusConfig.getDBPassword()}" />
     </bean>
 
 </beans>
