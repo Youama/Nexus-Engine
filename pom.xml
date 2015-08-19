@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.youama.nexus</groupId>
-    <artifactId>main</artifactId>
+    <artifactId>nexus</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>nexus-core</module>
-        <module>nexus-scheduler</module>
-        <module>nexus-crawler</module>
-        <module>nexus-parser</module>
+        <module>modules/nexus-core</module>
+        <module>modules/nexus-scheduler</module>
+        <module>modules/nexus-crawler</module>
+        <module>modules/nexus-parser</module>
     </modules>
 
     <dependencies>

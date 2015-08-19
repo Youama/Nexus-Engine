@@ -3,6 +3,7 @@ package com.youama.nexus.core.system;
 import com.youama.nexus.core.Log;
 
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -42,12 +43,12 @@ final class System {
     }
 
     void initDirectoryMapping() {
-        Path path = null;
+        Path paths = null;
 
         try {
-            path = Paths.get(SystemUtil.class.getResource(".").toURI());
-            baseDirectory = path.getParent().getParent().getParent().getParent().getParent().getParent().getParent()
-                    .getParent().toString();
+            //@todo only one cd .. needed in the production version
+            paths = Paths.get(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            baseDirectory = paths.getParent().getParent().getParent().getParent().toString();
         } catch (URISyntaxException e) {
             Log.warning(e);
         }
