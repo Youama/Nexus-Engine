@@ -6,11 +6,11 @@ jdk:
   - openjdk7
 
 before_script:
-  - mysql -e 'create database nexus1;'
+  - mysql -e 'create database nexus_mysql_test_db;'
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - bash travis.sh
+  - bash etc/ci/javadoc.sh
 
 branches:
   only:

@@ -8,5 +8,7 @@
 /apps/*/target
 /modules/*/target
 
-/javadoc/apidocs
+/etc/javadoc/apidocs
 /javadoc_old
+
+/config/nexus.properties

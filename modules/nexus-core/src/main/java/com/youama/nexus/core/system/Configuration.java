@@ -2,6 +2,7 @@ package com.youama.nexus.core.system;
 
 import com.youama.nexus.core.Log;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,9 +14,13 @@ import java.util.Properties;
  */
 final class Configuration {
 
-    private String propertiesFile;
+    private String propertiesFileLocal;
+
+    private String propertiesFileRemoteCIExample;
 
     private Properties properties;
+
+    private String databaseType;
 
     private boolean validProperties = false;
 
@@ -29,9 +34,11 @@ final class Configuration {
         return (redProperties && validProperties);
     }
 
-    void readConfig(String version, String database) {
-        propertiesFile = SystemUtil.getBaseDirectory() + SystemUtil.DS + "nexus_" + version + "_" + database
-                + ".properties";
+    void readConfig() {
+        propertiesFileLocal = FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + "config" + FileSystemUtil.DS +
+                "nexus.properties";
+        propertiesFileRemoteCIExample = FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + "config" +
+                FileSystemUtil.DS + "nexus.example.properties";
         readProperties();
         validateProperties();
     }
@@ -40,9 +47,19 @@ final class Configuration {
         InputStream input = null;
 
         try {
-            input = new FileInputStream(propertiesFile);
-            properties.load(input);
-            redProperties = true;
+
+            if (propertyExists(propertiesFileLocal)) {
+                input = new FileInputStream(propertiesFileLocal);
+                properties.load(input);
+                redProperties = true;
+            } else {
+                input = new FileInputStream(propertiesFileRemoteCIExample);
+                properties.load(input);
+                redProperties = true;
+            }
+
+            setDatabaseType();
+
         } catch (IOException e) {
             Log.warning(e);
         } finally {
@@ -56,11 +73,42 @@ final class Configuration {
         }
     }
 
+    private boolean propertyExists(String propertyPath) {
+        File file;
+        file = new File(propertyPath);
+
+        if (file.exists() && !file.isDirectory()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    void setDatabaseType(String databaseType) {
+        this.databaseType = databaseType;
+    }
+
+    void setDatabaseType() {
+        databaseType = properties.getProperty("nexus.db.default");
+    }
+
+    String getDefaultDatabaseType() {
+        return properties.getProperty("nexus.db.default");
+    }
+
+    boolean isDriverActive(String driver) {
+        if ("active".equals(properties.getProperty("nexus.db." + driver))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private void validateProperties() {
         validProperties = true;
     }
 
-    Properties getProperties() {
-        return properties;
+    String getProperty(String propertyKey) {
+        return properties.getProperty(propertyKey);
     }
 }

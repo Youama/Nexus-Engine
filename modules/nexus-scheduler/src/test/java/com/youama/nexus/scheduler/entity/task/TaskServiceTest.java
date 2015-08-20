@@ -1,6 +1,7 @@
 package com.youama.nexus.scheduler.entity.task;
 
-import com.youama.nexus.core.system.SystemUtil;
+import com.youama.nexus.core.system.NexusCoreUtil;
+import com.youama.nexus.core.system.ServiceUtil;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -12,8 +13,8 @@ public class TaskServiceTest extends TestCase {
 
     @Test
     public void testSave() {
-        SystemUtil.initiateSystem(true, "mysql");
-        TaskService service = (TaskService) SystemUtil.getService(TaskService.class);
+        NexusCoreUtil.initServices();
+        TaskService service = (TaskService) ServiceUtil.getService(TaskService.class);
         TaskEntity taskEntity = new TaskEntity();
         service.save(taskEntity);
     }

@@ -3,14 +3,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <import resource="database/Datasource.xml" />
-    <import resource="database/Hibernate.xml" />
-
-    <bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="hibernateProperties" ref="hibernateProperties" />
-        <property name="packagesToScan" ref="hibernatePackageToScan" />
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+    <import resource="Service.xml" />
 
     <bean id="schedulerTask" class="com.youama.nexus.scheduler.entity.task.TaskService">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />

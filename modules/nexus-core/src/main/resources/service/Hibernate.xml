@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean id="nexusConfig" class="com.youama.nexus.core.system.SystemUtil"/>
+    <bean id="nexusConfig" class="com.youama.nexus.core.system.ServiceUtil"/>
 
     <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="properties">

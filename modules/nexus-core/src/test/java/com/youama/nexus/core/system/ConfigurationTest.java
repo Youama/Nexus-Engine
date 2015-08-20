@@ -12,6 +12,6 @@ public class ConfigurationTest extends TestCase {
     @Test
     public void testReadConfig() {
         Configuration config = new Configuration();
-        config.readConfig("production", "mysql");
+        config.readConfig();
     }
 }

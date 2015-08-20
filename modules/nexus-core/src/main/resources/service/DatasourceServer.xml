@@ -1,11 +1,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean id="nexusConfig" class="com.youama.nexus.core.system.SystemUtil"/>
+    <bean id="nexusConfig" class="com.youama.nexus.core.system.ServiceUtil"/>
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSourceServer" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="true">
         <property name="driverClassName" value="#{nexusConfig.getDBDriver()}" />
         <property name="url" value="#{nexusConfig.getDBUrl()}" />
         <property name="username" value="#{nexusConfig.getDBUser()}" />

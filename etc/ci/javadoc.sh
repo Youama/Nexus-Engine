@@ -42,21 +42,21 @@ then
 	# generate javadoc from the source code
 	mvn javadoc:javadoc
 
-	if [ -d "javadoc/apidocs" ]
+	if [ -d "etc/javadoc/apidocs" ]
 	then
 		# copy the old repo headers to the newly generated javadoc
-		cp javadoc_old/nexus-engine-javadoc/.gitignore javadoc/apidocs/.gitignore
-		cp -r javadoc_old/nexus-engine-javadoc/.git javadoc/apidocs/.git
+		cp javadoc_old/nexus-engine-javadoc/.gitignore etc/javadoc/apidocs/.gitignore
+		cp -r javadoc_old/nexus-engine-javadoc/.git etc/javadoc/apidocs/.git
 
 		# remove the iframe from javadoc
-		cd javadoc/apidocs
+		cd etc/javadoc/apidocs
 		rm index.html
 		cp index-all.html index.html
 
 		echo -e "\n${HGL}...publishing the new JAVA doc${NC}\n"
 		# publish the new docusmentation
-		git add .
-		git add -u .
+		git add . &> /dev/null
+		git add -u . &> /dev/null
 		git commit -m "Auto commit from Nexus Engine build" &> /dev/null
 		git push -q &> /dev/null
 

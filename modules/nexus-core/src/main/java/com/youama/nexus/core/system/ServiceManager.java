@@ -6,13 +6,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.lang.*;
 
 /**
- * This class provides access to resource service implementations. The visibility of the methods of this ServiceProvider
+ * This class provides access to resource service implementations. The visibility of the methods of this ServiceManager
  * class are package level. These methods are not available from other packages.
  *
  * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.08.09.
  */
-final class ServiceProvider {
+final class ServiceManager {
 
     /**
      * The application context configuration beans - like database access.

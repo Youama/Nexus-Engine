@@ -79,9 +79,9 @@
                 <version>2.10.3</version>
                 <configuration>
                     <aggregate>true</aggregate>
-                    <reportOutputDirectory>javadoc</reportOutputDirectory>
-                    <outputDirectory>javadoc</outputDirectory>
-                    <stylesheetfile>javadoc/nexus-engine.css</stylesheetfile>
+                    <reportOutputDirectory>etc/javadoc</reportOutputDirectory>
+                    <outputDirectory>etc/javadoc</outputDirectory>
+                    <stylesheetfile>etc/javadoc/nexus-engine.css</stylesheetfile>
                 </configuration>
             </plugin>
 
