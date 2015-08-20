@@ -11,7 +11,7 @@
 VER=`java -version 2>&1 | sed 's/java version "\(.*\)\.\(.*\)\..*"/\1\2/; 1q'`
 
 # only when JAVA SE (Oracle JDK 8) and Master branch
-if [ $VER == "18" ] || [ $TRAVIS_BRANCH == "master" ]
+if [ $VER == "18" ] && [ $TRAVIS_BRANCH == "master" ]
 then
 	# highlight
 	HGL='\e[93m'
