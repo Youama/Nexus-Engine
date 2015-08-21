@@ -1,6 +1,10 @@
 package com.youama.nexus.core.system;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,34 +13,35 @@ import java.util.Map;
  */
 final public class ServiceUtil {
 
-    private static String[] supportedDrivers = {"mysql", "postgresql", "sqlite"};
+    private static String[] supportedDrivers = {"mysql", "postgresql", "hsql"};
 
-    private static Map<String, ServiceManager> alternativeServiceManagers = new HashMap<String, ServiceManager>();
+    private static List<String> installedDrivers = new ArrayList<String>();
 
-    private static ServiceManager defaultServiceManager;
+    private static Map<String, ServiceManager> serviceManagers = new HashMap<String, ServiceManager>();
 
-    private static String driverConfigFlag;
+    private static String currentDriverName;
 
     static void initServiceDriver() {
         Configuration configuration = ConfigurationLocalUtil.getConfiguration();
-        ServiceManager serviceManager = new ServiceManager();
-
-        String defaultDriver = driverConfigFlag = configuration.getDefaultDatabaseType();
-
-        configuration.setDatabaseType(defaultDriver);
-        serviceManager.setApplicationContext();
-        defaultServiceManager = serviceManager;
 
         for (String driver : supportedDrivers) {
-            if (!driver.equals(defaultDriver) && configuration.isDriverActive(driver)) {
-                driverConfigFlag = driver;
+            if (configuration.isDriverActive(driver)) {
+                currentDriverName = driver;
+                ServiceManager serviceManager = new ServiceManager();
                 configuration.setDatabaseType(driver);
                 serviceManager.setApplicationContext();
-                alternativeServiceManagers.put(driver, serviceManager);
+                serviceManagers.put(driver, serviceManager);
+                installedDrivers.add(driver);
             }
         }
+    }
 
-        driverConfigFlag = "";
+    public static List<String> getInstalledDrivers() {
+        return installedDrivers;
+    }
+
+    public static void switchDriver(String driver) {
+        currentDriverName = driver;
     }
 
     /**
@@ -46,19 +51,11 @@ final public class ServiceUtil {
      * @return It is the service implementation. Return type is an Object what can be cast to any service class.
      */
     public static Object getService(Class classType) {
-        return defaultServiceManager.getService(classType);
-    }
-
-    public static Object getAlternativeService(Class classType, String driver) {
-        if (alternativeServiceManagers.get(driver) != null) {
-            return alternativeServiceManagers.get(driver).getService(classType);
-        } else {
-            return getService(classType);
-        }
+        return serviceManagers.get(currentDriverName).getService(classType);
     }
 
     public static String getDatasourceId() {
-        if ("hsql".equals(driverConfigFlag)) {
+        if ("hsql".equals(currentDriverName)) {
             return "dataSourceClient";
         } else {
             return "dataSourceServer";
@@ -66,34 +63,34 @@ final public class ServiceUtil {
     }
 
     public static String getDBDriver() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + driverConfigFlag + ".driver");
+        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".driver");
     }
 
     public static String getDBUrl() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + driverConfigFlag + ".url");
+        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".url");
     }
 
     public static String getDBUser() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + driverConfigFlag + ".user");
+        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".user");
     }
 
     public static String getDBPassword() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + driverConfigFlag + ".password");
+        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".password");
     }
 
     public static String getDBDialect() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + driverConfigFlag + ".dialect");
+        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".dialect");
     }
 
     public static String getDBCreation() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + driverConfigFlag + ".hbm2ddl_auto");
+        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".hbm2ddl_auto");
     }
 
     public static String getDBSessionContext() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + driverConfigFlag + ".current_session_context_class");
+        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".current_session_context_class");
     }
 
     public static String getDBLog() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + driverConfigFlag + ".show_sql");
+        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".show_sql");
     }
 }

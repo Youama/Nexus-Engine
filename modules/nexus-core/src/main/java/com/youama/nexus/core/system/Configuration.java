@@ -92,10 +92,6 @@ final class Configuration {
         databaseType = properties.getProperty("nexus.db.default");
     }
 
-    String getDefaultDatabaseType() {
-        return properties.getProperty("nexus.db.default");
-    }
-
     boolean isDriverActive(String driver) {
         if ("active".equals(properties.getProperty("nexus.db." + driver))) {
             return true;
