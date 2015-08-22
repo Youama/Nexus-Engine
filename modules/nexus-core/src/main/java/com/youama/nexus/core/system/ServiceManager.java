@@ -1,56 +1,70 @@
 package com.youama.nexus.core.system;
 
-import org.apache.maven.model.Dependency;
-import org.apache.maven.model.Model;
-import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
-import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * This class provides access to resource service implementations. The visibility of the methods of this ServiceManager
- * class are package level. These methods are not available from other packages.
- *
- * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.08.09.
+ * @author David Belicza
+ * @since 2015.08.22.
  */
 final class ServiceManager {
 
-    /**
-     * The application context configuration beans - like database access.
-     */
-    private ApplicationContext context;
+    private static ServiceManager instance = null;
 
-    /**
-     * It sets the application context configuration beans like database access. The application context scope based
-     * on the location of the caller method.
-     */
-    void setApplicationContext() {
-        context = new ClassPathXmlApplicationContext(getResourceEntityDeclarations());
+    public static ServiceManager getInstance() {
+        if (instance == null) {
+            instance = new ServiceManager();
+        }
+
+        return instance;
     }
 
-    /**
-     * It retrieves the entity's service implementation by the service class name.
-     *
-     * @param classType Any class type what is a service class. Service classes should be defined as a Bean.
-     * @return It is the service implementation. Return type is an Object what can be cast to any service class.
-     */
+    private static String[] supportedDrivers = {"mysql", "postgresql", "hsql"};
+
+    private static List<String> installedDrivers = new ArrayList<String>();
+
+    private static Map<String, SingleService> services = new HashMap<String, SingleService>();
+
+    private static String currentDriverName;
+
+    String getDatasourceId() {
+        if ("hsql".equals(currentDriverName)) {
+            return "dataSourceClient";
+        } else {
+            return "dataSourceServer";
+        }
+    }
+
+    String getCurrentDriverName() {
+        return currentDriverName;
+    }
+
+    List<String> getInstalledDrivers() {
+        return installedDrivers;
+    }
+
     Object getService(Class classType) {
-        return context.getBean(classType);
-
+        return services.get(currentDriverName).getService(classType);
     }
 
-    /**
-     * It retrieves the configuration Bean file(s).
-     *
-     * @return String array of the configuration bean xml files.
-     */
-    private String[] getResourceEntityDeclarations() {
-        return MavenUtil.getModuleConfigFiles();
+    void switchDriver(String driverName) {
+        currentDriverName = driverName;
+    }
+
+    void initServiceDriver() {
+        Configuration configuration = Configuration.getInstance();
+
+        for (String driver : supportedDrivers) {
+            if (configuration.isDriverActive(driver)) {
+                currentDriverName = driver;
+                SingleService serviceManager = new SingleService();
+                configuration.setDatabaseType(driver);
+                serviceManager.setApplicationContext();
+                services.put(driver, serviceManager);
+                installedDrivers.add(driver);
+            }
+        }
     }
 }

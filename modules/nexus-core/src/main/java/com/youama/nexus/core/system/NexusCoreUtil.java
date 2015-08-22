@@ -17,7 +17,7 @@ final public class NexusCoreUtil {
     }
 
     public static void initServices(String artifactId) {
-        ConfigurationLocalUtil.initModuleId = artifactId;
+        Configuration.getInstance().setRegisteredPrimaryModuleArtifactId(artifactId);
         ServiceUtil.initServiceDriver();
     }
 }

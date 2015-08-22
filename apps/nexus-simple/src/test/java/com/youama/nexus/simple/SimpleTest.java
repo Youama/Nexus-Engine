@@ -1,7 +1,10 @@
 package com.youama.nexus.simple;
 
-import com.youama.nexus.simple.Simple;
+import com.youama.nexus.core.system.NexusCoreUtil;
+import com.youama.nexus.core.system.ServiceUtil;
 import org.junit.Test;
+
+import java.util.List;
 
 /**
  * @author David Belicza
@@ -11,6 +14,7 @@ public class SimpleTest {
 
     @Test
     public void testApplicationRunningSimulation() {
+
         Simple simple = new Simple();
         simple.applicationRunningSimulation();
     }

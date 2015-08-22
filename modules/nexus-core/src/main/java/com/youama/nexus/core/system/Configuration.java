@@ -7,12 +7,30 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Random;
 
 /**
  * @author David Belicza
  * @since 2015.08.18.
  */
 final class Configuration {
+
+    private static Configuration instance = null;
+
+    private Configuration() {
+        properties = new Properties();
+        readConfig();
+    }
+
+    public static Configuration getInstance() {
+        if (instance == null) {
+            instance = new Configuration();
+        }
+
+        return instance;
+    }
+
+    private String registeredPrimaryModule = "nexus-app-nexus";
 
     private String propertiesFileLocal;
 
@@ -26,8 +44,12 @@ final class Configuration {
 
     private boolean redProperties = false;
 
-    Configuration() {
-        properties = new Properties();
+    void setRegisteredPrimaryModuleArtifactId(String primaryModule) {
+        registeredPrimaryModule = primaryModule;
+    }
+
+    String getRegisteredPrimaryModuleArtifactId() {
+        return registeredPrimaryModule;
     }
 
     boolean isOk() {

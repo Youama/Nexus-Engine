@@ -11,7 +11,7 @@ public class ConfigurationTest extends TestCase {
 
     @Test
     public void testReadConfig() {
-        Configuration config = new Configuration();
+        Configuration config = Configuration.getInstance();
         config.readConfig();
     }
 }

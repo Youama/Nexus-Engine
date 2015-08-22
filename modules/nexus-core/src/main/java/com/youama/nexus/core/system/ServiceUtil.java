@@ -11,35 +11,16 @@ import java.util.Map;
  */
 final public class ServiceUtil {
 
-    private static String[] supportedDrivers = {"mysql", "postgresql", "hsql"};
-
-    private static List<String> installedDrivers = new ArrayList<String>();
-
-    private static Map<String, ServiceManager> serviceManagers = new HashMap<String, ServiceManager>();
-
-    private static String currentDriverName;
-
     static void initServiceDriver() {
-        Configuration configuration = ConfigurationLocalUtil.getConfiguration();
-
-        for (String driver : supportedDrivers) {
-            if (configuration.isDriverActive(driver)) {
-                currentDriverName = driver;
-                ServiceManager serviceManager = new ServiceManager();
-                configuration.setDatabaseType(driver);
-                serviceManager.setApplicationContext();
-                serviceManagers.put(driver, serviceManager);
-                installedDrivers.add(driver);
-            }
-        }
+        ServiceManager.getInstance().initServiceDriver();
     }
 
     public static List<String> getInstalledDrivers() {
-        return installedDrivers;
+        return ServiceManager.getInstance().getInstalledDrivers();
     }
 
-    public static void switchDriver(String driver) {
-        currentDriverName = driver;
+    public static void switchDriver(String driverName) {
+        ServiceManager.getInstance().switchDriver(driverName);
     }
 
     /**
@@ -49,46 +30,52 @@ final public class ServiceUtil {
      * @return It is the service implementation. Return type is an Object what can be cast to any service class.
      */
     public static Object getService(Class classType) {
-        return serviceManagers.get(currentDriverName).getService(classType);
+        return ServiceManager.getInstance().getService(classType);
     }
 
     public static String getDatasourceId() {
-        if ("hsql".equals(currentDriverName)) {
-            return "dataSourceClient";
-        } else {
-            return "dataSourceServer";
-        }
+        return ServiceManager.getInstance().getDatasourceId();
     }
 
     public static String getDBDriver() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".driver");
+        return Configuration.getInstance()
+                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".driver");
     }
 
     public static String getDBUrl() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".url");
+        return Configuration.getInstance()
+                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".url");
     }
 
     public static String getDBUser() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".user");
+        return Configuration.getInstance()
+                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".user");
     }
 
     public static String getDBPassword() {
-        return ConfigurationLocalUtil.getProperty("nexus.db." + currentDriverName + ".password");
+        return Configuration.getInstance()
+                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".password");
     }
 
     public static String getDBDialect() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".dialect");
+        return Configuration.getInstance()
+                .getProperty("nexus.hibernate." + ServiceManager.getInstance().getCurrentDriverName() + ".dialect");
     }
 
     public static String getDBCreation() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".hbm2ddl_auto");
+        return Configuration.getInstance()
+                .getProperty("nexus.hibernate." +
+                        ServiceManager.getInstance().getCurrentDriverName() + ".hbm2ddl_auto");
     }
 
     public static String getDBSessionContext() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".current_session_context_class");
+        return Configuration.getInstance()
+                .getProperty("nexus.hibernate." +
+                        ServiceManager.getInstance().getCurrentDriverName() + ".current_session_context_class");
     }
 
     public static String getDBLog() {
-        return ConfigurationLocalUtil.getProperty("nexus.hibernate." + currentDriverName + ".show_sql");
+        return Configuration.getInstance()
+                .getProperty("nexus.hibernate." + ServiceManager.getInstance().getCurrentDriverName() + ".show_sql");
     }
 }

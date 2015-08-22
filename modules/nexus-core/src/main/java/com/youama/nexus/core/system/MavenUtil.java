@@ -21,7 +21,7 @@ final class MavenUtil {
     static String[] getModuleConfigFiles() {
         List<String> configBeans = new ArrayList<String>();
 
-        String[] moduleNameParts = ConfigurationLocalUtil.initModuleId.split("\\-");
+        String[] moduleNameParts = Configuration.getInstance().getRegisteredPrimaryModuleArtifactId().split("\\-");
         String parentDirectory = "";
         if ("app".equals(moduleNameParts[1])) {
             parentDirectory = "apps";
