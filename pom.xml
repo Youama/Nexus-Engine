@@ -13,6 +13,8 @@
         <module>modules/nexus-scheduler</module>
         <module>modules/nexus-crawler</module>
         <module>modules/nexus-parser</module>
+
+        <module>apps/nexus-simple</module>
     </modules>
 
     <dependencies>

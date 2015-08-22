@@ -1,9 +1,16 @@
 package com.youama.nexus.core.system;
 
+import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Model;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.*;
+import java.util.List;
 
 /**
  * This class provides access to resource service implementations. The visibility of the methods of this ServiceManager
@@ -44,6 +51,6 @@ final class ServiceManager {
      * @return String array of the configuration bean xml files.
      */
     private String[] getResourceEntityDeclarations() {
-        return new String[] {"config.xml"};
+        return MavenUtil.getModuleConfigFiles();
     }
 }

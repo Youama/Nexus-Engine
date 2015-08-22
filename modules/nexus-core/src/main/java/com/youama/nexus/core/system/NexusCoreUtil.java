@@ -12,7 +12,12 @@ import java.util.Properties;
  */
 final public class NexusCoreUtil {
 
-    public static void initServices() {
+    public static void initConfigs() {
+
+    }
+
+    public static void initServices(String artifactId) {
+        ConfigurationLocalUtil.initModuleId = artifactId;
         ServiceUtil.initServiceDriver();
     }
 }

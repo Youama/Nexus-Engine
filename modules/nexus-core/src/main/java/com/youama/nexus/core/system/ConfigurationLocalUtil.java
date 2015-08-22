@@ -4,7 +4,9 @@ package com.youama.nexus.core.system;
  * @author David Belicza
  * @since 2015.08.20.
  */
-final public class ConfigurationLocalUtil {
+final class ConfigurationLocalUtil {
+
+    static String initModuleId = "";
 
     private static Configuration configuration;
 
