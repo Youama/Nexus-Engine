@@ -23,37 +23,37 @@ final class MavenUtil {
             String[] primaryModuleArtifactIdParts =
                     Configuration.getInstance().getRegisteredPrimaryModuleArtifactId().split("\\-");
 
-            Model pomModel = null;
-
-                pomModel = getPrimaryModulePomModel(primaryModuleArtifactIdParts);
+            Model pomModel = getPrimaryModulePomModel(primaryModuleArtifactIdParts);
 
             String primaryModuleConfigBeanXML = getPrimaryModuleConfigBeanXML(primaryModuleArtifactIdParts);
             List<String> childrenBeans = getChildrenModuleBeanXMLs(pomModel.getModules());
             List<String> dependencyBeans = getDependencyModuleBeanXMLs(pomModel.getDependencies());
 
             int beansCount = ((primaryModuleConfigBeanXML != null) ? 1 : 0) + childrenBeans.size() + dependencyBeans.size();
+            int j = 0;
             String[] beans = new String[beansCount];
 
             if (primaryModuleConfigBeanXML != null) {
                 beans[0] = primaryModuleConfigBeanXML;
+                j++;
             }
 
             if (childrenBeans.size() > 0) {
-                int start = beans.length;
-                for (int i = 0; i < childrenBeans.size(); i++) {
-                    beans[start - 1 + i] = childrenBeans.get(i);
+                for (String childrenBean : childrenBeans) {
+                    beans[j] = childrenBean;
+                    j++;
                 }
             }
 
             if (dependencyBeans.size() > 0) {
-                int start = beans.length;
-                for (int i = 0; i < dependencyBeans.size(); i++) {
-                    beans[start - 1 + i] = dependencyBeans.get(i);
+                for (String dependencyBean : dependencyBeans) {
+                    beans[j] = dependencyBean;
+                    j++;
                 }
             }
 
             return beans;
-        } catch (IOException | XmlPullParserException e) {
+        } catch (IOException | XmlPullParserException | ArrayIndexOutOfBoundsException e) {
             Log.warning(e);
         }
 
@@ -61,7 +61,7 @@ final class MavenUtil {
     }
 
     private static Model getPrimaryModulePomModel(String[] primaryModuleArtifactIdParts)
-            throws IOException, XmlPullParserException {
+            throws IOException, XmlPullParserException, ArrayIndexOutOfBoundsException {
 
         String parentDirectory = getScope(primaryModuleArtifactIdParts[1]);
 

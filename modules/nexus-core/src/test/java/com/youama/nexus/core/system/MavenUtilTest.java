@@ -12,6 +12,9 @@ public class MavenUtilTest {
     @Test
     public void testGetModuleConfigBeanFiles() {
         String[] configBeanFiles = MavenUtil.getModuleConfigBeanFiles();
-        assertEquals(2, configBeanFiles.length);
+        assertTrue(configBeanFiles != null && configBeanFiles.length > 0);
+
+        Configuration.getInstance().setRegisteredPrimaryModuleArtifactId("wrong");
+        assertNull(MavenUtil.getModuleConfigBeanFiles());
     }
 }

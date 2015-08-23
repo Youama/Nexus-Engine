@@ -2,7 +2,6 @@ package com.youama.nexus.scheduler.entity.task;
 
 import com.youama.nexus.core.system.NexusCoreUtil;
 import com.youama.nexus.core.system.ServiceUtil;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
