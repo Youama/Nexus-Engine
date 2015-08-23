@@ -1,14 +1,25 @@
+# Nexus Engine
+# authors: David Belicza
+
+# Linux specific files and folders
+*~
+
+# IntelliJ IDEA specific files and folders
 *.idea
 *.iml
 
-*~
+# Eclipse specific files and fodlers
+.classpath
+.project
+.settings
 
+# Java specific files and folders
 /target
 /*/target
 /apps/*/target
 /modules/*/target
 
+# Nexus Engine specific files and folders
 /etc/javadoc/apidocs
 /javadoc_old
-
 /config/nexus.properties
