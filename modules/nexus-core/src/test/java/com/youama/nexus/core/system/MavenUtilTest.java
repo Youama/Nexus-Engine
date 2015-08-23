@@ -11,6 +11,10 @@ public class MavenUtilTest {
 
     @Test
     public void testGetModuleConfigBeanFiles() {
+        NexusCoreUtil.initServices("nexus-module-core");
+
+        //@todo system shutdown feature after test case
+
         String[] configBeanFiles = MavenUtil.getModuleConfigBeanFiles();
         assertTrue(configBeanFiles != null && configBeanFiles.length > 0);
     }
