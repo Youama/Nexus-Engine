@@ -51,6 +51,6 @@ final class SingleService {
      * @return String array of the configuration bean xml files.
      */
     private String[] getResourceEntityDeclarations() {
-        return MavenUtil.getModuleConfigFiles();
+        return MavenUtil.getModuleConfigBeanFiles();
     }
 }

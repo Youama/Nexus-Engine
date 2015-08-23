@@ -1,13 +1,12 @@
 package com.youama.nexus.core.system;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
  * @author David Belicza
  * @since 2015.08.18.
  */
-public class ConfigurationTest extends TestCase {
+public class ConfigurationTest {
 
     @Test
     public void testReadConfig() {

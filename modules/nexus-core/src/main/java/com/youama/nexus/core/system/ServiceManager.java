@@ -11,23 +11,23 @@ import java.util.Map;
  */
 final class ServiceManager {
 
-    private static ServiceManager instance = null;
-
-    public static ServiceManager getInstance() {
-        if (instance == null) {
-            instance = new ServiceManager();
+    private static final ThreadLocal<ServiceManager> localStorage = new ThreadLocal<ServiceManager>() {
+        protected ServiceManager initialValue() {
+            return new ServiceManager();
         }
+    };
 
-        return instance;
+    static ServiceManager getInstance() {
+        return localStorage.get();
     }
 
-    private static String[] supportedDrivers = {"mysql", "postgresql", "hsql"};
+    private String[] supportedDrivers = {"mysql", "postgresql", "hsql"};
 
-    private static List<String> installedDrivers = new ArrayList<String>();
+    private List<String> installedDrivers = new ArrayList<String>();
 
-    private static Map<String, SingleService> services = new HashMap<String, SingleService>();
+    private Map<String, SingleService> services = new HashMap<String, SingleService>();
 
-    private static String currentDriverName;
+    private String currentDriverName;
 
     String getDatasourceId() {
         if ("hsql".equals(currentDriverName)) {

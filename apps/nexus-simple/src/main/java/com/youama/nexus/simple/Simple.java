@@ -19,7 +19,11 @@ public class Simple {
                 NexusCoreUtil.initServices("nexus-app-simple");
 
                 for (int i = 0; i < 10; i++) {
-                    //sleep(1000);
+                    try {
+                        sleep(300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                     List<String> drivers = ServiceUtil.getInstalledDrivers();
                     for (String driver : drivers) {
@@ -35,8 +39,14 @@ public class Simple {
 
         Thread two = new Thread() {
             public void run() {
+                NexusCoreUtil.initServices("nexus-app-simple");
+
                 for (int i = 0; i < 10; i++) {
-                    //sleep(1000);
+                    try {
+                        sleep(300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                     List<String> drivers = ServiceUtil.getInstalledDrivers();
                     for (String driver : drivers) {

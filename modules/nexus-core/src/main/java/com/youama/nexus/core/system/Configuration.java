@@ -15,22 +15,22 @@ import java.util.Random;
  */
 final class Configuration {
 
-    private static Configuration instance = null;
+    private static final ThreadLocal<Configuration> localStorage = new ThreadLocal<Configuration>() {
+        protected Configuration initialValue() {
+            return new Configuration();
+        }
+    };
+
+    static Configuration getInstance() {
+        return localStorage.get();
+    }
 
     private Configuration() {
         properties = new Properties();
         readConfig();
     }
 
-    public static Configuration getInstance() {
-        if (instance == null) {
-            instance = new Configuration();
-        }
-
-        return instance;
-    }
-
-    private String registeredPrimaryModule = "nexus-app-nexus";
+    private String registeredPrimaryModule = "nexus-app-simple";
 
     private String propertiesFileLocal;
 
