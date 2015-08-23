@@ -60,7 +60,6 @@ final class ServiceManager {
             if (configuration.isDriverActive(driver)) {
                 currentDriverName = driver;
                 SingleService serviceManager = new SingleService();
-                configuration.setDatabaseType(driver);
                 serviceManager.setApplicationContext();
                 services.put(driver, serviceManager);
                 installedDrivers.add(driver);

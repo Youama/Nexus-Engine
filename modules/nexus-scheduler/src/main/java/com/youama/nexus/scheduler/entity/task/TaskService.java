@@ -1,6 +1,6 @@
 package com.youama.nexus.scheduler.entity.task;
 
-import com.youama.nexus.core.singleton.BaseService;
+import com.youama.nexus.core.base.BaseService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

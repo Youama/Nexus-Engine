@@ -6,7 +6,6 @@ import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
-import javax.swing.plaf.synth.SynthDesktopIconUI;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +17,6 @@ import java.util.List;
  * @since 2015.08.22.
  */
 final class MavenUtil {
-
 
     static String[] getModuleConfigBeanFiles() {
         try {

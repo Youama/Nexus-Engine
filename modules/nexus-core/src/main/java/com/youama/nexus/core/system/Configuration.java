@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.Random;
 
 /**
  * @author David Belicza
@@ -38,8 +37,6 @@ final class Configuration {
 
     private Properties properties;
 
-    private String databaseType;
-
     private boolean validProperties = false;
 
     private boolean redProperties = false;
@@ -56,7 +53,19 @@ final class Configuration {
         return (redProperties && validProperties);
     }
 
-    void readConfig() {
+    boolean isDriverActive(String driver) {
+        if ("active".equals(properties.getProperty("nexus.db." + driver))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    String getProperty(String propertyKey) {
+        return properties.getProperty(propertyKey);
+    }
+
+    private void readConfig() {
         propertiesFileLocal = FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + "config" + FileSystemUtil.DS +
                 "nexus.properties";
         propertiesFileRemoteCIExample = FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + "config" +
@@ -79,8 +88,6 @@ final class Configuration {
                 properties.load(input);
                 redProperties = true;
             }
-
-            setDatabaseType();
 
         } catch (IOException e) {
             Log.warning(e);
@@ -106,27 +113,7 @@ final class Configuration {
         return false;
     }
 
-    void setDatabaseType(String databaseType) {
-        this.databaseType = databaseType;
-    }
-
-    void setDatabaseType() {
-        databaseType = properties.getProperty("nexus.db.default");
-    }
-
-    boolean isDriverActive(String driver) {
-        if ("active".equals(properties.getProperty("nexus.db." + driver))) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     private void validateProperties() {
         validProperties = true;
-    }
-
-    String getProperty(String propertyKey) {
-        return properties.getProperty(propertyKey);
     }
 }

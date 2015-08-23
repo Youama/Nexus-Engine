@@ -1,4 +1,4 @@
-package com.youama.nexus.core.singleton;
+package com.youama.nexus.core.base;
 
 import org.hibernate.SessionFactory;
 
