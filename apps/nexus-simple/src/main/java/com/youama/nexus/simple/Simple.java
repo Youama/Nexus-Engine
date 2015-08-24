@@ -34,6 +34,8 @@ public class Simple {
                         System.out.println("one: " + i);
                     }
                 }
+
+                NexusCoreUtil.removeServices();
             }
         };
 
@@ -41,7 +43,7 @@ public class Simple {
             public void run() {
                 NexusCoreUtil.initServices("nexus-app-simple");
 
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 5; i++) {
                     try {
                         sleep(300);
                     } catch (InterruptedException e) {
@@ -57,6 +59,8 @@ public class Simple {
                         System.out.println("two: " + i);
                     }
                 }
+
+                NexusCoreUtil.removeServices();
             }
         };
 

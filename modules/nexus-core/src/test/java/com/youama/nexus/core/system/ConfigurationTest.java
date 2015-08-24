@@ -38,4 +38,9 @@ public class ConfigurationTest {
         assertTrue(Configuration.getInstance().isDriverActive("hsql"));
         assertFalse(Configuration.getInstance().isDriverActive("fake"));
     }
+
+    @After
+    public void tierDown() {
+        Configuration.resetInstance();
+    }
 }

@@ -11,8 +11,12 @@ import java.util.Map;
  */
 final public class ServiceUtil {
 
-    static void initServiceDriver() {
+    static void enableServiceDriver() {
         ServiceManager.getInstance().initServiceDriver();
+    }
+
+    static void disableServiceDriver() {
+        ServiceManager.resetInstance();
     }
 
     public static List<String> getInstalledDrivers() {

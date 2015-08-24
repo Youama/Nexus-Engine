@@ -1,8 +1,5 @@
 package com.youama.nexus.core.system;
 
-import java.io.File;
-import java.util.Properties;
-
 /**
  * This static class is the main class of the Nexus engine. The NexusCoreUtil class provides access to other classes and
  * objects what are provide global, resource and system/configuration specified features.
@@ -14,6 +11,11 @@ final public class NexusCoreUtil {
 
     public static void initServices(String artifactId) {
         Configuration.getInstance().setRegisteredPrimaryModuleArtifactId(artifactId);
-        ServiceUtil.initServiceDriver();
+        ServiceUtil.enableServiceDriver();
+    }
+
+    public static void removeServices() {
+        Configuration.resetInstance();
+        ServiceUtil.disableServiceDriver();
     }
 }

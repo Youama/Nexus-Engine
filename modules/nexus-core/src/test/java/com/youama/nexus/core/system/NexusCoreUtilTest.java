@@ -21,4 +21,9 @@ public class NexusCoreUtilTest {
     public void testInitServices_fail() {
         NexusCoreUtil.initServices("nexus-module-scheduler");
     }
+
+    @After
+    public void tierDown() {
+        NexusCoreUtil.removeServices();
+    }
 }

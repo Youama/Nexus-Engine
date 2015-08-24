@@ -24,6 +24,10 @@ final class Configuration {
         return localStorage.get();
     }
 
+    static void resetInstance() {
+        localStorage.remove();
+    }
+
     private Configuration() {
         properties = new Properties();
         readConfig();

@@ -2,6 +2,7 @@ package com.youama.nexus.scheduler.entity.task;
 
 import com.youama.nexus.core.system.NexusCoreUtil;
 import com.youama.nexus.core.system.ServiceUtil;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,6 +29,11 @@ public class TaskServiceTest {
             TaskEntity taskEntity = new TaskEntity();
             service.save(taskEntity);
         }
+    }
+
+    @After
+    public void tierDown() {
+        NexusCoreUtil.removeServices();
     }
 
 }

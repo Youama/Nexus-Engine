@@ -21,6 +21,10 @@ final class ServiceManager {
         return localStorage.get();
     }
 
+    static void resetInstance() {
+        localStorage.remove();
+    }
+
     private String[] supportedDrivers = {"mysql", "postgresql", "hsql"};
 
     private List<String> installedDrivers = new ArrayList<String>();
