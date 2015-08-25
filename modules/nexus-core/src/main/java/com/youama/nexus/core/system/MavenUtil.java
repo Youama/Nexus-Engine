@@ -53,7 +53,7 @@ final class MavenUtil {
             }
 
             return beans;
-        } catch (IOException | XmlPullParserException e) {
+        } catch (IOException | XmlPullParserException | ArrayIndexOutOfBoundsException e) {
             Log.warning(e);
         }
 
@@ -61,7 +61,7 @@ final class MavenUtil {
     }
 
     private static Model getPrimaryModulePomModel(String[] primaryModuleArtifactIdParts)
-            throws IOException, XmlPullParserException {
+            throws IOException, XmlPullParserException, ArrayIndexOutOfBoundsException {
 
         String parentDirectory = getScope(primaryModuleArtifactIdParts[1]);
 
