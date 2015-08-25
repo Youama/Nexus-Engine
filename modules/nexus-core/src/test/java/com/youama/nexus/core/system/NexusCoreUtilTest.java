@@ -1,10 +1,7 @@
 package com.youama.nexus.core.system;
 
 import org.junit.*;
-import static org.junit.Assert.*;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
-
-import java.io.FileNotFoundException;
 
 /**
  * @author David Belicza
