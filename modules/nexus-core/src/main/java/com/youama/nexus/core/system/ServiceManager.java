@@ -1,9 +1,9 @@
 package com.youama.nexus.core.system;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.youama.nexus.core.Log;
+import org.springframework.beans.factory.BeanDefinitionStoreException;
+
+import java.util.*;
 
 /**
  * @author David Belicza
@@ -45,19 +45,23 @@ final class ServiceManager {
         return currentDriverName;
     }
 
+    void switchDriver(String driverName) {
+        currentDriverName = driverName;
+    }
+
     List<String> getInstalledDrivers() {
         return installedDrivers;
     }
 
     Object getService(Class classType) {
-        return services.get(currentDriverName).getService(classType);
+        if (services.get(currentDriverName) != null) {
+            return services.get(currentDriverName).getService(classType);
+        }
+
+        return null;
     }
 
-    void switchDriver(String driverName) {
-        currentDriverName = driverName;
-    }
-
-    void initServiceDriver() {
+    void initServiceDriver() throws BeanDefinitionStoreException {
         Configuration configuration = Configuration.getInstance();
 
         for (String driver : supportedDrivers) {
