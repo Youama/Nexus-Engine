@@ -9,19 +9,19 @@ import java.util.List;
 final public class ServiceUtil {
 
     static void enableServiceDriver() {
-        ServiceManager.getInstance().initServiceDriver();
+        BeansApplicationManager.getInstance().initServiceDriver();
     }
 
     static void disableServiceDriver() {
-        ServiceManager.resetInstance();
+        BeansApplicationManager.resetInstance();
     }
 
     public static List<String> getInstalledDrivers() {
-        return ServiceManager.getInstance().getInstalledDrivers();
+        return BeansApplicationManager.getInstance().getInstalledDrivers();
     }
 
     public static void switchDriver(String driverName) {
-        ServiceManager.getInstance().switchDriver(driverName);
+        BeansApplicationManager.getInstance().switchDriver(driverName);
     }
 
     /**
@@ -31,52 +31,52 @@ final public class ServiceUtil {
      * @return It is the service implementation. Return type is an Object what can be cast to any service class.
      */
     public static Object getService(Class classType) {
-        return ServiceManager.getInstance().getService(classType);
+        return BeansApplicationManager.getInstance().getService(classType);
     }
 
     public static String getDatasourceId() {
-        return ServiceManager.getInstance().getDatasourceId();
+        return BeansApplicationManager.getInstance().getDatasourceId();
     }
 
     public static String getDBDriver() {
         return Configuration.getInstance()
-                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".driver");
+                .getProperty("nexus.db." + BeansApplicationManager.getInstance().getCurrentDriverName() + ".driver");
     }
 
     public static String getDBUrl() {
         return Configuration.getInstance()
-                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".url");
+                .getProperty("nexus.db." + BeansApplicationManager.getInstance().getCurrentDriverName() + ".url");
     }
 
     public static String getDBUser() {
         return Configuration.getInstance()
-                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".user");
+                .getProperty("nexus.db." + BeansApplicationManager.getInstance().getCurrentDriverName() + ".user");
     }
 
     public static String getDBPassword() {
         return Configuration.getInstance()
-                .getProperty("nexus.db." + ServiceManager.getInstance().getCurrentDriverName() + ".password");
+                .getProperty("nexus.db." + BeansApplicationManager.getInstance().getCurrentDriverName() + ".password");
     }
 
     public static String getDBDialect() {
         return Configuration.getInstance()
-                .getProperty("nexus.hibernate." + ServiceManager.getInstance().getCurrentDriverName() + ".dialect");
+                .getProperty("nexus.hibernate." + BeansApplicationManager.getInstance().getCurrentDriverName() + ".dialect");
     }
 
     public static String getDBCreation() {
         return Configuration.getInstance()
                 .getProperty("nexus.hibernate." +
-                        ServiceManager.getInstance().getCurrentDriverName() + ".hbm2ddl_auto");
+                        BeansApplicationManager.getInstance().getCurrentDriverName() + ".hbm2ddl_auto");
     }
 
     public static String getDBSessionContext() {
         return Configuration.getInstance()
                 .getProperty("nexus.hibernate." +
-                        ServiceManager.getInstance().getCurrentDriverName() + ".current_session_context_class");
+                        BeansApplicationManager.getInstance().getCurrentDriverName() + ".current_session_context_class");
     }
 
     public static String getDBLog() {
         return Configuration.getInstance()
-                .getProperty("nexus.hibernate." + ServiceManager.getInstance().getCurrentDriverName() + ".show_sql");
+                .getProperty("nexus.hibernate." + BeansApplicationManager.getInstance().getCurrentDriverName() + ".show_sql");
     }
 }

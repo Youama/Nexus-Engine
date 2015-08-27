@@ -8,15 +8,15 @@ import java.util.*;
  * @author David Belicza
  * @since 2015.08.22.
  */
-final class ServiceManager {
+final class BeansApplicationManager {
 
-    private static final ThreadLocal<ServiceManager> localStorage = new ThreadLocal<ServiceManager>() {
-        protected ServiceManager initialValue() {
-            return new ServiceManager();
+    private static final ThreadLocal<BeansApplicationManager> localStorage = new ThreadLocal<BeansApplicationManager>() {
+        protected BeansApplicationManager initialValue() {
+            return new BeansApplicationManager();
         }
     };
 
-    static ServiceManager getInstance() {
+    static BeansApplicationManager getInstance() {
         return localStorage.get();
     }
 
@@ -28,7 +28,7 @@ final class ServiceManager {
 
     private List<String> installedDrivers = new ArrayList<String>();
 
-    private Map<String, SingleService> services = new HashMap<String, SingleService>();
+    private Map<String, BeansApplicationContext> services = new HashMap<String, BeansApplicationContext>();
 
     private String currentDriverName;
 
@@ -66,7 +66,7 @@ final class ServiceManager {
         for (String driver : supportedDrivers) {
             if (configuration.isDriverActive(driver)) {
                 currentDriverName = driver;
-                SingleService serviceManager = new SingleService();
+                BeansApplicationContext serviceManager = new BeansApplicationContext();
                 serviceManager.setApplicationContext();
                 services.put(driver, serviceManager);
                 installedDrivers.add(driver);
