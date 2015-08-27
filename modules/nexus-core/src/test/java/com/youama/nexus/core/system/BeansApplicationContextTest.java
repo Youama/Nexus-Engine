@@ -17,16 +17,22 @@ public class BeansApplicationContextTest {
     @Before
     public void setUp() {
         singleService = new BeansApplicationContext();
+        Configuration.getInstance().setRegisteredPrimaryModuleArtifactId("nexus-module-core");
     }
 
     @Test
     public void testSetApplicationContext() {
-        // It sets contethe default primary module's artifact id
         singleService.setApplicationContext();
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testGetService() {
-        assertNull(singleService.getService(Objects.class));
+        // There is no service for core module.
+        singleService.getService(Objects.class);
+    }
+
+    @Test
+    public void tierDown() {
+        Configuration.resetInstance();
     }
 }

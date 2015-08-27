@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.*;
+import java.util.Arrays;
 
 /**
  * This class provides access to resource service implementations. The visibility of the methods of this BeansApplicationContext
@@ -44,6 +45,7 @@ final class BeansApplicationContext {
      * @return String array of the configuration bean xml files.
      */
     private String[] getResourceEntityDeclarations() {
+        System.out.println(Arrays.toString(MavenUtil.getModuleConfigBeanFiles()));
         return MavenUtil.getModuleConfigBeanFiles();
     }
 }
