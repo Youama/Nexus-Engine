@@ -8,8 +8,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Tasks")
-public class TaskEntity {
+@Table(name = "Task")
+public class TaskModel {
 
     @Id
     @Column(name="taskId")

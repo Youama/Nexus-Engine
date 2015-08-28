@@ -44,7 +44,7 @@ public class ServiceUtilTest {
         // Non-exists service.
         assertNull(ServiceUtil.getService(Objects.class));
 
-        assertEquals("dataSourceServer", ServiceUtil.getDatasourceId());
+        assertEquals(SystemConstant.DATABASE_SERVER, ServiceUtil.getDatasourceId());
 
         assertTrue(ServiceUtil.getDefaultDBDriver().length() > 0);
         assertTrue(ServiceUtil.getDBDriver().length() > 0);

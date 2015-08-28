@@ -2,7 +2,7 @@ package com.youama.nexus.simple;
 
 import com.youama.nexus.core.system.NexusCoreUtil;
 import com.youama.nexus.core.system.ServiceUtil;
-import com.youama.nexus.scheduler.entity.task.TaskEntity;
+import com.youama.nexus.scheduler.entity.task.TaskModel;
 import com.youama.nexus.scheduler.entity.task.TaskService;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class Simple {
                     for (String driver : drivers) {
                         ServiceUtil.switchDriver(driver);
                         TaskService service = (TaskService) ServiceUtil.getService(TaskService.class);
-                        TaskEntity taskEntity = new TaskEntity();
+                        TaskModel taskEntity = new TaskModel();
                         service.save(taskEntity);
                         System.out.println("one: " + i);
                     }
@@ -54,7 +54,7 @@ public class Simple {
                     for (String driver : drivers) {
                         ServiceUtil.switchDriver(driver);
                         TaskService service = (TaskService) ServiceUtil.getService(TaskService.class);
-                        TaskEntity taskEntity = new TaskEntity();
+                        TaskModel taskEntity = new TaskModel();
                         service.save(taskEntity);
                         System.out.println("two: " + i);
                     }

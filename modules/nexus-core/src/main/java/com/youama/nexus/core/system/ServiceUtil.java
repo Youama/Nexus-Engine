@@ -35,7 +35,11 @@ final public class ServiceUtil {
     }
 
     public static String getDefaultDBDriver() {
-        return Configuration.getInstance().getProperty("nexus.db.default");
+        return Configuration.getInstance().getProperty("nexus.db.driver.default");
+    }
+
+    public static String getTablePrefix() {
+        return Configuration.getInstance().getProperty("nexus.db.table.prefix");
     }
 
     public static String getDatasourceId() {
