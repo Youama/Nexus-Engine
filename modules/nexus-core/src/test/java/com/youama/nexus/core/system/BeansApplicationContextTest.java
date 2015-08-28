@@ -4,8 +4,6 @@ import org.junit.*;
 
 import java.util.Objects;
 
-import static org.junit.Assert.*;
-
 /**
  * @author David Belicza
  * @since 2015.08.27.

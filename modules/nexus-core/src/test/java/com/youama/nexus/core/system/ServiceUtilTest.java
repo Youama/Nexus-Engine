@@ -16,6 +16,8 @@ public class ServiceUtilTest {
     @Test(expected = BeanDefinitionStoreException.class)
     public void testServiceUtilsLife() {
 
+        assertTrue(ServiceUtil.getDefaultDBDriver().length() > 0);
+
         assertNull(ServiceUtil.getDBDriver());
         assertNull(ServiceUtil.getDBUrl());
         assertNull(ServiceUtil.getDBUser());
@@ -37,13 +39,14 @@ public class ServiceUtilTest {
         assertTrue(ServiceUtil.getInstalledDrivers().size() > 0);
 
         ServiceUtil.switchDriver("fake");
-        ServiceUtil.switchDriver("mysql");
+        ServiceUtil.switchDriver(ServiceUtil.getDefaultDBDriver());
 
         // Non-exists service.
         assertNull(ServiceUtil.getService(Objects.class));
 
         assertEquals("dataSourceServer", ServiceUtil.getDatasourceId());
 
+        assertTrue(ServiceUtil.getDefaultDBDriver().length() > 0);
         assertTrue(ServiceUtil.getDBDriver().length() > 0);
         assertTrue(ServiceUtil.getDBUrl().length() > 0);
         assertTrue(ServiceUtil.getDBUser().length() > 0);

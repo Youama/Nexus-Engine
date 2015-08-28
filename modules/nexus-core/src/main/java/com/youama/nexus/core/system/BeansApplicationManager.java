@@ -24,7 +24,11 @@ final class BeansApplicationManager {
         localStorage.remove();
     }
 
-    private String[] supportedDrivers = {"mysql", "postgresql", "hsql"};
+    private String[] supportedDrivers = {
+        SystemConstant.DATABASE_HSQL,
+        SystemConstant.DATABASE_MYSQL,
+        SystemConstant.DATABASE_POSTGRESQL
+    };
 
     private List<String> installedDrivers = new ArrayList<String>();
 
@@ -33,10 +37,10 @@ final class BeansApplicationManager {
     private String currentDriverName;
 
     String getDatasourceId() {
-        if ("hsql".equals(currentDriverName)) {
-            return "dataSourceClient";
+        if (SystemConstant.DATABASE_HSQL.equals(currentDriverName)) {
+            return SystemConstant.DATABASE_EMBEDDED;
         } else {
-            return "dataSourceServer";
+            return SystemConstant.DATABASE_SERVER;
         }
     }
 

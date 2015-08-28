@@ -35,7 +35,7 @@ public class ConfigurationTest {
 
     @Test
     public void testIsDriverActive() {
-        assertTrue(Configuration.getInstance().isDriverActive("mysql"));
+        assertTrue(Configuration.getInstance().isDriverActive(ServiceUtil.getDefaultDBDriver()));
         assertFalse(Configuration.getInstance().isDriverActive("fake"));
     }
 

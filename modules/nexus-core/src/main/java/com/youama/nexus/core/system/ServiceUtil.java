@@ -34,6 +34,10 @@ final public class ServiceUtil {
         return BeansApplicationManager.getInstance().getService(classType);
     }
 
+    public static String getDefaultDBDriver() {
+        return Configuration.getInstance().getProperty("nexus.db.default");
+    }
+
     public static String getDatasourceId() {
         return BeansApplicationManager.getInstance().getDatasourceId();
     }

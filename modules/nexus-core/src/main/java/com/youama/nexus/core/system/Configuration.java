@@ -33,7 +33,7 @@ final class Configuration {
         readConfig();
     }
 
-    private String registeredPrimaryModule = "nexus-app-simple";
+    private String registeredPrimaryModule = SystemConstant.DEFAULT_APP;
 
     private String propertiesFileLocal;
 
