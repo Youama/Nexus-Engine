@@ -13,6 +13,16 @@ import java.util.List;
  */
 public class Simple {
 
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void applicationRunningSimulation() {
         Thread one = new Thread() {
             public void run() {

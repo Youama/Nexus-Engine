@@ -14,7 +14,7 @@ import java.util.List;
  * @author David Belicza
  * @since 2015.08.21.
  */
-abstract public class BaseService<T> {
+public abstract class BaseService<T> {
 
     protected SessionFactory sessionFactory;
 
@@ -55,5 +55,5 @@ abstract public class BaseService<T> {
         return entityModelCollection;
     }
 
-    //@todo bunch save, update, filtered collection
+    //@todo bunch save, update, filtered collection0
 }

@@ -16,6 +16,7 @@
 # Java specific files and folders
 /target
 /*/target
+/out/*
 /apps/*/target
 /modules/*/target
 
