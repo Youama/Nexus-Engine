@@ -50,11 +50,11 @@ public class TextCollectorTest extends TestCase {
         TextCollector textCollector = new TextCollector(stringHTMLSource);
 
         // 25 sentences
-        textCollector.parseByRule(HelperCollector.TEXT_ALL);
+        textCollector.parseByRule(CollectorSelector.TEXT_ALL);
         assertEquals(25, textCollector.getItems().size());
 
         // 25 sentences
-        textCollector.parseByRule(HelperCollector.TEXT_BODY);
+        textCollector.parseByRule(CollectorSelector.TEXT_BODY);
         assertEquals(25, textCollector.getItems().size());
     }
 }

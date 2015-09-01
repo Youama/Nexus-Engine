@@ -27,7 +27,7 @@ public class LinkCollector extends Collector implements ICollector {
      * It parsed the DOM. The rule will be the default LINK_ALL.
      */
     public void parse() {
-        parseByRule(HelperCollector.LINK_ALL);
+        parseByRule(CollectorSelector.LINK_ALL);
     }
 
     /**
@@ -35,23 +35,23 @@ public class LinkCollector extends Collector implements ICollector {
      *
      * @param rule The ID of the rule.
      */
-    public void parseByRule(int rule) {
+    public void parseByRule(CollectorSelector rule) {
         switch (rule) {
-            case HelperCollector.LINK_ALL:
+            case LINK_ALL:
                 collectAttributeValueBy("a", "href");
                 break;
-            case HelperCollector.LINK_NO_FOLLOW:
+            case LINK_NO_FOLLOW:
                 List<String> attributeKeyFilters = new ArrayList<String>();
                 List<String> attributeValueFilters = new ArrayList<String>();
                 attributeKeyFilters.add("rel");
                 attributeValueFilters.add("nofollow");
                 collectAttributeValueBy("a", "href", attributeKeyFilters, attributeValueFilters);
                 break;
-            case HelperCollector.LINK_VALID:
+            case LINK_VALID:
                 collectAttributeValueBy("a", "href");
                 validateLinks(false);
                 break;
-            case HelperCollector.LINK_VALID_NO_RESOURCES:
+            case LINK_VALID_NO_RESOURCES:
                 collectAttributeValueBy("a", "href");
                 validateLinks(true);
                 break;

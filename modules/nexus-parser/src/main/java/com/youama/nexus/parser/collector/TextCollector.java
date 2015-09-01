@@ -29,7 +29,7 @@ public class TextCollector extends Collector implements ICollector {
      * It collects the sentences and words by default value.
      */
     public void parse() {
-        parseByRule(HelperCollector.TEXT_ALL);
+        parseByRule(CollectorSelector.TEXT_ALL);
     }
 
     /**
@@ -37,12 +37,12 @@ public class TextCollector extends Collector implements ICollector {
      *
      * @param rule The ID of the rule.
      */
-    public void parseByRule(int rule) {
+    public void parseByRule(CollectorSelector rule) {
         switch (rule) {
-            case HelperCollector.TEXT_ALL:
+            case TEXT_ALL:
                 collectText("html");
                 break;
-            case HelperCollector.TEXT_BODY:
+            case TEXT_BODY:
                 collectText("body");
         }
     }

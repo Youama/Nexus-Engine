@@ -23,7 +23,7 @@ public interface ICollector {
      *
      * @param rule The ID of the rule.
      */
-    void parseByRule(int rule);
+    void parseByRule(CollectorSelector rule);
 
     /**
      * It retrieves the collected, parsed data in a list of objects. This method has to be implemented on abstract
