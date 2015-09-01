@@ -8,13 +8,13 @@ import org.jsoup.select.Elements;
 import java.util.List;
 
 /**
- * This class implements the Collector and ICollector. TextCollector collects words by different rules. This class
+ * This class implements the BaseCollector and Collector. TextCollector collects words by different rules. This class
  * should not be referenced directly, it is handled by the FactoryCollector class.
  *
  * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.08.01.
  */
-public class TextCollector extends Collector implements ICollector {
+public class TextCollector extends BaseCollector implements Collector {
 
     /**
      * It sets the html source the property.

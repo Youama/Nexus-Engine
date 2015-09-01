@@ -6,13 +6,13 @@ import com.youama.nexus.core.validator.URLSyntaxValidator;
 import java.util.*;
 
 /**
- * This class implements the Collector and ICollector. LinkCollector collects links by different rules. This class
+ * This class implements the BaseCollector and Collector. LinkCollector collects links by different rules. This class
  * should not be referenced directly, it is handled by the FactoryCollector class.
  *
  * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.11.
  */
-public class LinkCollector extends Collector implements ICollector {
+public class LinkCollector extends BaseCollector implements Collector {
 
     /**
      * It gives the source to the parent constructor to make the DOM.

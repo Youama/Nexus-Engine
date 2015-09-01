@@ -12,7 +12,7 @@ public class FactoryCollectorTest extends TestCase {
     @Test
     public void testGetCollector() {
         String source = "";
-        ICollector linkCollector = FactoryCollector.getCollector(FactoryCollector.TYPE_LINK, source);
+        Collector linkCollector = FactoryCollector.getCollector(FactoryCollector.TYPE_LINK, source);
         assertTrue(linkCollector instanceof LinkCollector);
     }
 }
