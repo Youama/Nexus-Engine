@@ -16,9 +16,4 @@ public class FileSystemUtilTest {
     public void testSeparator() {
         assertTrue(File.separator.equals(FileSystemUtil.DS));
     }
-
-    @Test
-    public void testGetBaseDirectory() {
-        assertNotNull(FileSystemUtil.getBaseDirectory());
-    }
 }

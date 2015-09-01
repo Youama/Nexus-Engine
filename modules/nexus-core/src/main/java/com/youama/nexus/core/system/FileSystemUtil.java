@@ -3,6 +3,7 @@ package com.youama.nexus.core.system;
 import com.youama.nexus.core.Log;
 
 import java.io.File;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,6 +30,8 @@ final public class FileSystemUtil {
         Path paths;
 
         try {
+            URI uri = FileSystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI();
+
             //@todo only one cd .. needed in the production version
             paths = Paths.get(FileSystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI());
             baseDirectory = paths.getParent().getParent().getParent().getParent().toString();

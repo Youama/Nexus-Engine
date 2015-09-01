@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 /**
@@ -35,9 +38,9 @@ final class Configuration {
 
     private String registeredPrimaryModule = SystemConstant.DEFAULT_APP;
 
-    private String propertiesFileLocal;
+    private String propertiesFileNameProduction = "nexus.properties";
 
-    private String propertiesFileRemoteCIExample;
+    private String propertiesFileNameCITest = "nexus.example.properties";
 
     private Properties properties;
 
@@ -70,29 +73,40 @@ final class Configuration {
     }
 
     private void readConfig() {
-        propertiesFileLocal = FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + "config" + FileSystemUtil.DS +
-                "nexus.properties";
-        propertiesFileRemoteCIExample = FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + "config" +
-                FileSystemUtil.DS + "nexus.example.properties";
-        readProperties();
-        validateProperties();
+        try {
+            String propertiesFilePath = findPropertiesFile(
+                    Paths.get(Configuration.class.getProtectionDomain().getCodeSource().getLocation().toURI()));
+            readProperties(propertiesFilePath);
+            validateProperties();
+        } catch (URISyntaxException e) {
+            Log.warning(e);
+        }
     }
 
-    private void readProperties() {
+    private String findPropertiesFile(Path directoryPath) {
+        String productionPropertiesPath = directoryPath.toString() + FileSystemUtil.DS + "config"  + FileSystemUtil.DS +
+                propertiesFileNameProduction;
+        String ciTestPropertiesPath = directoryPath.toString() + FileSystemUtil.DS + "config" + FileSystemUtil.DS +
+                propertiesFileNameCITest;
+
+        if  (propertyExists(productionPropertiesPath)) {
+            return productionPropertiesPath;
+        } else if (propertyExists(ciTestPropertiesPath)) {
+            return ciTestPropertiesPath;
+        } else if (!directoryPath.toString().equals(directoryPath.getRoot().toString())) {
+            return findPropertiesFile(directoryPath.getParent());
+        } else {
+            return null;
+        }
+    }
+
+    private void readProperties(String propertiesFilePath) {
         InputStream input = null;
 
         try {
-
-            if (propertyExists(propertiesFileLocal)) {
-                input = new FileInputStream(propertiesFileLocal);
-                properties.load(input);
-                redProperties = true;
-            } else {
-                input = new FileInputStream(propertiesFileRemoteCIExample);
-                properties.load(input);
-                redProperties = true;
-            }
-
+            input = new FileInputStream(propertiesFilePath);
+            properties.load(input);
+            redProperties = true;
         } catch (IOException e) {
             Log.warning(e);
         } finally {
@@ -107,6 +121,7 @@ final class Configuration {
     }
 
     private boolean propertyExists(String propertyPath) {
+        System.out.println("in: " + propertyPath);
         File file;
         file = new File(propertyPath);
 

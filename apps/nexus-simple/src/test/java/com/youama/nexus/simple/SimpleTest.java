@@ -15,7 +15,6 @@ public class SimpleTest {
     @Test
     public void testApplicationRunningSimulation() {
 
-        Simple simple = new Simple();
-        simple.applicationRunningSimulation();
+        Simple.applicationRunningSimulation();
     }
 }
