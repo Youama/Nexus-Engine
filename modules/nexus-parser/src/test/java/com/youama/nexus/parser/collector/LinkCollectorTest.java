@@ -64,22 +64,22 @@ public class LinkCollectorTest extends TestCase {
         List<BasicItem> items;
 
         // All no-follow links
-        linkCollector.parseByRule(HelperCollector.LINK_NO_FOLLOW);
+        linkCollector.parseByRule(CollectorSelector.LINK_NO_FOLLOW);
         items = linkCollector.getItems();
         assertEquals(1, items.get(0).getData().size());
 
         // All kind of links
-        linkCollector.parseByRule(HelperCollector.LINK_ALL);
+        linkCollector.parseByRule(CollectorSelector.LINK_ALL);
         items = linkCollector.getItems();
         assertEquals(8, items.get(0).getData().size());
 
         // Only valid links
-        linkCollector.parseByRule(HelperCollector.LINK_VALID);
+        linkCollector.parseByRule(CollectorSelector.LINK_VALID);
         items = linkCollector.getItems();
         assertEquals(5, items.get(0).getData().size());
 
         // Only valid and non-resource links
-        linkCollector.parseByRule(HelperCollector.LINK_VALID_NO_RESOURCES);
+        linkCollector.parseByRule(CollectorSelector.LINK_VALID_NO_RESOURCES);
         items = linkCollector.getItems();
         assertEquals(4, items.get(0).getData().size());
     }

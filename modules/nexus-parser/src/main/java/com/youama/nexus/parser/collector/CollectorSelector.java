@@ -1,40 +1,40 @@
 package com.youama.nexus.parser.collector;
 
 /**
- * Constants of this class should be used for Collector objects.
+ * Constants of this enum should be used for BaseCollector objects.
  *
  * @author David Belicza - 87.bdavid@gmail.com
  * @since 2015.07.12.
  */
-final public class HelperCollector {
+public enum CollectorSelector {
 
     /**
      * Gathers all links.
      */
-    final public static int LINK_ALL = 1;
+    LINK_ALL,
 
     /**
      * Gathers all links what have nofollow value in the rel attribute.
      */
-    final public static int LINK_NO_FOLLOW = 2;
+    LINK_NO_FOLLOW,
 
     /**
      * Gathers all correct links.
      */
-    final public static int LINK_VALID = 3;
+    LINK_VALID,
 
     /**
      * Gathers all correct links what are point to another pages not resources like css, js, etc.
      */
-    final public static int LINK_VALID_NO_RESOURCES = 4;
+    LINK_VALID_NO_RESOURCES,
 
     /**
      * Gathers all text from the HTML source.
      */
-    final public static int TEXT_ALL = 5;
+    TEXT_ALL,
 
     /**
      * Gathers all text from the body of the HTML source.
      */
-    final public static int TEXT_BODY = 6;
+    TEXT_BODY
 }
