@@ -16,11 +16,22 @@ public class TaskModel {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long taskId;
 
+    @Column(name="path", columnDefinition="TEXT")
+    private String path;
+
     public void setTaskId(long taskId) {
         this.taskId = taskId;
     }
 
     public long getTaskId() {
         return taskId;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
     }
 }
