@@ -8,7 +8,7 @@ public interface SystemConstant {
 
     String DEFAULT_APP = "nexus-app-simple";
 
-    String DATABASE_HSQL = "mysql";
+    String DATABASE_HSQL = "hsql";
     String DATABASE_MYSQL = "mysql";
     String DATABASE_POSTGRESQL = "postgresql";
 
