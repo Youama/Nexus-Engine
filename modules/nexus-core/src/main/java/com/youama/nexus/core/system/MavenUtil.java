@@ -6,9 +6,10 @@ import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +21,10 @@ final class MavenUtil {
 
     static String[] getModuleConfigBeanFiles() {
         try {
-            String[] primaryModuleArtifactIdParts =
-                    Configuration.getInstance().getRegisteredPrimaryModuleArtifactId().split("\\-");
 
-            Model pomModel = getPrimaryModulePomModel(primaryModuleArtifactIdParts);
+            Model pomModel = getPrimaryModulePomModel();
 
-            String primaryModuleConfigBeanXML = getPrimaryModuleConfigBeanXML(primaryModuleArtifactIdParts);
+            String primaryModuleConfigBeanXML = getPrimaryModuleConfigBeanXMLFileName();
             List<String> childrenBeans = getChildrenModuleBeanXMLs(pomModel.getModules());
             List<String> dependencyBeans = getDependencyModuleBeanXMLs(pomModel.getDependencies());
 
@@ -60,29 +59,45 @@ final class MavenUtil {
         return null;
     }
 
-    private static Model getPrimaryModulePomModel(String[] primaryModuleArtifactIdParts)
+    private static Model getPrimaryModulePomModel()
             throws IOException, XmlPullParserException, ArrayIndexOutOfBoundsException {
 
-        String parentDirectory = getScope(primaryModuleArtifactIdParts[1]);
-
-        String path = FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + parentDirectory + FileSystemUtil.DS +
-                primaryModuleArtifactIdParts[0] + "-" + primaryModuleArtifactIdParts[2] + FileSystemUtil.DS + "pom.xml";
-
+        InputStream pomInputStream = getPrimaryModulePomFileInputStream();
         MavenXpp3Reader reader = new MavenXpp3Reader();
-
-        return reader.read(new FileReader(path));
+        return reader.read(pomInputStream);
     }
 
-    private static String getPrimaryModuleConfigBeanXML(String[] primaryModuleArtifactIdParts) {
-        if (beanExists(
-                primaryModuleArtifactIdParts[1] + "-" + primaryModuleArtifactIdParts[2],
-                primaryModuleArtifactIdParts[0] + "-" + primaryModuleArtifactIdParts[2],
-                getScope(primaryModuleArtifactIdParts[1])
-        )) {
-            return primaryModuleArtifactIdParts[1] + "-" + primaryModuleArtifactIdParts[2] + ".xml";
+    private static InputStream getPrimaryModulePomFileInputStream() {
+
+        String[] packages = Configuration.getInstance().getRegisteredMainClass().getPackage().getName().split("\\.");
+        String pomFilePath = FileSystemUtil.DS + "META-INF" + FileSystemUtil.DS + "maven" + FileSystemUtil.DS
+                + packages[0] + "." + packages[1] + "." + packages[2] + FileSystemUtil.DS
+                + Configuration.getInstance().getRegisteredPrimaryModuleArtifactId() + FileSystemUtil.DS + "pom.xml";
+
+        InputStream pomInputStreamJar = Configuration.getInstance().getRegisteredMainClass().getResourceAsStream(
+                pomFilePath);
+
+        if (pomInputStreamJar != null) {
+            return pomInputStreamJar;
+        } else {
+            try {
+                Path paths = Paths.get(Configuration.getInstance().getRegisteredMainClass().getProtectionDomain()
+                        .getCodeSource().getLocation().toURI());
+
+                return new FileInputStream(paths.getParent().getParent().toString() + FileSystemUtil.DS + "pom.xml");
+
+            } catch (URISyntaxException | FileNotFoundException e) {
+                Log.warning(e);
+            }
         }
 
         return null;
+    }
+
+    private static String getPrimaryModuleConfigBeanXMLFileName() {
+        String[] primaryModuleArtifactIdParts =
+                Configuration.getInstance().getRegisteredPrimaryModuleArtifactId().split("\\-");
+        return primaryModuleArtifactIdParts[1] + "-" + primaryModuleArtifactIdParts[2] + ".xml";
     }
 
     private static List<String> getChildrenModuleBeanXMLs(List<String> modules) {
@@ -91,13 +106,7 @@ final class MavenUtil {
         for (String module : modules) {
             String[] dependModuleNamePartsLevel1 = module.split("\\/");
             String[] dependModuleNamePartsLevel2 = dependModuleNamePartsLevel1[1].split("\\-");
-            if (beanExists(
-                    dependModuleNamePartsLevel1[0] + "-" + dependModuleNamePartsLevel2[1],
-                    dependModuleNamePartsLevel2[0] + "-" + dependModuleNamePartsLevel2[1],
-                    getScope(dependModuleNamePartsLevel2[0])
-            )) {
-                configBeans.add(dependModuleNamePartsLevel1[0] + "-" + dependModuleNamePartsLevel2[1]);
-            }
+               configBeans.add(dependModuleNamePartsLevel1[0] + "-" + dependModuleNamePartsLevel2[1]);
         }
 
         return configBeans;
@@ -107,34 +116,12 @@ final class MavenUtil {
         List<String> configBeans = new ArrayList<String>();
 
         for (Dependency dependency : dependencies) {
-            if ("com.youama.nexus".equals(dependency.getGroupId())) {
+            if (SystemConstant.ACCEPTED_DEPENDENCY_PACKAGE.equals(dependency.getGroupId())) {
                 String[] dependModuleNameParts = dependency.getArtifactId().split("\\-");
-                if (beanExists(
-                        dependModuleNameParts[1] + "-" + dependModuleNameParts[2],
-                        dependModuleNameParts[0] + "-" + dependModuleNameParts[2],
-                        getScope(dependModuleNameParts[1])
-                )) {
-                    configBeans.add(dependModuleNameParts[1] + "-" + dependModuleNameParts[2] + ".xml");
-                }
+                configBeans.add(dependModuleNameParts[1] + "-" + dependModuleNameParts[2] + ".xml");
             }
         }
 
         return configBeans;
-    }
-
-    private static boolean beanExists(String beanFileName, String moduleRootDirectory, String moduleType) {
-        File bean = new File(FileSystemUtil.getBaseDirectory() + FileSystemUtil.DS + moduleType + FileSystemUtil.DS +
-                moduleRootDirectory + FileSystemUtil.DS + "src" + FileSystemUtil.DS + "main" + FileSystemUtil.DS +
-                "resources" + FileSystemUtil.DS + beanFileName + ".xml");
-
-        return bean.exists();
-    }
-
-    private static String getScope(String scopeName) {
-        if ("app".equals(scopeName)) {
-            return "apps";
-        } else {
-            return "modules";
-        }
     }
 }

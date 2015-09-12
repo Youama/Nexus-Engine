@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -32,15 +34,20 @@ final class Configuration {
     }
 
     private Configuration() {
-        properties = new Properties();
-        readConfig();
+        if (internalPropertiesMap.size() <= 0) {
+            properties = new Properties();
+            readConfig();
+        } else {
+            redProperties = true;
+            validateProperties();
+        }
     }
 
-    private String registeredPrimaryModule = SystemConstant.DEFAULT_APP;
+    private String registeredPrimaryModuleArtifactId = SystemConstant.DEFAULT_APP;
 
-    private String propertiesFileNameProduction = "nexus.properties";
+    private Class<?> registeredMainClass = this.getClass();
 
-    private String propertiesFileNameCITest = "nexus.example.properties";
+    Map<String, String> internalPropertiesMap = new HashMap<String, String>();
 
     private Properties properties;
 
@@ -48,12 +55,21 @@ final class Configuration {
 
     private boolean redProperties = false;
 
-    void setRegisteredPrimaryModuleArtifactId(String primaryModule) {
-        registeredPrimaryModule = primaryModule;
+    void registerPrimaryModule(String primaryModuleArtifactId, Class<?> mainClass) {
+        registeredPrimaryModuleArtifactId = primaryModuleArtifactId;
+        registeredMainClass = mainClass;
+    }
+
+    void setInternalPropertiesMap( Map<String, String> internalPropertiesMap) {
+        this.internalPropertiesMap = internalPropertiesMap;
     }
 
     String getRegisteredPrimaryModuleArtifactId() {
-        return registeredPrimaryModule;
+        return registeredPrimaryModuleArtifactId;
+    }
+
+    Class<?> getRegisteredMainClass() {
+        return registeredMainClass;
     }
 
     boolean isOk() {
@@ -61,15 +77,15 @@ final class Configuration {
     }
 
     boolean isDriverActive(String driver) {
-        if ("active".equals(properties.getProperty("nexus.db." + driver))) {
-            return true;
-        } else {
-            return false;
-        }
+        return SystemConstant.DATABASE_FLAG_ACTIVE.equals(getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX + driver));
     }
 
     String getProperty(String propertyKey) {
-        return properties.getProperty(propertyKey);
+        if (internalPropertiesMap.size() <= 0) {
+            return properties.getProperty(propertyKey);
+        } else {
+            return internalPropertiesMap.get(propertyKey);
+        }
     }
 
     private void readConfig() {
@@ -84,12 +100,12 @@ final class Configuration {
     }
 
     private String findPropertiesFile(Path directoryPath) {
-        String productionPropertiesPath = directoryPath.toString() + FileSystemUtil.DS + "config"  + FileSystemUtil.DS +
-                propertiesFileNameProduction;
-        String ciTestPropertiesPath = directoryPath.toString() + FileSystemUtil.DS + "config" + FileSystemUtil.DS +
-                propertiesFileNameCITest;
+        String productionPropertiesPath = directoryPath.toString() + FileSystemUtil.DS + SystemConstant.DIRECTORY_CONFIG
+                + FileSystemUtil.DS + SystemConstant.PROPERTIES_FILE_NAME_LOCAL;
+        String ciTestPropertiesPath = directoryPath.toString() + FileSystemUtil.DS + SystemConstant.DIRECTORY_CONFIG
+                + FileSystemUtil.DS + SystemConstant.PROPERTIES_FILE_NAME_TRAVIS;
 
-        if  (propertyExists(productionPropertiesPath)) {
+        if (propertyExists(productionPropertiesPath)) {
             return productionPropertiesPath;
         } else if (propertyExists(ciTestPropertiesPath)) {
             return ciTestPropertiesPath;
@@ -121,15 +137,11 @@ final class Configuration {
     }
 
     private boolean propertyExists(String propertyPath) {
-        System.out.println("in: " + propertyPath);
         File file;
         file = new File(propertyPath);
 
-        if (file.exists() && !file.isDirectory()) {
-            return true;
-        }
+        return file.exists() && !file.isDirectory();
 
-        return false;
     }
 
     private void validateProperties() {

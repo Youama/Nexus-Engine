@@ -1,7 +1,6 @@
 package com.youama.nexus.core.system;
 
 import org.junit.*;
-import org.springframework.beans.factory.BeanDefinitionStoreException;
 
 import java.util.Objects;
 
@@ -13,7 +12,7 @@ import static org.junit.Assert.*;
  */
 public class ServiceUtilTest {
 
-    @Test(expected = BeanDefinitionStoreException.class)
+    @Test
     public void testServiceUtilsLife() {
 
         assertTrue(ServiceUtil.getDefaultDBDriver().length() > 0);
@@ -33,7 +32,7 @@ public class ServiceUtilTest {
         ServiceUtil.enableServiceDriver();
 
         // No exception, system loaded thought core module.
-        Configuration.getInstance().setRegisteredPrimaryModuleArtifactId("nexus-module-core");
+        Configuration.getInstance().registerPrimaryModule("nexus-module-core", ServiceUtil.class);
         ServiceUtil.enableServiceDriver();
 
         assertTrue(ServiceUtil.getInstalledDrivers().size() > 0);
@@ -46,6 +45,8 @@ public class ServiceUtilTest {
 
         assertEquals(SystemConstant.DATABASE_SERVER, ServiceUtil.getDatasourceId());
 
+        System.out.println(ServiceUtil.getDBUser());
+        System.out.println(ServiceUtil.getDBPassword());
         assertTrue(ServiceUtil.getDefaultDBDriver().length() > 0);
         assertTrue(ServiceUtil.getDBDriver().length() > 0);
         assertTrue(ServiceUtil.getDBUrl().length() > 0);
@@ -56,7 +57,7 @@ public class ServiceUtilTest {
         assertTrue(ServiceUtil.getDBSessionContext().length() > 0);
         assertTrue(ServiceUtil.getDBLog().length() > 0);
 
-        // It removes the local thread singleton what cotnains the drivers.
+        // It removes the local thread singleton what contains the drivers.
         ServiceUtil.disableServiceDriver();
         assertTrue(ServiceUtil.getInstalledDrivers().size() == 0);
     }

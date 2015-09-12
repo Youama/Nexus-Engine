@@ -79,9 +79,8 @@ public class BeansApplicationManagerTest {
         assertNull(BeansApplicationManager.getInstance().getService(Objects.class));
     }
 
-    @Test(expected = BeanDefinitionStoreException.class)
+    @Test
     public void testInitServiceDriver() {
-        // It throws BeanDefinitionStoreException exception because NexusCoreUtil is not initialized.
         BeansApplicationManager.getInstance().initServiceDriver();
     }
 

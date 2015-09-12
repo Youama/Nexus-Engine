@@ -11,12 +11,12 @@ public class NexusCoreUtilTest {
 
     @Test
     public void testInitServices_success() {
-        NexusCoreUtil.initServices("nexus-module-core");
+        NexusCoreUtil.initServices("nexus-module-core", NexusCoreUtil.class);
     }
 
     @Test(expected = BeanDefinitionStoreException.class)
     public void testInitServices_fail() {
-        NexusCoreUtil.initServices("nexus-module-scheduler");
+        NexusCoreUtil.initServices("nexus-module-scheduler", NexusCoreUtil.class);
     }
 
     @After

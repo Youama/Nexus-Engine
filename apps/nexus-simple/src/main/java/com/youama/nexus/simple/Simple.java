@@ -16,13 +16,6 @@ public class Simple {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        System.out.println(FileSystemUtil.getBaseDirectory());
-
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         Simple.applicationRunningSimulation();
     }
@@ -30,7 +23,7 @@ public class Simple {
     public static void applicationRunningSimulation() {
         Thread one = new Thread() {
             public void run() {
-                NexusCoreUtil.initServices("nexus-app-simple");
+                NexusCoreUtil.initServices("nexus-app-simple", Simple.class);
 
                 for (int i = 0; i < 10; i++) {
                     try {
@@ -55,7 +48,7 @@ public class Simple {
 
         Thread two = new Thread() {
             public void run() {
-                NexusCoreUtil.initServices("nexus-app-simple");
+                NexusCoreUtil.initServices("nexus-app-simple", Simple.class);
 
                 for (int i = 0; i < 5; i++) {
                     try {

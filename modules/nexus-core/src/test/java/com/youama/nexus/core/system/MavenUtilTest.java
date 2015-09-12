@@ -17,7 +17,7 @@ public class MavenUtilTest {
         configBeanFiles = MavenUtil.getModuleConfigBeanFiles();
         assertTrue(configBeanFiles != null && configBeanFiles.length > 0);
 
-        NexusCoreUtil.initServices("nexus-module-core");
+        NexusCoreUtil.initServices("nexus-module-core", MavenUtil.class);
         configBeanFiles = MavenUtil.getModuleConfigBeanFiles();
         assertTrue(configBeanFiles != null && configBeanFiles.length > 0);
     }

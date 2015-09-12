@@ -21,7 +21,7 @@ public class TaskServiceTest {
 
     @Before
     public void setUp() {
-        NexusCoreUtil.initServices("nexus-module-scheduler");
+        NexusCoreUtil.initServices("nexus-module-scheduler", TaskModel.class);
     }
 
     @Test

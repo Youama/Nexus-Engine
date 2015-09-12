@@ -16,15 +16,15 @@ public class ConfigurationTest {
 
     @Test
     public void testSetRegisteredPrimaryModuleArtifactId() {
-        Configuration.getInstance().setRegisteredPrimaryModuleArtifactId("something");
+        Configuration.getInstance().registerPrimaryModule("something", Configuration.class);
         assertTrue("something".equals(Configuration.getInstance().getRegisteredPrimaryModuleArtifactId()));
     }
 
     @Test
     public void testGetRegisteredPrimaryModuleArtifactId() {
         String value = Configuration.getInstance().getRegisteredPrimaryModuleArtifactId();
-        assertTrue("nexus-app-simple".equals(value) || "something".equals(value));
-        Configuration.getInstance().setRegisteredPrimaryModuleArtifactId("new");
+        assertTrue(SystemConstant.DEFAULT_APP.equals(value) || "something".equals(value));
+        Configuration.getInstance().registerPrimaryModule("new", Configuration.class);
         assertTrue("new".equals(Configuration.getInstance().getRegisteredPrimaryModuleArtifactId()));
     }
 

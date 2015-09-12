@@ -45,7 +45,6 @@ final class BeansApplicationContext {
      * @return String array of the configuration bean xml files.
      */
     private String[] getResourceEntityDeclarations() {
-        System.out.println(Arrays.toString(MavenUtil.getModuleConfigBeanFiles()));
         return MavenUtil.getModuleConfigBeanFiles();
     }
 }

@@ -15,7 +15,7 @@ public class BeansApplicationContextTest {
     @Before
     public void setUp() {
         singleService = new BeansApplicationContext();
-        Configuration.getInstance().setRegisteredPrimaryModuleArtifactId("nexus-module-core");
+        Configuration.getInstance().registerPrimaryModule("nexus-module-core", ServiceUtil.class);
     }
 
     @Test
