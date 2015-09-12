@@ -16,7 +16,8 @@ public class TaskModel {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long taskId;
 
-    @Column(name="path", columnDefinition="TEXT")
+    @Lob
+    @Column(name="path", length=2048)
     private String path;
 
     public void setTaskId(long taskId) {

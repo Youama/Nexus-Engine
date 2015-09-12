@@ -1,6 +1,7 @@
 package com.youama.nexus.core.system;
 
 import org.junit.*;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import static org.junit.Assert.*;
  */
 public class ServiceUtilTest {
 
-    @Test
+    @Test(expected = NoSuchBeanDefinitionException.class)
     public void testServiceUtilsLife() {
 
         assertTrue(ServiceUtil.getDefaultDBDriver().length() > 0);
@@ -40,7 +41,7 @@ public class ServiceUtilTest {
         ServiceUtil.switchDriver("fake");
         ServiceUtil.switchDriver(ServiceUtil.getDefaultDBDriver());
 
-        // Non-exists service.
+        // Non-exists service - NoSuchBeanDefinitionException
         assertNull(ServiceUtil.getService(Objects.class));
 
         assertEquals(SystemConstant.DATABASE_SERVER, ServiceUtil.getDatasourceId());
