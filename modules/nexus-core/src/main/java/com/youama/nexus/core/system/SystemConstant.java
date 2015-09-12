@@ -19,7 +19,7 @@ public interface SystemConstant {
 
     String DATABASE_FLAG_ACTIVE = "active";
 
-    String DATABASE_HSQL = "mysql";
+    String DATABASE_HSQL = "hsql";
     String DATABASE_MYSQL = "mysql";
     String DATABASE_POSTGRESQL = "postgresql";
 
