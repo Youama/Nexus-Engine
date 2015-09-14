@@ -9,17 +9,9 @@
 [![Join the chat at https://gitter.im/Youama/Nexus-Engine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Youama/Nexus-Engine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Motivation
-The purpose of this project to develop a software what can answer basic questions without the question or answer would be pre-programmed or forced in any source code or file. It should be like Cortana or Siri but much more flexible and open source.
+All software purpose is replace the human work by automation processes. Today, a software can sell (webshop), tracking data (ERP, CRM, Marketing tools), talk and aid (Cortana), find anything (Google), but they have to be controlled by users. If a program could think like a human then it could take the control over automated software. Like Cortana does with applications. If it was bigger and more complex then the software industry would achieve its goal. Nexus Engine is a good experiment and small step on this long way.
 
-For this nearly impossible goals this software has to contain many features:
-* **Crawler**: The ability to mapping a part of the Internet in multi-thread operation.
-* **Scheduler**: It stores tasks and runs them. It should be like the GruntJs but more sophisticated.
-* **Parser**: Parses files, retrieves the clear text from HTML or offline document.
-* **WSD/Lesk/WordNet**: Kind of *machine learning*. It orders words to sentences and validates them by Human or by Google with searching. Every inputs and outputs should change the relation between the words by verify the correct results and deny the non-sense results.
-* **Cache**: All searching query should be able to cached into dummy database tables.
-* **CLI**: It provides access to search engine by command line interface. This should be suitable to integrate the search engine to another languages by executable calls.
-
-So many modules are required before the search engine could work covered by an intelligent interface - a kind of *a.i.*
+*The goal of the future is full unemployment, so we can play. - Arthur C. Clarke*
 
 ## LICENSE
 This project/software has MIT license as you can see in the LICENSE file. It means Nexus Engine is an open source project: [MIT LICENSE](https://github.com/Youama/Nexus-Engine/blob/master/LICENSE)
