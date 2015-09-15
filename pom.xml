@@ -15,6 +15,7 @@
         <module>modules/nexus-parser</module>
 
         <module>apps/nexus-simple</module>
+        <module>apps/nexus-japi</module>
     </modules>
 
     <dependencies>
