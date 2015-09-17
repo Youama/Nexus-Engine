@@ -34,7 +34,7 @@ public class NexusCoreUtilTest {
     	Map<String, String> propertiesMap = new HashMap<String, String>();
     	propertiesMap.put("testKey", "testValue");
     	NexusCoreUtil.setProperties(propertiesMap);
-    	Configuration.getInstance().getProperty("testKey");
+    	assertNotNull(Configuration.getInstance().getProperty("testKey"));
     }
 
     @After
