@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.06.28.
  */
 public class StreamReader {

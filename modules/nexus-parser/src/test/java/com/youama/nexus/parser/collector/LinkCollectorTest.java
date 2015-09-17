@@ -1,9 +1,8 @@
 package com.youama.nexus.parser.collector;
 
 import com.youama.nexus.core.item.BasicItem;
-import junit.framework.TestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -12,10 +11,10 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.07.12.
  */
-public class LinkCollectorTest extends TestCase {
+public class LinkCollectorTest {
 
     public String stringHTMLSource = "";
 

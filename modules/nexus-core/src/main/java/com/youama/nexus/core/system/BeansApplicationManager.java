@@ -56,7 +56,7 @@ final class BeansApplicationManager {
         return installedDrivers;
     }
 
-    Object getService(Class classType) {
+    Object getService(Class<?> classType) {
         if (services.get(currentDriverName) != null) {
             return services.get(currentDriverName).getService(classType);
         }

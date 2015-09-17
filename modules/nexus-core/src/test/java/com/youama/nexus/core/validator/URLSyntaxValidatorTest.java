@@ -1,13 +1,13 @@
 package com.youama.nexus.core.validator;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.07.18.
  */
-public class URLSyntaxValidatorTest extends TestCase {
+public class URLSyntaxValidatorTest {
 
     @Test
     public void testIsValidLink() {

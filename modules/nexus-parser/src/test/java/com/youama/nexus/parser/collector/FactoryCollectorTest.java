@@ -1,13 +1,13 @@
 package com.youama.nexus.parser.collector;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.07.11.
  */
-public class FactoryCollectorTest extends TestCase {
+public class FactoryCollectorTest {
 
     @Test
     public void testGetCollector() {

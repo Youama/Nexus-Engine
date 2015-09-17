@@ -1,17 +1,17 @@
 package com.youama.nexus.core.text;
 
 import com.youama.nexus.core.item.BasicItem;
-import junit.framework.TestCase;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.08.01.
  */
-public class WordUtilTest extends TestCase {
+public class WordUtilTest {
 
     public String text;
 
@@ -26,7 +26,7 @@ public class WordUtilTest extends TestCase {
 
     @Test
     public void testSanitizeText() {
-        // 9 because of coma, semicolon, etc.
+        // 9 because of comma, semicolon, etc.
         assertEquals(text.length() - 9, WordUtil.sanitizeText(text).length());
     }
 

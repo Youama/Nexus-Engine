@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * The WordUtil class can split the text to sentences and words, prepares them to store with relations.
  *
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.08.01.
  */
 public class WordUtil {

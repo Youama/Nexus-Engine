@@ -16,6 +16,9 @@ public interface SystemConstant {
     String PROPERTIES_FILE_NAME_TRAVIS = "nexus.example.properties";
 
     String PROPERTY_DATABASE_PREFIX = "nexus.db.";
+    String PROPERTY_DATABASE_DEFAULT_DRIVER_KEY = "nexus.db.driver.default";
+    String PROPERTY_DATABASE_TABLE_PREFIX_KEY = "nexus.db.table.prefix";
+    String PROPERTY_HIBERNATE_PREFIX_KEY = "nexus.hibernate.";
 
     String DATABASE_FLAG_ACTIVE = "active";
 

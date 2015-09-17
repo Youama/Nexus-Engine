@@ -12,7 +12,7 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.08.08.
  */
 public class TaskServiceTest {

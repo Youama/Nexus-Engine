@@ -10,5 +10,4 @@ import java.io.File;
 final public class FileSystemUtil {
 
     public static String DS = File.separator;
-
 }

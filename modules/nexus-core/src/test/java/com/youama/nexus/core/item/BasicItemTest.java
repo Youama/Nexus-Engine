@@ -1,27 +1,26 @@
 package com.youama.nexus.core.item;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.07.11.
  */
-public class BasicItemTest extends TestCase {
+public class BasicItemTest {
 
     @Test
     public void testAddItem() {
         // For addItem
         BasicItem item = new BasicItem();
         item.addItem("something/thing.png");
-        Assert.assertEquals("something/thing.png", item.data.get(0));
+        assertEquals("something/thing.png", item.data.get(0));
 
         item.addItem("something/thing2.png");
-        Assert.assertEquals("something/thing2.png", item.data.get(1));
+        assertEquals("something/thing2.png", item.data.get(1));
 
         // For addItem overload
         BasicItem item2 = new BasicItem();
@@ -29,23 +28,23 @@ public class BasicItemTest extends TestCase {
         items.add("something/thing.png");
         items.add("something/thing2.png");
         item2.addItem(items);
-        Assert.assertEquals(2, item2.data.size());
-        Assert.assertEquals("something/thing2.png", item2.data.get(1));
+        assertEquals(2, item2.data.size());
+        assertEquals("something/thing2.png", item2.data.get(1));
     }
 
     @Test
     public void testHasData() {
         BasicItem item = new BasicItem();
-        Assert.assertFalse(item.hasData());
+        assertFalse(item.hasData());
 
         item.addItem("value");
-        Assert.assertTrue(item.hasData());
+        assertTrue(item.hasData());
     }
 
     @Test
     public void testGetData() {
         BasicItem item = new BasicItem();
         item.addItem("something/thing.png");
-        Assert.assertEquals(1, item.getData().size());
+        assertEquals(1, item.getData().size());
     }
 }

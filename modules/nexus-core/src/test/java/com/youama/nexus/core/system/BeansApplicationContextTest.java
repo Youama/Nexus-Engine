@@ -29,7 +29,7 @@ public class BeansApplicationContextTest {
         singleService.getService(Objects.class);
     }
 
-    @Test
+    @After
     public void tierDown() {
         Configuration.resetInstance();
     }

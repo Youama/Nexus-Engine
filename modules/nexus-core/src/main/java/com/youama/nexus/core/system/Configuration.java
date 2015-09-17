@@ -145,6 +145,7 @@ final class Configuration {
     }
 
     private void validateProperties() {
+    	// TODO validate
         validProperties = true;
     }
 }

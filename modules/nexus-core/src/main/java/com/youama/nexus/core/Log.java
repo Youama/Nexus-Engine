@@ -3,7 +3,7 @@ package com.youama.nexus.core;
 /**
  * This class handles all logging.
  *
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.07.05.
  */
 public class Log {

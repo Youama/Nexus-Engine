@@ -1,15 +1,16 @@
 package com.youama.nexus.parser;
 
-import junit.framework.TestCase;
+import org.junit.*;
+import static org.junit.Assert.*;
+
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.junit.Test;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.07.12.
  */
-public class HTMLBuilderTest extends TestCase {
+public class HTMLBuilderTest {
 
     @Test
     public void testGetDOM() {

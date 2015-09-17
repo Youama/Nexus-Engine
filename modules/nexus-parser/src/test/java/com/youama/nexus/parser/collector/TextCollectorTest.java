@@ -1,8 +1,7 @@
 package com.youama.nexus.parser.collector;
 
-import junit.framework.TestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -10,10 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @author David Belicza - 87.bdavid@gmail.com
+ * @author David Belicza
  * @since 2015.08.01.
  */
-public class TextCollectorTest extends TestCase {
+public class TextCollectorTest {
 
     public String stringHTMLSource = "";
 
