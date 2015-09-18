@@ -11,17 +11,35 @@ import java.util.List;
 
 
 /**
+ * This generic class is a database service abstraction. All kind of services should extend this class and give the
+ * entity model as a generic parameter. This class implements the basics of Hibernate data access functions.
+ * 
  * @author David Belicza
  * @since 2015.08.21.
  */
 public abstract class BaseService<T> {
 
+	/**
+	 * The session factory of Hibernate. All service has its own session for each thread.
+	 */
     protected SessionFactory sessionFactory;
 
+    /**
+     * It sets the sessionFactory property.
+     * 
+     * @param sessionFactory The session factory of Hibernate.
+     */
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * It creates a single new entity in the database and retrieves the created object. The transaction will be 
+     * rollbacked if the saving method throws and exception.
+     * 
+     * @param entityModel Any entity model with Hibernate annotations.
+     * @return The created entity object with newly created ID.
+     */
     public T add(T entityModel) {
         Session session = null;
         Transaction transaction = null;
@@ -45,6 +63,13 @@ public abstract class BaseService<T> {
         return entityModel;
     }
 
+    /**
+	 * It updates an entity what already exists and retrieves the updated object. The transaction will be rollbacked if 
+	 * the saving method throws and exception.
+	 * 
+	 * @param entityModel Any entity model with Hibernate annotations.
+	 * @return The updated entity object.
+	 */
     public T update(T entityModel) {
         Session session = null;
         Transaction transaction = null;
@@ -68,6 +93,13 @@ public abstract class BaseService<T> {
         return entityModel;
     }
 
+    /**
+	 * It updates or creates an entity and retrieves the updated object included the ID. The transaction will be 
+	 * rollbacked if the saveOrUpdate method throws and exception.
+	 * 
+	 * @param entityModel Any entity model with Hibernate annotations.
+	 * @return The created or updated entity object.
+	 */
     public T save(T entityModel) {
         Session session = null;
         Transaction transaction = null;
@@ -91,6 +123,13 @@ public abstract class BaseService<T> {
         return entityModel;
     }
 
+    /**
+     * It retrieves the Hibernate entity model or null by ID and the entity model class.
+     * 
+     * @param entityModelClass The class of the Hibernate entity model.
+     * @param id The ID of any entity.
+     * @return The found entity object or null.
+     */
     public T getEntityById(Class<T> entityModelClass, long id) {
         Session session = null;
         T entityModel = null;
@@ -109,7 +148,14 @@ public abstract class BaseService<T> {
         return entityModel;
     }
 
-    public List<T> getCollection(Class<T> entityModelClass) {
+    /**
+     * It retrieves all entities from the entity table by the entity model class. It can be null when no results.
+     *  
+     * @param entityModelClass The class of the Hibernate entity model
+     * @return The Hibernate entity model collection or null.
+     */
+    @SuppressWarnings("unchecked")
+	public List<T> getCollection(Class<T> entityModelClass) {
         Session session = sessionFactory.openSession();
         Query query = session.createQuery("from " + entityModelClass.getSimpleName());
 
@@ -119,5 +165,5 @@ public abstract class BaseService<T> {
         return entityModelCollection;
     }
 
-    //@todo bunch save, update, filtered collection0
+    // TODO bunch save, update, filtered collection0
 }
