@@ -117,7 +117,7 @@ public class Connection {
      * Connects to the host by URL. This connection method allows the redirection. Anyway, connection object will be
      * stored in the property for later streaming.
      *
-     * @param stringUrl Regular HTTP or HTTPS url.
+     * @param stringUrl Regular HTTP or HTTPS URL.
      * @return It is false when the connection has failed.
      */
     public boolean connectWithEnabledRedirects(String stringUrl) {
@@ -142,7 +142,7 @@ public class Connection {
      * capable to follows the redirection. When there no more redirection, it saves the connection object to the
      * property and it retrieves true. It watches the number of redirection and timeout.
      *
-     * @param stringUrl Regular HTTP or HTTPS url.
+     * @param stringUrl Regular HTTP or HTTPS URL.
      * @return It is true when connection has succeed.
      */
     protected boolean makeNewGetConnection(String stringUrl) {
