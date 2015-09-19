@@ -14,11 +14,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class has package level, it can not be used from outside the system package. The MavenUtil purpose is to find
+ * and read the POM and get the bean configuration XML file names. The POM file can be inside a JAR file in the standard
+ * META-INF folder or in the development project's root directory.
+ * 
  * @author David Belicza
  * @since 2015.08.22.
  */
 final class MavenUtil {
 
+	/**
+	 * It retrieves the modules configuration bean XML file names. It reads the starter application's or module's POM 
+	 * file and collect the artifact IDs from <i>dependencies</i>. It can calculate the possible bean configuration file
+	 * names by artifact IDs.
+	 * 
+	 * @return The bean XML configuration file names in array String.
+	 */
     static String[] getModuleConfigBeanFiles() {
         try {
 
@@ -59,6 +70,14 @@ final class MavenUtil {
         return null;
     }
 
+    /**
+     * It retrieves the primary POM model what initiated the Nexus Engine.
+     * 
+     * @return The POM model of the primary module what initiated the Nexus.
+     * @throws IOException
+     * @throws XmlPullParserException
+     * @throws ArrayIndexOutOfBoundsException
+     */
     private static Model getPrimaryModulePomModel()
             throws IOException, XmlPullParserException, ArrayIndexOutOfBoundsException {
 
@@ -67,6 +86,12 @@ final class MavenUtil {
         return reader.read(pomInputStream);
     }
 
+    /**
+     * It finds and reads the POM file of the primary module inside the JAR or in the development project then it 
+     * retrieves the module's POM in input stream.
+     * 
+     * @return The primary module's POM input stream.
+     */
     private static InputStream getPrimaryModulePomFileInputStream() {
 
         String[] packages = Configuration.getInstance().getRegisteredMainClass().getPackage().getName().split("\\.");
@@ -94,12 +119,25 @@ final class MavenUtil {
         return null;
     }
 
+    /**
+     * It retrieves the primary module's configuration bean XML file name. This primary module initiated the whole
+     * Nexus Engine.
+     * 
+     * @return The primary module's configuration bean XML file name.
+     */
     private static String getPrimaryModuleConfigBeanXMLFileName() {
         String[] primaryModuleArtifactIdParts =
                 Configuration.getInstance().getRegisteredPrimaryModuleArtifactId().split("\\-");
         return primaryModuleArtifactIdParts[1] + "-" + primaryModuleArtifactIdParts[2] + ".xml";
     }
 
+    /**
+     * It retrieves a list of the children modules' configuration bean XML file names by children Maven modules' 
+     * artifact IDs.
+     * 
+     * @param modules Children Maven modules' artifact IDs.
+     * @return List of the children modules' configuration bean XML file names.
+     */
     private static List<String> getChildrenModuleBeanXMLs(List<String> modules) {
         List<String> configBeans = new ArrayList<String>();
 
@@ -112,6 +150,12 @@ final class MavenUtil {
         return configBeans;
     }
 
+    /**
+     * It retrieves a list of the dependent modules' configuration bean XML file names by Maven Dependency list.
+     * 
+     * @param dependencies Maven Dependency list.
+     * @return List of the dependent modules' configuration bean XML file names.
+     */
     private static List<String> getDependencyModuleBeanXMLs(List<Dependency> dependencies) {
         List<String> configBeans = new ArrayList<String>();
 

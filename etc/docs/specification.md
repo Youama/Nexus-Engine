@@ -19,7 +19,7 @@ Nexus Engine is a Java based development. The development tools can contain Bash
 
 ## Coding standard
 * Nexus' source code should follow the Oracle's Java coding standards.
-* A line can not longer than 120 character.
+* A line can not be longer than 120 character.
 * A method should be small as it can be small or smaller.
 
 ## Portability and compatibility
