@@ -1,6 +1,7 @@
-package com.youama.nexus.scheduler.entity.task;
+package com.youama.nexus.scheduler.task.service;
 
 import com.youama.nexus.core.base.BaseService;
+import com.youama.nexus.scheduler.task.model.TaskModel;
 
 import java.util.List;
 

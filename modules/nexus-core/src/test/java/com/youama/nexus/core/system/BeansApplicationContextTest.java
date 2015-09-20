@@ -1,8 +1,7 @@
 package com.youama.nexus.core.system;
 
 import org.junit.*;
-
-import java.util.Objects;
+import org.springframework.beans.factory.BeanCreationException;
 
 /**
  * @author David Belicza
@@ -15,22 +14,15 @@ public class BeansApplicationContextTest {
     @Before
     public void setUp() {
         singleService = new BeansApplicationContext();
-        Configuration.getInstance().registerPrimaryModule("nexus-module-core", ServiceUtil.class);
     }
 
-    @Test
+    @Test(expected = BeanCreationException.class)
     public void testSetApplicationContext() {
         singleService.setApplicationContext();
     }
 
     @Test(expected = NullPointerException.class)
     public void testGetService() {
-        // There is no service for core module.
-        singleService.getService(Objects.class);
-    }
-
-    @After
-    public void tierDown() {
-        Configuration.resetInstance();
+        singleService.getService(Object.class);
     }
 }

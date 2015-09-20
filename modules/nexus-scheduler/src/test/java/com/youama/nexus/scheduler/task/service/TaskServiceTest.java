@@ -1,7 +1,10 @@
-package com.youama.nexus.scheduler.entity.task;
+package com.youama.nexus.scheduler.task.service;
 
 import com.youama.nexus.core.system.NexusCoreUtil;
 import com.youama.nexus.core.system.ServiceUtil;
+import com.youama.nexus.scheduler.task.model.TaskModel;
+import com.youama.nexus.scheduler.task.service.TaskService;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

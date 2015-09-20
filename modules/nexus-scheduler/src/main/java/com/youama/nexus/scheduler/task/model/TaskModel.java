@@ -1,4 +1,4 @@
-package com.youama.nexus.scheduler.entity.task;
+package com.youama.nexus.scheduler.task.model;
 
 import javax.persistence.*;
 
