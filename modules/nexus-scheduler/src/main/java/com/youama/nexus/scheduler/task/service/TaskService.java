@@ -1,5 +1,6 @@
 package com.youama.nexus.scheduler.task.service;
 
+import com.youama.nexus.core.Log;
 import com.youama.nexus.core.base.BaseService;
 import com.youama.nexus.scheduler.task.model.TaskModel;
 
@@ -11,8 +12,47 @@ import java.util.List;
  */
 public class TaskService extends BaseService<TaskModel> {
 
+	@Override
+	public TaskModel add(TaskModel taskModel) {
+		try {
+			return super.add(taskModel);
+		} catch (Exception e) {
+			Log.warning(e);
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public TaskModel update(TaskModel taskModel) {
+		try {
+			return super.update(taskModel);
+		} catch (Exception e) {
+			Log.warning(e);
+		}
+		
+		return null;
+	}
+	
+	@Override
+	public TaskModel save(TaskModel taskModel) {
+		try {
+			return super.save(taskModel);
+		} catch (Exception e) {
+			Log.warning(e);
+		}
+		
+		return null;
+	}
+	
     public TaskModel getEntityById(long id) {
-        return super.getEntityById(TaskModel.class, id);
+        try {
+			return super.getEntityById(TaskModel.class, id);
+		} catch (Exception e) {
+			Log.warning(e);
+		}
+        
+        return null;
     }
 
     public List<TaskModel> getCollection() {

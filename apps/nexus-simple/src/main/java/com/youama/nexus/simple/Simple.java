@@ -14,7 +14,7 @@ import java.util.List;
 public class Simple {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Nexus Engine - Example");
 
         Simple.applicationRunningSimulation();
     }

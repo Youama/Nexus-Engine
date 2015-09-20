@@ -5,6 +5,8 @@ import com.youama.nexus.core.Log;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 
 import java.util.List;
@@ -38,9 +40,10 @@ public abstract class BaseService<T> {
      * rollbacked if the saving method throws and exception.
      * 
      * @param entityModel Any entity model with Hibernate annotations.
-     * @return The created entity object with newly created ID.
+     * @return The created entity object with newly created ID when there is no exception.
+     * @throws Exception
      */
-    public T add(T entityModel) {
+    public T add(T entityModel) throws Exception {
         Session session = null;
         Transaction transaction = null;
 
@@ -51,13 +54,16 @@ public abstract class BaseService<T> {
             transaction.commit();
             session.refresh(entityModel);
         } catch (Exception e) {
-            assert transaction != null;
-            transaction.rollback();
-            Log.warning(e);
+        	if (transaction != null) {
+            	transaction.rollback();
+            }            
+            Log.warning(e);            
+            throw e;
 
         } finally {
-            assert session != null;
-            session.close();
+        	if (session != null) {
+            	session.close();
+            }
         }
 
         return entityModel;
@@ -68,9 +74,10 @@ public abstract class BaseService<T> {
 	 * the saving method throws and exception.
 	 * 
 	 * @param entityModel Any entity model with Hibernate annotations.
-	 * @return The updated entity object.
+	 * @return The updated entity object when there is no exception.
+	 * @throws Exception
 	 */
-    public T update(T entityModel) {
+    public T update(T entityModel) throws Exception {
         Session session = null;
         Transaction transaction = null;
 
@@ -81,13 +88,16 @@ public abstract class BaseService<T> {
             transaction.commit();
             session.refresh(entityModel);
         } catch (Exception e) {
-            assert transaction != null;
-            transaction.rollback();
-            Log.warning(e);
-
+        	if (transaction != null) {
+            	transaction.rollback();
+            }            
+            Log.warning(e);            
+            throw e;
+            
         } finally {
-            assert session != null;
-            session.close();
+        	if (session != null) {
+            	session.close();
+            }
         }
 
         return entityModel;
@@ -98,12 +108,13 @@ public abstract class BaseService<T> {
 	 * rollbacked if the saveOrUpdate method throws and exception.
 	 * 
 	 * @param entityModel Any entity model with Hibernate annotations.
-	 * @return The created or updated entity object.
-	 */
-    public T save(T entityModel) {
+	 * @return The created or updated entity object when there is no exception.
+     * @throws Exception
+     */
+    public T save(T entityModel) throws Exception {
         Session session = null;
         Transaction transaction = null;
-
+        
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
@@ -111,13 +122,16 @@ public abstract class BaseService<T> {
             transaction.commit();
             session.refresh(entityModel);
         } catch (Exception e) {
-            assert transaction != null;
-            transaction.rollback();
-            Log.warning(e);
+        	if (transaction != null) {
+            	transaction.rollback();
+            }            
+            Log.warning(e);            
+            throw e;
 
         } finally {
-            assert session != null;
-            session.close();
+        	if (session != null) {
+            	session.close();
+            }
         }
 
         return entityModel;
@@ -126,11 +140,12 @@ public abstract class BaseService<T> {
     /**
      * It retrieves the Hibernate entity model or null by ID and the entity model class.
      * 
-     * @param entityModelClass The class of the Hibernate entity model.
+     * @param entityModelClass Any entity model with Hibernate annotations.
      * @param id The ID of any entity.
      * @return The found entity object or null.
+     * @throws Exception
      */
-    public T getEntityById(Class<T> entityModelClass, long id) {
+    public T getEntityById(Class<T> entityModelClass, long id) throws Exception {
         Session session = null;
         T entityModel = null;
 
@@ -139,13 +154,39 @@ public abstract class BaseService<T> {
             entityModel = session.get(entityModelClass, id);
         } catch (Exception e) {
             Log.warning(e);
+            throw e;
 
         } finally {
-            assert session != null;
-            session.close();
+        	if (session != null) {
+            	session.close();
+            }
         }
 
         return entityModel;
+    }
+    
+    /**
+     * It retrieves a single entity when by column name and value.
+     * 
+     * @param entityModelClass Any entity model with Hibernate annotations.
+     * @param columnName The name of the table column.
+     * @param columnValue The record in the table.
+     * @return The first entity or null.
+     */
+    @SuppressWarnings("unchecked")
+	public T findEntityByAttribute(Class<T> entityModelClass, String columnName, String columnValue) {
+    	Session session = sessionFactory.openSession();
+    	    	
+		Criteria criteria = session.createCriteria(entityModelClass)
+				.add(Restrictions.eq(columnName, columnValue));
+       
+        Object result = criteria.uniqueResult();
+        
+        if (result != null) {
+            return (T) result;
+        } else {
+        	return null;
+        }
     }
 
     /**

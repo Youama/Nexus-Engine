@@ -7,16 +7,16 @@ import javax.persistence.*;
  * @since 2015.08.02.
  */
 @Entity
-@Table(name = "Task")
+@Table(name = TaskTable.TABLE)
 public class TaskModel {
 
     @Id
-    @Column(name="taskId")
+    @Column(name = TaskTable.COLUMN_ID)
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long taskId;
 
     @Lob
-    @Column(name="path", length=2048)
+    @Column(name = TaskTable.COLUMN_PATH, length=2048)
     private String path;
 
     public void setTaskId(long taskId) {

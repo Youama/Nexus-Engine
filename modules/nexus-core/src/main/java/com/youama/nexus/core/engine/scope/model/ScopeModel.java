@@ -9,23 +9,18 @@ import javax.persistence.*;
  * @since 2015.09.20.
  */
 @Entity
-@Table(name = "Scope")
+@Table(name = ScopeTable.TABLE)
 public class ScopeModel {
-
-	public final static int TYPE_DEFAULT = 0;
-	
-	public final static int STATUS_ENABLED = 1;
-	public final static int STATUS_DISABLED = 0;
 	
 	@Id
-    @Column(name="scopeId")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = ScopeTable.COLUMN_ID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long scopeId;
 	
-	@Column(name="status", columnDefinition = "tinyint default 0", nullable = false)
+	@Column(name = ScopeTable.COLUMN_STATUS, columnDefinition = "tinyint default 0", nullable = false)
 	private int status;
 	
-	@Column(name="type", columnDefinition = "int default 0", nullable = false)
+	@Column(name = ScopeTable.COLUMN_TYPE, columnDefinition = "int default 0", nullable = false)
 	private int type;
 	
 	public void setScopeId(long scopeId) {

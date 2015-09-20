@@ -3,6 +3,7 @@ package com.youama.nexus.core.engine.scope.service;
 import org.junit.*;
 
 import com.youama.nexus.core.engine.scope.model.ScopeModel;
+import com.youama.nexus.core.engine.scope.model.ScopeTable;
 import com.youama.nexus.core.system.NexusCoreUtil;
 import com.youama.nexus.core.system.ServiceUtil;
 
@@ -32,13 +33,13 @@ public class ScopeServiceTest {
 			ScopeService service = (ScopeService) ServiceUtil.getService(ScopeService.class);
 			
 			ScopeModel model = new ScopeModel();
-			model.setStatus(ScopeModel.STATUS_ENABLED);
-			model.setType(ScopeModel.TYPE_DEFAULT);
+			model.setStatus(ScopeTable.VALUE_STATUS_ENABLED);
+			model.setType(ScopeTable.VALUE_TYPE_DEFAULT);
 			
 			
 			ScopeModel savedModel = service.add(model);
 			
-			assertTrue(savedModel != null && ScopeModel.STATUS_ENABLED == savedModel.getStatus()
+			assertTrue(savedModel != null && ScopeTable.VALUE_STATUS_ENABLED == savedModel.getStatus()
 					&& savedModel.getScopeId() >= 0);
 			
 			System.out.println(savedModel.getScopeId());
