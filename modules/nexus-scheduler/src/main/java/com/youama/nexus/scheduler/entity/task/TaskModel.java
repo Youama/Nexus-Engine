@@ -6,7 +6,6 @@ import javax.persistence.*;
  * @author David Belicza
  * @since 2015.08.02.
  */
-
 @Entity
 @Table(name = "Task")
 public class TaskModel {

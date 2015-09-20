@@ -18,7 +18,7 @@
     </bean>
 
     <bean id="hibernatePackageToScan" class="java.lang.String">
-        <constructor-arg value="com.youama.nexus.*.entity" />
+        <constructor-arg value="**.model" />
     </bean>
 
 </beans>

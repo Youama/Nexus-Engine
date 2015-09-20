@@ -3,4 +3,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+	<import resource="Service.xml" />
+
+    <bean id="engineScope" class="com.youama.nexus.core.engine.scope.service.ScopeService">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
 </beans>
