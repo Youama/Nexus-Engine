@@ -33,7 +33,7 @@ Operation Systems:
 
 Platforms:
 * Client Side - mobile
-* Server Side - Web app and standalone Linux service
+* Server Side - Web app and stand-alone Linux service
 
 JDKs:
 * Open JDK 7
@@ -56,7 +56,8 @@ Nexus Engine is a modular system. All of them is a Maven module. There are two k
 The modules and applications should contain a bean configuration file to declare the entities. The modules should avoid to depend on each other, but all of them have to depend on the Core module.
 
 ## Modules
-* **Wordlex**: Advanced technology to replace the old WordNet specification.
+* **Core**: The common features and abstractions what are used by most of the modules.
+* **WordPlex**: Advanced technology to replace the old WordNet specification.
 
 ## Continuous Integration
 The Continuous Integration is automated and configured in travis.yml. This file can not be modified in any Git Branches.
