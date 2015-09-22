@@ -8,5 +8,17 @@
     <bean id="wordplexWord" class="com.youama.nexus.wordplex.word.service.WordService">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
+    
+    <bean id="wordplexSentence" class="com.youama.nexus.wordplex.word.service.SentenceService">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
+    <bean id="wordplexText" class="com.youama.nexus.wordplex.word.service.TextService">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
+    <bean id="wordplexConnectionWordSentenceText" class="com.youama.nexus.wordplex.word.service.ConnectionWordSentenceTextService">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
 
 </beans>

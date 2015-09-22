@@ -13,6 +13,7 @@
                 <prop key="hibernate.hbm2ddl.auto">#{nexusConfig.getDBCreation()}</prop>
                 <prop key="hibernate.current_session_context_class">#{nexusConfig.getDBSessionContext()}</prop>
                 <prop key="hibernate.show_sql">#{nexusConfig.getDBLog()}</prop>
+                <prop key="hibernate.generate_statistics">true</prop>
             </props>
         </property>
     </bean>
