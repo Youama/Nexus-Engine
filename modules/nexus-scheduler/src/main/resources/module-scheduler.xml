@@ -5,7 +5,7 @@
 
 	<import resource="Service.xml" />
 
-	<bean id="schedulerTask" class="com.youama.nexus.scheduler.task.service.TaskService">
+	<bean id="schedulerTask" class="com.youama.nexus.scheduler.service.task.TaskService">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 

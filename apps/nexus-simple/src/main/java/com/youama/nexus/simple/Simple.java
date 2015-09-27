@@ -2,8 +2,8 @@ package com.youama.nexus.simple;
 
 import com.youama.nexus.core.system.NexusCoreUtil;
 import com.youama.nexus.core.system.ServiceUtil;
-import com.youama.nexus.scheduler.task.model.TaskModel;
-import com.youama.nexus.scheduler.task.service.TaskService;
+import com.youama.nexus.scheduler.model.task.TaskModel;
+import com.youama.nexus.scheduler.service.task.TaskService;
 
 import java.util.List;
 

@@ -5,20 +5,20 @@
 
 	<import resource="Service.xml" />
 
-	<bean id="wordplexWord" class="com.youama.nexus.wordplex.word.service.WordService">
+	<bean id="wordplexWord" class="com.youama.nexus.wordplex.service.word.WordService">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 
-	<bean id="wordplexSentence" class="com.youama.nexus.wordplex.word.service.SentenceService">
+	<bean id="wordplexSentence" class="com.youama.nexus.wordplex.service.sentence.SentenceService">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 
-	<bean id="wordplexText" class="com.youama.nexus.wordplex.word.service.TextService">
+	<bean id="wordplexText" class="com.youama.nexus.wordplex.service.text.TextService">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 
 	<bean id="wordplexConnectionWordSentenceText"
-		class="com.youama.nexus.wordplex.word.service.ConnectionWordSentenceTextService">
+		class="com.youama.nexus.wordplex.service.ConnectionWordSentenceTextService">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 
