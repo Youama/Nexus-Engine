@@ -17,14 +17,14 @@ public class TextModel {
 
     @Id
     @Column(name = TextTable.COLUMN_ID)
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long textId;
-	
-	public void setTextId(long textId) {
-		this.textId = textId;
-	}
-	
-	public long getTextId() {
-		return textId;
-	}
+
+    public void setTextId(long textId) {
+        this.textId = textId;
+    }
+
+    public long getTextId() {
+        return textId;
+    }
 }

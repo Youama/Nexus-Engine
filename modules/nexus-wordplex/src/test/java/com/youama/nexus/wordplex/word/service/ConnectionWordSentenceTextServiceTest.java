@@ -17,24 +17,24 @@ import java.util.List;
  * @since 2015.09.20.
  */
 public class ConnectionWordSentenceTextServiceTest {
-	
-	List<String> drivers = ServiceUtil.getInstalledDrivers();
-	
-	@Before
-	public void setUp() {
-		NexusCoreUtil.initServices("nexus-module-wordplex", WordModel.class);;
-	}
-	
-	@Test
+    
+    List<String> drivers = ServiceUtil.getInstalledDrivers();
+    
+    @Before
+    public void setUp() {
+        NexusCoreUtil.initServices("nexus-module-wordplex", WordModel.class);;
+    }
+    
+    @Test
     public void testServiceMethods() {
-		
-		for (String driver : drivers) {
-			ServiceUtil.switchDriver(driver);
-			// TODO
-		}
-	}
-	
-	@After
+        
+        for (String driver : drivers) {
+            ServiceUtil.switchDriver(driver);
+            // TODO
+        }
+    }
+    
+    @After
     public void tierDown() {
         NexusCoreUtil.removeServices();
     }

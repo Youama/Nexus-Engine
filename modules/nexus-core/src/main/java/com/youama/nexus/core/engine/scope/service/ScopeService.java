@@ -9,15 +9,15 @@ import com.youama.nexus.core.engine.scope.model.ScopeModel;
  * @since 2015.08.02.
  */
 public class ScopeService extends BaseService<ScopeModel> {
-	
-	@Override
-	public ScopeModel add(ScopeModel taskModel) {
-		try {
-			return super.add(taskModel);
-		} catch (Exception e) {
-			Log.warning(e);
-		}
-		
-		return null;
-	}
+    
+    @Override
+    public ScopeModel add(ScopeModel taskModel) {
+        try {
+            return super.add(taskModel);
+        } catch (Exception e) {
+            Log.warning(e);
+        }
+        
+        return null;
+    }
 }

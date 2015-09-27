@@ -11,8 +11,8 @@ import java.io.File;
  */
 final public class FileSystemUtil {
 
-	/**
-	 * The OS dependent directory/file separator.
-	 */
+    /**
+     * The OS dependent directory/file separator.
+     */
     public static String DS = File.separator;
 }

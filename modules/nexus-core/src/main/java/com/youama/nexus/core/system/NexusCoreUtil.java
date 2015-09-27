@@ -12,10 +12,10 @@ import java.util.Map;
  */
 final public class NexusCoreUtil {
 
-	/**
-	 * When it is true then to set the Nexus properties from Java code is possible but to set from the .properties file
-	 * is not.
-	 */
+    /**
+     * When it is true then to set the Nexus properties from Java code is possible but to set from the .properties file
+     * is not.
+     */
     private static boolean allowInternalProperties = true;
 
     /**

@@ -10,9 +10,9 @@ package com.youama.nexus.core.search;
  */
 public abstract class BaseSearchlet implements Searchlet {
 
-	/**
-	 * The SearchLogic object contains the searching methodology.
-	 */
+    /**
+     * The SearchLogic object contains the searching methodology.
+     */
     protected SearchLogic searchLogic;
 
     /**

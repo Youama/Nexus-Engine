@@ -16,38 +16,38 @@ import java.util.List;
  * @since 2015.08.02.
  */
 public class ScopeServiceTest {
-	
-	List<String> drivers = ServiceUtil.getInstalledDrivers();
+    
+    List<String> drivers = ServiceUtil.getInstalledDrivers();
 
-	@Before
-	public void setUp() {
-		NexusCoreUtil.initServices("nexus-module-core", ScopeModel.class);
-	}
-	
-	@Test
-	public void testServiceMethods() {
-		
-		for (String driver : drivers) {
-			ServiceUtil.switchDriver(driver);			
-			
-			ScopeService service = (ScopeService) ServiceUtil.getService(ScopeService.class);
-			
-			ScopeModel model = new ScopeModel();
-			model.setStatus(ScopeTable.VALUE_STATUS_ENABLED);
-			model.setType(ScopeTable.VALUE_TYPE_DEFAULT);
-			
-			
-			ScopeModel savedModel = service.add(model);
-			
-			assertTrue(savedModel != null && ScopeTable.VALUE_STATUS_ENABLED == savedModel.getStatus()
-					&& savedModel.getScopeId() >= 0);
-			
-			System.out.println(savedModel.getScopeId());
-		}
-	}
-	
-	@After
-	public void tierDown() {
-		NexusCoreUtil.removeServices();
-	}
+    @Before
+    public void setUp() {
+        NexusCoreUtil.initServices("nexus-module-core", ScopeModel.class);
+    }
+    
+    @Test
+    public void testServiceMethods() {
+        
+        for (String driver : drivers) {
+            ServiceUtil.switchDriver(driver);            
+            
+            ScopeService service = (ScopeService) ServiceUtil.getService(ScopeService.class);
+            
+            ScopeModel model = new ScopeModel();
+            model.setStatus(ScopeTable.VALUE_STATUS_ENABLED);
+            model.setType(ScopeTable.VALUE_TYPE_DEFAULT);
+            
+            
+            ScopeModel savedModel = service.add(model);
+            
+            assertTrue(savedModel != null && ScopeTable.VALUE_STATUS_ENABLED == savedModel.getStatus()
+                    && savedModel.getScopeId() >= 0);
+            
+            System.out.println(savedModel.getScopeId());
+        }
+    }
+    
+    @After
+    public void tierDown() {
+        NexusCoreUtil.removeServices();
+    }
 }

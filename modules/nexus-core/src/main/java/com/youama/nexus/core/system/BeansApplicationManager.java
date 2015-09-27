@@ -14,10 +14,10 @@ import java.util.*;
  */
 final class BeansApplicationManager {
 
-	/**
-	 * Thread local singleton object for each threads.
-	 */
-	private static final ThreadLocal<BeansApplicationManager> localStorage = new ThreadLocal<BeansApplicationManager>() {
+    /**
+     * Thread local singleton object for each threads.
+     */
+    private static final ThreadLocal<BeansApplicationManager> localStorage = new ThreadLocal<BeansApplicationManager>() {
         protected BeansApplicationManager initialValue() {
             return new BeansApplicationManager();
         }
@@ -43,7 +43,7 @@ final class BeansApplicationManager {
      * These are the possible supported database drivers for Nexus.
      */
     private String[] supportedDrivers = {
-		SystemConstant.DATABASE_HSQL,
+        SystemConstant.DATABASE_HSQL,
         SystemConstant.DATABASE_MYSQL,
         SystemConstant.DATABASE_POSTGRESQL
     };

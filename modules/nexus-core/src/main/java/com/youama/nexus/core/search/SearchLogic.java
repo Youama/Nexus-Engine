@@ -9,11 +9,11 @@ package com.youama.nexus.core.search;
  */
 public interface SearchLogic {
 
-	/**
-	 * It sets or prepares the searchQuery object before the searching would be proceed.
-	 * 
-	 * @param searchQuery It contains the searching query.
-	 */
+    /**
+     * It sets or prepares the searchQuery object before the searching would be proceed.
+     * 
+     * @param searchQuery It contains the searching query.
+     */
     void input(SearchQuery<?> searchQuery);
 
     /**

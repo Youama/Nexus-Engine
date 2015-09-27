@@ -16,28 +16,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name = WordTable.TABLE)
 public class WordModel {
-	
-	@Id
+    
+    @Id
     @Column(name = WordTable.COLUMN_ID)
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long wordId;
-	
-	@Column(name = WordTable.COLUMN_WORD, length = 255, unique = true)
-	private String word;
-	
-	public void setWordId(long wordId) {
-		this.wordId = wordId;
-	}
-	
-	public long getWordId() {
-		return wordId;
-	}
-	
-	public void setWord(String word) {
-		this.word = word;
-	}
-	
-	public String getWord() {
-		return word;
-	}
+    
+    @Column(name = WordTable.COLUMN_WORD, length = 255, unique = true)
+    private String word;
+    
+    public void setWordId(long wordId) {
+        this.wordId = wordId;
+    }
+    
+    public long getWordId() {
+        return wordId;
+    }
+    
+    public void setWord(String word) {
+        this.word = word;
+    }
+    
+    public String getWord() {
+        return word;
+    }
 }

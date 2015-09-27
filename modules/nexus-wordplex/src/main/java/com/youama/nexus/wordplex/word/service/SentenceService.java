@@ -9,7 +9,7 @@ import com.youama.nexus.wordplex.word.model.SentenceModel;
  * @since 2015.09.22.
  */
 public class SentenceService extends BaseService<SentenceModel> {
-	
+    
     @Override
     public SentenceModel add(SentenceModel sentenceModel) {
         try {

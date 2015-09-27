@@ -10,9 +10,9 @@ import java.util.List;
  */
 final public class ServiceUtil {
 
-	/**
-	 * It initiates the database driver. It should be used from NexusCoreUtil.
-	 */
+    /**
+     * It initiates the database driver. It should be used from NexusCoreUtil.
+     */
     static void enableServiceDriver() {
         BeansApplicationManager.getInstance().initServiceDriver();
     }
@@ -85,78 +85,78 @@ final public class ServiceUtil {
      * 
      * @return Loaded in {@link Configuration}.
      */
-	public static String getDBDriver() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".driver");
-	}
+    public static String getDBDriver() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".driver");
+    }
 
-	/**
-	 * It retrieves the current database access URL.
-	 * 
-	 * @return Defined in .properties file.
-	 */
-	public static String getDBUrl() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".url");
-	}
+    /**
+     * It retrieves the current database access URL.
+     * 
+     * @return Defined in .properties file.
+     */
+    public static String getDBUrl() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".url");
+    }
 
-	/**
-	 * It retrieves the current database user name.
-	 * 
-	 * @return Defined in .properties file.
-	 */
-	public static String getDBUser() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".user");
-	}
+    /**
+     * It retrieves the current database user name.
+     * 
+     * @return Defined in .properties file.
+     */
+    public static String getDBUser() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".user");
+    }
 
-	/**
-	 * It retrieves the current database user's password.
-	 * 
-	 * @return Defined in .properties file.
-	 */
-	public static String getDBPassword() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".password");
-	}
+    /**
+     * It retrieves the current database user's password.
+     * 
+     * @return Defined in .properties file.
+     */
+    public static String getDBPassword() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_DATABASE_PREFIX
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".password");
+    }
 
-	/**
-	 * It retrieves the current database SQL dialect name.
-	 * 
-	 * @return Defined in .properties file.
-	 */
-	public static String getDBDialect() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".dialect");
-	}
+    /**
+     * It retrieves the current database SQL dialect name.
+     * 
+     * @return Defined in .properties file.
+     */
+    public static String getDBDialect() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".dialect");
+    }
 
-	/**
-	 * It retrieves the current database schema creation methodology.
-	 * 
-	 * @return Defined in .properties file.
-	 */
-	public static String getDBCreation() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".hbm2ddl_auto");
-	}
+    /**
+     * It retrieves the current database schema creation methodology.
+     * 
+     * @return Defined in .properties file.
+     */
+    public static String getDBCreation() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".hbm2ddl_auto");
+    }
 
-	/**
-	 * It retrieves the current database session context scope.
-	 * 
-	 * @return Defined in .properties file.
-	 */
-	public static String getDBSessionContext() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".current_session_context_class");
-	}
+    /**
+     * It retrieves the current database session context scope.
+     * 
+     * @return Defined in .properties file.
+     */
+    public static String getDBSessionContext() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".current_session_context_class");
+    }
 
-	/**
-	 * It retrieves the current database logging flag.
-	 * 
-	 * @return Defined in .properties file.
-	 */
-	public static String getDBLog() {
-		return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
-				+ BeansApplicationManager.getInstance().getCurrentDriverName() + ".show_sql");
-	}
+    /**
+     * It retrieves the current database logging flag.
+     * 
+     * @return Defined in .properties file.
+     */
+    public static String getDBLog() {
+        return Configuration.getInstance().getProperty(SystemConstant.PROPERTY_HIBERNATE_PREFIX_KEY
+                + BeansApplicationManager.getInstance().getCurrentDriverName() + ".show_sql");
+    }
 }

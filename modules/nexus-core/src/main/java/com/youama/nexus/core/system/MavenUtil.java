@@ -23,13 +23,13 @@ import java.util.List;
  */
 final class MavenUtil {
 
-	/**
-	 * It retrieves the modules configuration bean XML file names. It reads the starter application's or module's POM 
-	 * file and collect the artifact IDs from <i>dependencies</i>. It can calculate the possible bean configuration file
-	 * names by artifact IDs.
-	 * 
-	 * @return The bean XML configuration file names in array String.
-	 */
+    /**
+     * It retrieves the modules configuration bean XML file names. It reads the starter application's or module's POM 
+     * file and collect the artifact IDs from <i>dependencies</i>. It can calculate the possible bean configuration file
+     * names by artifact IDs.
+     * 
+     * @return The bean XML configuration file names in array String.
+     */
     static String[] getModuleConfigBeanFiles() {
         try {
 

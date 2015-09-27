@@ -14,17 +14,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = SentenceTable.TABLE)
 public class SentenceModel {
-	
-	@Id
+    
+    @Id
     @Column(name = SentenceTable.COLUMN_ID)
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long sentenceId;
-	
-	public void setSentenceId(long sentenceId) {
-		this.sentenceId = sentenceId;
-	}
-	
-	public long getSentenceId() {
-		return sentenceId;
-	}
+    
+    public void setSentenceId(long sentenceId) {
+        this.sentenceId = sentenceId;
+    }
+    
+    public long getSentenceId() {
+        return sentenceId;
+    }
 }

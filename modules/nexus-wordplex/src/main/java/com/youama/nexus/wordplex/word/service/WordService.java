@@ -12,29 +12,29 @@ import com.youama.nexus.wordplex.word.model.WordTable;
  * @since 2015.09.20.
  */
 public class WordService extends BaseService<WordModel> {
-	
-	/**
-	 * It saves the word entity but if the word is already exits it increases the weight of the word.
-	 */
-	@Override
-	public WordModel save(WordModel wordModel) {
-		WordModel existEntity = findEntityByAttribute(WordModel.class, WordTable.COLUMN_WORD, wordModel.getWord());
-		
-		if (existEntity != null) {
-			// TODO weighting word
-			return null;
-		}
-		
-		try {
-			return super.save(wordModel);
-		} catch (Exception e) {
-			Log.warning(e);
-		}
-		
-		return null;
-	}
-	
-	public List<WordModel> getCollection() {
-		return super.getCollection(WordModel.class);
-	}
+    
+    /**
+     * It saves the word entity but if the word is already exits it increases the weight of the word.
+     */
+    @Override
+    public WordModel save(WordModel wordModel) {
+        WordModel existEntity = findEntityByAttribute(WordModel.class, WordTable.COLUMN_WORD, wordModel.getWord());
+        
+        if (existEntity != null) {
+            // TODO weighting word
+            return null;
+        }
+        
+        try {
+            return super.save(wordModel);
+        } catch (Exception e) {
+            Log.warning(e);
+        }
+        
+        return null;
+    }
+    
+    public List<WordModel> getCollection() {
+        return super.getCollection(WordModel.class);
+    }
 }

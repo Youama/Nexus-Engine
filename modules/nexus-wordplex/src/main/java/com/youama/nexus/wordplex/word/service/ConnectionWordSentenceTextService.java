@@ -8,6 +8,6 @@ import com.youama.nexus.wordplex.word.model.ConnectionWordSentenceTextModel;
  * @since 2015.09.22.
  */
 public class ConnectionWordSentenceTextService extends BaseService<ConnectionWordSentenceTextModel> {
-	
-	
+    
+    
 }

@@ -8,9 +8,9 @@ package com.youama.nexus.core.system;
  */
 public interface SystemConstant {
 
-	/**
-	 * Required for system initiate.
-	 */
+    /**
+     * Required for system initiate.
+     */
     String DEFAULT_APP = "nexus-module-core";
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

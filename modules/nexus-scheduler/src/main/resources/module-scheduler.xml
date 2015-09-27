@@ -1,12 +1,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <import resource="Service.xml" />
+	<import resource="Service.xml" />
 
-    <bean id="schedulerTask" class="com.youama.nexus.scheduler.task.service.TaskService">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-    </bean>
+	<bean id="schedulerTask" class="com.youama.nexus.scheduler.task.service.TaskService">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
 
 </beans>

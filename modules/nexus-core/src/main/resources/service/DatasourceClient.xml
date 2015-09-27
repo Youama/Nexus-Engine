@@ -1,15 +1,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean id="nexusConfig" class="com.youama.nexus.core.system.ServiceUtil"/>
+	<bean id="nexusConfig" class="com.youama.nexus.core.system.ServiceUtil" />
 
-    <bean id="dataSourceClient" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="true">
-        <property name="driverClassName" value="#{nexusConfig.getDBDriver()}"/>
-        <property name="url" value="#{nexusConfig.getDBUrl()}"/>
-        <property name="username" value="#{nexusConfig.getDBUser()}"/>
-        <property name="password" value="#{nexusConfig.getDBPassword()}"/>
-    </bean>
+	<bean id="dataSourceClient"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		lazy-init="true">
+		<property name="driverClassName" value="#{nexusConfig.getDBDriver()}" />
+		<property name="url" value="#{nexusConfig.getDBUrl()}" />
+		<property name="username" value="#{nexusConfig.getDBUser()}" />
+		<property name="password" value="#{nexusConfig.getDBPassword()}" />
+	</bean>
 
 </beans>

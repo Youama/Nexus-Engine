@@ -7,45 +7,45 @@ package com.youama.nexus.core.search;
  * @since 2015.09.14.
  */
 public interface SearchQuery<T> {
-	
-	/**
-	 * It resets the prepared query.
-	 */
-	void reset();
-	
-	/**
-	 * It composes the queries what had set before.
-	 * 
-	 * @return It is true when compose was successfully.
-	 */
-	boolean prepare();
-	
-	/**
-	 * It set a query.
-	 * 
-	 * @param object Any type of object.
-	 */
-	void setQuery(T object);
-	
-	/**
-	 * It set queries.
-	 * 
-	 * @param objects Any type of object.
-	 */
-	void setQuery(T[] objects);
-	
-	/**
-	 * It retrieves the prepared query.
-	 * 
-	 * @return Any type of object.
-	 */
-	T getPreparedQuery();
-	
-	/**
-	 * It retrieves the prepared queries.
-	 * 
-	 * @return Any type of objects in array.
-	 */
-	T[] getPreparedQueries();
+    
+    /**
+     * It resets the prepared query.
+     */
+    void reset();
+    
+    /**
+     * It composes the queries what had set before.
+     * 
+     * @return It is true when compose was successfully.
+     */
+    boolean prepare();
+    
+    /**
+     * It set a query.
+     * 
+     * @param object Any type of object.
+     */
+    void setQuery(T object);
+    
+    /**
+     * It set queries.
+     * 
+     * @param objects Any type of object.
+     */
+    void setQuery(T[] objects);
+    
+    /**
+     * It retrieves the prepared query.
+     * 
+     * @return Any type of object.
+     */
+    T getPreparedQuery();
+    
+    /**
+     * It retrieves the prepared queries.
+     * 
+     * @return Any type of objects in array.
+     */
+    T[] getPreparedQueries();
 
 }

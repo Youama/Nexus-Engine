@@ -21,9 +21,9 @@ import java.util.List;
  */
 public abstract class BaseService<T> {
 
-	/**
-	 * The session factory of Hibernate. All service has its own session for each thread.
-	 */
+    /**
+     * The session factory of Hibernate. All service has its own session for each thread.
+     */
     protected SessionFactory sessionFactory;
 
     /**
@@ -54,15 +54,15 @@ public abstract class BaseService<T> {
             transaction.commit();
             session.refresh(entityModel);
         } catch (Exception e) {
-        	if (transaction != null) {
-            	transaction.rollback();
+            if (transaction != null) {
+                transaction.rollback();
             }            
             Log.warning(e);            
             throw e;
 
         } finally {
-        	if (session != null) {
-            	session.close();
+            if (session != null) {
+                session.close();
             }
         }
 
@@ -70,13 +70,13 @@ public abstract class BaseService<T> {
     }
 
     /**
-	 * It updates an entity what already exists and retrieves the updated object. The transaction will be rollbacked if 
-	 * the saving method throws and exception.
-	 * 
-	 * @param entityModel Any entity model with Hibernate annotations.
-	 * @return The updated entity object when there is no exception.
-	 * @throws Exception
-	 */
+     * It updates an entity what already exists and retrieves the updated object. The transaction will be rollbacked if 
+     * the saving method throws and exception.
+     * 
+     * @param entityModel Any entity model with Hibernate annotations.
+     * @return The updated entity object when there is no exception.
+     * @throws Exception
+     */
     public T update(T entityModel) throws Exception {
         Session session = null;
         Transaction transaction = null;
@@ -88,15 +88,15 @@ public abstract class BaseService<T> {
             transaction.commit();
             session.refresh(entityModel);
         } catch (Exception e) {
-        	if (transaction != null) {
-            	transaction.rollback();
+            if (transaction != null) {
+                transaction.rollback();
             }            
             Log.warning(e);            
             throw e;
             
         } finally {
-        	if (session != null) {
-            	session.close();
+            if (session != null) {
+                session.close();
             }
         }
 
@@ -104,11 +104,11 @@ public abstract class BaseService<T> {
     }
 
     /**
-	 * It updates or creates an entity and retrieves the updated object included the ID. The transaction will be 
-	 * rollbacked if the saveOrUpdate method throws and exception.
-	 * 
-	 * @param entityModel Any entity model with Hibernate annotations.
-	 * @return The created or updated entity object when there is no exception.
+     * It updates or creates an entity and retrieves the updated object included the ID. The transaction will be 
+     * rollbacked if the saveOrUpdate method throws and exception.
+     * 
+     * @param entityModel Any entity model with Hibernate annotations.
+     * @return The created or updated entity object when there is no exception.
      * @throws Exception
      */
     public T save(T entityModel) throws Exception {
@@ -122,15 +122,15 @@ public abstract class BaseService<T> {
             transaction.commit();
             session.refresh(entityModel);
         } catch (Exception e) {
-        	if (transaction != null) {
-            	transaction.rollback();
+            if (transaction != null) {
+                transaction.rollback();
             }            
             Log.warning(e);            
             throw e;
 
         } finally {
-        	if (session != null) {
-            	session.close();
+            if (session != null) {
+                session.close();
             }
         }
 
@@ -157,8 +157,8 @@ public abstract class BaseService<T> {
             throw e;
 
         } finally {
-        	if (session != null) {
-            	session.close();
+            if (session != null) {
+                session.close();
             }
         }
 
@@ -174,18 +174,18 @@ public abstract class BaseService<T> {
      * @return The first entity or null.
      */
     @SuppressWarnings("unchecked")
-	public T findEntityByAttribute(Class<T> entityModelClass, String columnName, String columnValue) {
-    	Session session = sessionFactory.openSession();
-    	    	
-		Criteria criteria = session.createCriteria(entityModelClass)
-				.add(Restrictions.eq(columnName, columnValue));
+    public T findEntityByAttribute(Class<T> entityModelClass, String columnName, String columnValue) {
+        Session session = sessionFactory.openSession();
+                
+        Criteria criteria = session.createCriteria(entityModelClass)
+                .add(Restrictions.eq(columnName, columnValue));
        
         Object result = criteria.uniqueResult();
         
         if (result != null) {
             return (T) result;
         } else {
-        	return null;
+            return null;
         }
     }
 
@@ -196,7 +196,7 @@ public abstract class BaseService<T> {
      * @return The Hibernate entity model collection or null.
      */
     @SuppressWarnings("unchecked")
-	public List<T> getCollection(Class<T> entityModelClass) {
+    public List<T> getCollection(Class<T> entityModelClass) {
         Session session = sessionFactory.openSession();
         Query query = session.createQuery("from " + entityModelClass.getSimpleName());
 

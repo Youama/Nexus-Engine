@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
  */
 @Embeddable
 public class WordSentenceTextId {
-	
+    
     private WordModel word;
     
     private SentenceModel sentence;

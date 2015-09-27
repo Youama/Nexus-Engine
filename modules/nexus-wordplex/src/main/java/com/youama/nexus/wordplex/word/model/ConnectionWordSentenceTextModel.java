@@ -14,17 +14,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = ConnectionWordSentenceTextTable.TABLE)
 public class ConnectionWordSentenceTextModel {
-	
-	@Id
+    
+    @Id
     @Column(name = ConnectionWordSentenceTextTable.COLUMN_ID)
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long connectionWordSentenceTextId;
-	
-	public void setConnectionWordSentenceTextId(long connectionWordSentenceTextId) {
-		this.connectionWordSentenceTextId = connectionWordSentenceTextId;
-	}
-	
-	public long getConenctionWordSentenceTextId() {
-		return connectionWordSentenceTextId;
-	}
+    
+    public void setConnectionWordSentenceTextId(long connectionWordSentenceTextId) {
+        this.connectionWordSentenceTextId = connectionWordSentenceTextId;
+    }
+    
+    public long getConenctionWordSentenceTextId() {
+        return connectionWordSentenceTextId;
+    }
 }

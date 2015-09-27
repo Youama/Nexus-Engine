@@ -22,9 +22,9 @@ import java.util.Properties;
  */
 final class Configuration {
 
-	/**
-	 * Thread local singleton object for each threads.
-	 */
+    /**
+     * Thread local singleton object for each threads.
+     */
     private static final ThreadLocal<Configuration> localStorage = new ThreadLocal<Configuration>() {
         protected Configuration initialValue() {
             return new Configuration();
@@ -188,7 +188,7 @@ final class Configuration {
      * inside to outside, so if the .properties file exits inside the JAR, then it can not be overridden from outside. 
      * 
      * @param directoryPath The first possible place of .properties file. This is the starting point for recursive 
-     * 		  search.
+     *           search.
      * @return The found .properties file's full path.
      */
     private String findPropertiesFile(Path directoryPath) {
@@ -251,7 +251,7 @@ final class Configuration {
      * It validates the properties of Nexus.
      */
     private void validateProperties() {
-    	// TODO validate
+        // TODO validate
         validProperties = true;
     }
 }

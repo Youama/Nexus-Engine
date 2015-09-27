@@ -10,11 +10,11 @@ package com.youama.nexus.core.search;
  */
 public interface Searchlet {
 
-	/**
-	 * It sets the SearchLogic type object to the property.
-	 * 
-	 * @param searchLogic This object proceed the searching process or processes.
-	 */
+    /**
+     * It sets the SearchLogic type object to the property.
+     * 
+     * @param searchLogic This object proceed the searching process or processes.
+     */
     void addSearchLogic(SearchLogic searchLogic);
 
     /**

@@ -14,11 +14,11 @@ import org.springframework.beans.factory.BeanDefinitionStoreException;
  */
 public class NexusCoreUtilTest {
 
-	@Test
-	public void testIsAllowInternalProperties() {
-		assertTrue(NexusCoreUtil.isAllowInternalProperties());
-	}
-	
+    @Test
+    public void testIsAllowInternalProperties() {
+        assertTrue(NexusCoreUtil.isAllowInternalProperties());
+    }
+    
     @Test
     public void testInitServices_success() {
         NexusCoreUtil.initServices("nexus-module-core", NexusCoreUtil.class);
@@ -31,10 +31,10 @@ public class NexusCoreUtilTest {
     
     @Test
     public void testSetProperties() {
-    	Map<String, String> propertiesMap = new HashMap<String, String>();
-    	propertiesMap.put("testKey", "testValue");
-    	NexusCoreUtil.setProperties(propertiesMap);
-    	assertNotNull(Configuration.getInstance().getProperty("testKey"));
+        Map<String, String> propertiesMap = new HashMap<String, String>();
+        propertiesMap.put("testKey", "testValue");
+        NexusCoreUtil.setProperties(propertiesMap);
+        assertNotNull(Configuration.getInstance().getProperty("testKey"));
     }
 
     @After

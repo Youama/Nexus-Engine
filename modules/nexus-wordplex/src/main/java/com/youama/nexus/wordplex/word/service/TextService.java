@@ -9,15 +9,15 @@ import com.youama.nexus.wordplex.word.model.TextModel;
  * @since 2015.09.22.
  */
 public class TextService extends BaseService<TextModel> {
-	
-	@Override
-	public TextModel add(TextModel textModel) {
-	    try {
+
+    @Override
+    public TextModel add(TextModel textModel) {
+        try {
             return super.add(textModel);
         } catch (Exception e) {
             Log.warning(e);
         }
-	    
-	    return null;
-	}
+
+        return null;
+    }
 }
