@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 /**
  * @author David Belicza
- * @since 2015.08.01.
+ * @since 0.1.0
  */
 public class TextCollectorTest {
 

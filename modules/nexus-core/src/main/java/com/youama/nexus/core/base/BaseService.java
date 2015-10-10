@@ -17,7 +17,7 @@ import java.util.List;
  * entity model as a generic parameter. This class implements the basics of Hibernate data access functions.
  * 
  * @author David Belicza
- * @since 2015.08.21.
+ * @since 0.1.0
  */
 public abstract class BaseService<T> {
 

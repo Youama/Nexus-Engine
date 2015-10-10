@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * This class handles a single HTTP or HTTPS connection. It support redirection and history recording.
  *
  * @author David Belicza
- * @since 2015.06.28.
+ * @since 0.1.0
  */
 public class Connection {
 

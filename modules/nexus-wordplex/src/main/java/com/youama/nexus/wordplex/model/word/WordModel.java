@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * This entity contains all words for all languages.
  * 
  * @author David Belicza
- * @since 2015.09.20.
+ * @since 0.1.0
  */
 @Entity
 @Table(name = WordTable.TABLE)

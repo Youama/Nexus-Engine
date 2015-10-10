@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 
 /**
  * @author David Belicza
- * @since 2015.06.28.
+ * @since 0.1.0
  */
 public class StreamReader {
 

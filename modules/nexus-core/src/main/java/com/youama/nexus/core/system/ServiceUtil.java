@@ -6,7 +6,7 @@ import java.util.List;
  * This static Service utility provides access to the base service's features for modules and applications.
  * 
  * @author David Belicza
- * @since 2015.08.20.
+ * @since 0.1.0
  */
 final public class ServiceUtil {
 

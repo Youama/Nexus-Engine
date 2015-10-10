@@ -4,7 +4,7 @@ package com.youama.nexus.parser.collector;
  * It is a factory class for retrieving the different kind of BaseCollector classes.
  *
  * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.07.11.
+ * @since 0.1.0
  */
 public class FactoryCollector {
 

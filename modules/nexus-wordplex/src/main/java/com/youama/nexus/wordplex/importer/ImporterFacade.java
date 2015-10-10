@@ -7,7 +7,7 @@ import com.youama.nexus.wordplex.importer.text.StepByStepImporter;
 
 /**
  * @author David Belicza
- * @since 2015.09.27.
+ * @since 0.1.0
  */
 public class ImporterFacade {
 

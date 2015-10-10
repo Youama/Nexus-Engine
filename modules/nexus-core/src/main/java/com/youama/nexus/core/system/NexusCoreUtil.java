@@ -8,7 +8,7 @@ import java.util.Map;
  * classes and objects what are provide global, resource and system/configuration specified features.
  *
  * @author David Belicza
- * @since 2015.08.09.
+ * @since 0.1.0
  */
 final public class NexusCoreUtil {
 

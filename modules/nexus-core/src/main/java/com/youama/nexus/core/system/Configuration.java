@@ -18,7 +18,7 @@ import java.util.Properties;
  * the Nexus' .properties file.
  * 
  * @author David Belicza
- * @since 2015.08.18.
+ * @since 0.1.0
  */
 final class Configuration {
 

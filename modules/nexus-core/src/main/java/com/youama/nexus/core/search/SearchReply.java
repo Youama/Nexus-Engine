@@ -4,7 +4,7 @@ package com.youama.nexus.core.search;
  * A SearchReply compose and prepare the the reply what is from the SearchLogic.
  * 
  * @author David Belicza
- * @since 2015.09.14.
+ * @since 0.1.0
  */
 public interface SearchReply<T> {
     

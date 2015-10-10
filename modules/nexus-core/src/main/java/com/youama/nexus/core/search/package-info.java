@@ -7,6 +7,6 @@
  * in this package.
  * 
  * @author David Belicza
- * @since 2015.09.18.
+ * @since 0.1.0
  */
 package com.youama.nexus.core.search;

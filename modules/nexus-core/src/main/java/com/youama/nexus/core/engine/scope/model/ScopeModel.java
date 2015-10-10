@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Scope entity for defining the language or another type of scopes.
  * 
  * @author David Belicza
- * @since 2015.09.20.
+ * @since 0.1.0
  */
 @Entity
 @Table(name = ScopeTable.TABLE)

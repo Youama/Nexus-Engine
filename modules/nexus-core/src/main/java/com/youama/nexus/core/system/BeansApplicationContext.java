@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * application context is a Spring ApplicationContext.
  *
  * @author David Belicza
- * @since 2015.08.09.
+ * @since 0.1.0
  */
 final class BeansApplicationContext {
 

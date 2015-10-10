@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 /**
  * @author David Belicza
- * @since 2015.08.18.
+ * @since 0.1.0
  */
 public class ConfigurationTest {
 

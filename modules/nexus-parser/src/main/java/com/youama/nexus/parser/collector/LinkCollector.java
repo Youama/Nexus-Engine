@@ -10,7 +10,7 @@ import java.util.*;
  * should not be referenced directly, it is handled by the FactoryCollector class.
  *
  * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.07.11.
+ * @since 0.1.0
  */
 public class LinkCollector extends BaseCollector implements Collector {
 

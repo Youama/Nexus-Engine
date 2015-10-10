@@ -14,7 +14,7 @@ import java.util.List;
  * BaseCollector classes.
  *
  * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.07.11.
+ * @since 0.1.0
  */
 public abstract class BaseCollector implements Collector {
 

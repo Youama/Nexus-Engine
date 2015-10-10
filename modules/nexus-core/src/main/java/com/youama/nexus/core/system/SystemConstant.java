@@ -4,7 +4,7 @@ package com.youama.nexus.core.system;
  * This interface contains the all constants about the Nexus Engine's system.
  * 
  * @author David Belicza
- * @since 2015.08.28.
+ * @since 0.1.0
  */
 public interface SystemConstant {
 

@@ -19,7 +19,7 @@ import java.util.List;
  * META-INF folder or in the development project's root directory.
  * 
  * @author David Belicza
- * @since 2015.08.22.
+ * @since 0.1.0
  */
 final class MavenUtil {
 

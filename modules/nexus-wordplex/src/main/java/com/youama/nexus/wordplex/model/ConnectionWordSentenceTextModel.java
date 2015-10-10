@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 /**
  * @author David Belicza
- * @since 2015.09.21.
+ * @since 0.1.0
  */
 @Entity
 @Table(name = ConnectionWordSentenceTextTable.TABLE)

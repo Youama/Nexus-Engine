@@ -4,7 +4,7 @@ package com.youama.nexus.parser.collector;
  * Constants of this enum should be used for BaseCollector objects.
  *
  * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.07.12.
+ * @since 0.1.0
  */
 public enum CollectorSelector {
 

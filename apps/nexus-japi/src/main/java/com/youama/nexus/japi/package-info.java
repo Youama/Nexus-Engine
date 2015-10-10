@@ -5,6 +5,6 @@
  * full Nexus Engine functionality from other Java files is possible.
  *
  * @author David Belicza
- * @since 2015.09.14.
+ * @since 0.1.0
  */
 package com.youama.nexus.japi;

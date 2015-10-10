@@ -4,7 +4,7 @@ package com.youama.nexus.crawler;
  * This class handles the URL as a string, doesn't the content of the URL.
  *
  * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.06.27.
+ * @since 0.1.0
  */
 public class Url {
 

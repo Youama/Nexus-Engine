@@ -10,7 +10,7 @@ import org.springframework.beans.factory.BeanDefinitionStoreException;
 
 /**
  * @author David Belicza
- * @since 2015.08.23.
+ * @since 0.1.0
  */
 public class NexusCoreUtilTest {
 

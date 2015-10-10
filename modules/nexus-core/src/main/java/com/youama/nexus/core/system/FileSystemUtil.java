@@ -7,7 +7,7 @@ import java.io.File;
  * The Nexus specific file system utility.
  * 
  * @author David Belicza
- * @since 2015.08.20.
+ * @since 0.1.0
  */
 final public class FileSystemUtil {
 

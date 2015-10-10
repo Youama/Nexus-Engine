@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @author David Belicza
- * @since 2015.07.12.
+ * @since 0.1.0
  */
 public class LinkCollectorTest {
 

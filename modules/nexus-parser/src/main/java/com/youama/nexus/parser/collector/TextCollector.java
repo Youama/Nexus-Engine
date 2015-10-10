@@ -12,7 +12,7 @@ import java.util.List;
  * should not be referenced directly, it is handled by the FactoryCollector class.
  *
  * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.08.01.
+ * @since 0.1.0
  */
 public class TextCollector extends BaseCollector implements Collector {
 

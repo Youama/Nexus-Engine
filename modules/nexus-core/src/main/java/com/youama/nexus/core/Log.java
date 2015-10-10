@@ -4,7 +4,7 @@ package com.youama.nexus.core;
  * This class handles all logging.
  *
  * @author David Belicza
- * @since 2015.07.05.
+ * @since 0.1.0
  */
 public class Log {
 

@@ -6,7 +6,7 @@ import com.youama.nexus.wordplex.model.ConnectionWordSentenceTextModel;
 
 /**
  * @author David Belicza
- * @since 2015.09.22.
+ * @since 0.1.0
  */
 public class ConnectionWordSentenceTextService extends BaseService<ConnectionWordSentenceTextModel> {
 

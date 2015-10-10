@@ -4,7 +4,7 @@ package com.youama.nexus.core.validator;
  * This class methods validate the URLs Strings.
  *
  * @author David Belicza
- * @since 2015.07.18.
+ * @since 0.1.0
  */
 final public class URLSyntaxValidator {
 

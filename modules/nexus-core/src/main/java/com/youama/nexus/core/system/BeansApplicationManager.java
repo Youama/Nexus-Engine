@@ -10,7 +10,7 @@ import java.util.*;
  * it can not be used from outside the system package.
  * 
  * @author David Belicza
- * @since 2015.08.22.
+ * @since 0.1.0
  */
 final class BeansApplicationManager {
 

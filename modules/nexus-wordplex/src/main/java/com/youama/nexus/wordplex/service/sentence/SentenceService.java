@@ -6,7 +6,7 @@ import com.youama.nexus.wordplex.model.sentence.SentenceModel;
 
 /**
  * @author David Belicza
- * @since 2015.09.22.
+ * @since 0.1.0
  */
 public class SentenceService extends BaseService<SentenceModel> {
     

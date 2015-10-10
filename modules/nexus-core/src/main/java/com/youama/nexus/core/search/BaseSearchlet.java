@@ -6,7 +6,7 @@ package com.youama.nexus.core.search;
  * proceed method ask the <strong>SearchLogic</strong> object must be set by the method <strong>addSearchLogic</strong>.
  *  
  * @author David Belicza
- * @since 2015.09.14.
+ * @since 0.1.0
  */
 public abstract class BaseSearchlet implements Searchlet {
 

@@ -5,7 +5,7 @@ package com.youama.nexus.core.search;
  * <strong>input</strong> method.
  * 
  * @author David Belicza
- * @since 2015.09.14.
+ * @since 0.1.0
  */
 public interface SearchLogic {
 

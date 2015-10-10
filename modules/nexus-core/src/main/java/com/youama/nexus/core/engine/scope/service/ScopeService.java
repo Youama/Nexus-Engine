@@ -6,7 +6,7 @@ import com.youama.nexus.core.engine.scope.model.ScopeModel;
 
 /**
  * @author David Belicza
- * @since 2015.08.02.
+ * @since 0.1.0
  */
 public class ScopeService extends BaseService<ScopeModel> {
     

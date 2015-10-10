@@ -9,7 +9,7 @@ import java.util.List;
  * The parsing logic is protected or private and they are unique for each kind of Collectors.
  *
  * @author David Belicza - 87.bdavid@gmail.com
- * @since 2015.07.11.
+ * @since 0.1.0
  */
 public interface Collector {
 

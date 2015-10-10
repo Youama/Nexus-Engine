@@ -2,7 +2,7 @@ package com.youama.nexus.scheduler.model.task;
 
 /**
  * @author David Belicza
- * @since 2015.09.20.
+ * @since 0.1.0
  */
 public interface TaskTable {
     

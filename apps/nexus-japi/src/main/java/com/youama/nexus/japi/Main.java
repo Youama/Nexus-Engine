@@ -4,7 +4,7 @@ package com.youama.nexus.japi;
  * Empty class for successful build process.
  *
  * @author David Belicza
- * @since 2015.09.14.
+ * @since 0.1.0
  */
 public class Main {
 
