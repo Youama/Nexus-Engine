@@ -1,12 +1,14 @@
 package com.youama.nexus.wordplex.model;
 
+import com.youama.nexus.wordplex.PersistenceConfig;
+
 /**
  * @author David Belicza
  * @since 0.1.0
  */
 public interface ConnectionWordSentenceTextTable {
 
-    public static final String TABLE = "Connecion_Word_Sentence_Text";
+    public static final String TABLE = PersistenceConfig.TABLE_PREFIX + "Connecion_Word_Sentence_Text";
 
     public static final String COLUMN_ID = "connectionWordSentenceTextId";
 

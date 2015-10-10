@@ -14,8 +14,7 @@ import com.youama.nexus.wordplex.model.word.WordTable;
 public class WordService extends BaseService<WordModel> {
 
     /**
-     * It saves the word entity but if the word is already exits it increases
-     * the weight of the word.
+     * It saves the word entity but if the word is already exits it increases the weight of the word.
      */
     @Override
     public WordModel save(WordModel wordModel) {
