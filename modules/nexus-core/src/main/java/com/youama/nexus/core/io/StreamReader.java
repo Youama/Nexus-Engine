@@ -1,4 +1,4 @@
-package com.youama.nexus.core.net;
+package com.youama.nexus.core.io;
 
 import java.io.BufferedReader;
 import java.io.IOException;

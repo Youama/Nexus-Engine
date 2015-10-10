@@ -1,6 +1,8 @@
-package com.youama.nexus.core.net;
+package com.youama.nexus.core.io;
 
 import org.junit.Test;
+
+import com.youama.nexus.core.io.Connection;
 
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
