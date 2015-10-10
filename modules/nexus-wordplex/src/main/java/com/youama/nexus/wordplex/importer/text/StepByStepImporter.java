@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.youama.nexus.core.item.BasicItem;
 import com.youama.nexus.core.system.ServiceUtil;
-import com.youama.nexus.wordplex.model.ConnectionWordSentenceTextModel;
+import com.youama.nexus.wordplex.model.connection.ConnectionWordSentenceTextModel;
 import com.youama.nexus.wordplex.model.sentence.SentenceModel;
 import com.youama.nexus.wordplex.model.text.TextModel;
 import com.youama.nexus.wordplex.model.word.WordModel;
-import com.youama.nexus.wordplex.service.ConnectionWordSentenceTextService;
+import com.youama.nexus.wordplex.service.connection.ConnectionWordSentenceTextService;
 import com.youama.nexus.wordplex.service.sentence.SentenceService;
 import com.youama.nexus.wordplex.service.text.TextService;
 import com.youama.nexus.wordplex.service.word.WordService;

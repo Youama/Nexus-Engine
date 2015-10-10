@@ -1,4 +1,4 @@
-package com.youama.nexus.wordplex.service;
+package com.youama.nexus.wordplex.service.connection;
 
 import java.util.List;
 

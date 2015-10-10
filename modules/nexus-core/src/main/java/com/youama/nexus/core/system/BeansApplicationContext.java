@@ -4,8 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * This class provides access to resource service implementations. The visibility of the methods of this 
- * BeansApplicationContext type class are package level. These methods are not available from other packages. The 
+ * This class provides access to resource service implementations. The visibility of the methods of this
+ * BeansApplicationContext type class are package level. These methods are not available from other packages. The
  * application context is a Spring ApplicationContext.
  *
  * @author David Belicza
@@ -20,8 +20,8 @@ final class BeansApplicationContext {
     private ApplicationContext context;
 
     /**
-     * It sets the application context configuration beans like database access. The application context scope based
-     * on the location of the caller method.
+     * It sets the application context configuration beans like database access. The application context scope based on
+     * the location of the caller method.
      */
     void setApplicationContext() {
         context = new ClassPathXmlApplicationContext(getResourceEntityDeclarations());
@@ -30,7 +30,8 @@ final class BeansApplicationContext {
     /**
      * It retrieves the entity's service implementation by the service class name.
      *
-     * @param classType Any class type what is a service class. Service classes should be defined as a Bean.
+     * @param classType
+     *        Any class type what is a service class. Service classes should be defined as a Bean.
      * @return It is the service implementation. Return type is an Object what can be cast to any service class.
      */
     Object getService(Class<?> classType) {

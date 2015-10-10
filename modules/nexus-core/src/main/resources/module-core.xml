@@ -5,7 +5,7 @@
 
 	<import resource="Service.xml" />
 
-	<bean id="engineScope" class="com.youama.nexus.core.engine.scope.service.ScopeService">
+	<bean id="engineScope" class="com.youama.nexus.core.service.scope.ScopeService">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 

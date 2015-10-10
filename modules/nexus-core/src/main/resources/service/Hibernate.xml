@@ -20,7 +20,7 @@
 	</bean>
 
 	<bean id="hibernatePackageToScan" class="java.lang.String">
-		<constructor-arg value="**.model" />
+		<constructor-arg value="com.youama.nexus.*.model.*" />
 	</bean>
 
 </beans>

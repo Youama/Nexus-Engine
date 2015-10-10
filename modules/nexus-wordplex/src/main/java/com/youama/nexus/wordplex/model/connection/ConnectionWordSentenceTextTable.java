@@ -1,4 +1,4 @@
-package com.youama.nexus.wordplex.model;
+package com.youama.nexus.wordplex.model.connection;
 
 import com.youama.nexus.wordplex.PersistenceConfig;
 

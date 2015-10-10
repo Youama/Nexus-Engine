@@ -1,4 +1,4 @@
-package com.youama.nexus.wordplex.model;
+package com.youama.nexus.wordplex.model.connection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

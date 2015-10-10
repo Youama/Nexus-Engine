@@ -1,18 +1,17 @@
 package com.youama.nexus.scheduler.service.task;
 
-import com.youama.nexus.core.system.NexusCoreUtil;
-import com.youama.nexus.core.system.ServiceUtil;
-import com.youama.nexus.scheduler.model.task.TaskModel;
-import com.youama.nexus.scheduler.service.task.TaskService;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-import java.util.Random;
-
-import static org.junit.Assert.*;
+import com.youama.nexus.core.system.NexusCoreUtil;
+import com.youama.nexus.core.system.ServiceUtil;
+import com.youama.nexus.scheduler.model.task.TaskModel;
 
 /**
  * @author David Belicza

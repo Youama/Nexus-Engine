@@ -33,6 +33,11 @@
 			<artifactId>nexus-module-scheduler</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+            <groupId>com.youama.nexus</groupId>
+            <artifactId>nexus-module-wordplex</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 	<build>

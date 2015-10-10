@@ -1,4 +1,4 @@
-package com.youama.nexus.core.engine.scope.model;
+package com.youama.nexus.core.model.scope;
 
 import javax.persistence.*;
 

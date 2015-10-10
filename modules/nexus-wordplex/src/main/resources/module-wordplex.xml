@@ -18,7 +18,7 @@
 	</bean>
 
 	<bean id="wordplexConnectionWordSentenceText"
-		class="com.youama.nexus.wordplex.service.ConnectionWordSentenceTextService">
+		class="com.youama.nexus.wordplex.service.connection.ConnectionWordSentenceTextService">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
 

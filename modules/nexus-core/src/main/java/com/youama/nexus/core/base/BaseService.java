@@ -1,16 +1,15 @@
 package com.youama.nexus.core.base;
 
-import com.youama.nexus.core.Log;
+import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
 
-import java.util.List;
-
+import com.youama.nexus.core.Log;
 
 /**
  * This generic class is a database service abstraction. All kind of services should extend this class and give the
@@ -29,17 +28,19 @@ public abstract class BaseService<T> {
     /**
      * It sets the sessionFactory property.
      * 
-     * @param sessionFactory The session factory of Hibernate.
+     * @param sessionFactory
+     *        The session factory of Hibernate.
      */
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     /**
-     * It creates a single new entity in the database and retrieves the created object. The transaction will be 
+     * It creates a single new entity in the database and retrieves the created object. The transaction will be
      * rollbacked if the saving method throws and exception.
      * 
-     * @param entityModel Any entity model with Hibernate annotations.
+     * @param entityModel
+     *        Any entity model with Hibernate annotations.
      * @return The created entity object with newly created ID when there is no exception.
      * @throws Exception
      */
@@ -56,8 +57,8 @@ public abstract class BaseService<T> {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-            }            
-            Log.warning(e);            
+            }
+            Log.warning(e);
             throw e;
 
         } finally {
@@ -70,10 +71,11 @@ public abstract class BaseService<T> {
     }
 
     /**
-     * It updates an entity what already exists and retrieves the updated object. The transaction will be rollbacked if 
+     * It updates an entity what already exists and retrieves the updated object. The transaction will be rollbacked if
      * the saving method throws and exception.
      * 
-     * @param entityModel Any entity model with Hibernate annotations.
+     * @param entityModel
+     *        Any entity model with Hibernate annotations.
      * @return The updated entity object when there is no exception.
      * @throws Exception
      */
@@ -90,10 +92,10 @@ public abstract class BaseService<T> {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-            }            
-            Log.warning(e);            
+            }
+            Log.warning(e);
             throw e;
-            
+
         } finally {
             if (session != null) {
                 session.close();
@@ -104,17 +106,18 @@ public abstract class BaseService<T> {
     }
 
     /**
-     * It updates or creates an entity and retrieves the updated object included the ID. The transaction will be 
+     * It updates or creates an entity and retrieves the updated object included the ID. The transaction will be
      * rollbacked if the saveOrUpdate method throws and exception.
      * 
-     * @param entityModel Any entity model with Hibernate annotations.
+     * @param entityModel
+     *        Any entity model with Hibernate annotations.
      * @return The created or updated entity object when there is no exception.
      * @throws Exception
      */
     public T save(T entityModel) throws Exception {
         Session session = null;
         Transaction transaction = null;
-        
+
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
@@ -124,8 +127,8 @@ public abstract class BaseService<T> {
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-            }            
-            Log.warning(e);            
+            }
+            Log.warning(e);
             throw e;
 
         } finally {
@@ -140,8 +143,10 @@ public abstract class BaseService<T> {
     /**
      * It retrieves the Hibernate entity model or null by ID and the entity model class.
      * 
-     * @param entityModelClass Any entity model with Hibernate annotations.
-     * @param id The ID of any entity.
+     * @param entityModelClass
+     *        Any entity model with Hibernate annotations.
+     * @param id
+     *        The ID of any entity.
      * @return The found entity object or null.
      * @throws Exception
      */
@@ -164,24 +169,30 @@ public abstract class BaseService<T> {
 
         return entityModel;
     }
-    
+
     /**
      * It retrieves a single entity when by column name and value.
      * 
-     * @param entityModelClass Any entity model with Hibernate annotations.
-     * @param columnName The name of the table column.
-     * @param columnValue The record in the table.
+     * @param entityModelClass
+     *        Any entity model with Hibernate annotations.
+     * @param columnName
+     *        The name of the table column.
+     * @param columnValue
+     *        The record in the table.
      * @return The first entity or null.
      */
     @SuppressWarnings("unchecked")
     public T findEntityByAttribute(Class<T> entityModelClass, String columnName, String columnValue) {
         Session session = sessionFactory.openSession();
-                
-        Criteria criteria = session.createCriteria(entityModelClass)
-                .add(Restrictions.eq(columnName, columnValue));
-       
+
+        Criteria criteria = session.createCriteria(entityModelClass).add(Restrictions.eq(columnName, columnValue));
+
         Object result = criteria.uniqueResult();
-        
+
+        if (session != null) {
+            session.close();
+        }
+
         if (result != null) {
             return (T) result;
         } else {
@@ -191,8 +202,9 @@ public abstract class BaseService<T> {
 
     /**
      * It retrieves all entities from the entity table by the entity model class. It can be null when no results.
-     *  
-     * @param entityModelClass The class of the Hibernate entity model
+     * 
+     * @param entityModelClass
+     *        The class of the Hibernate entity model
      * @return The Hibernate entity model collection or null.
      */
     @SuppressWarnings("unchecked")

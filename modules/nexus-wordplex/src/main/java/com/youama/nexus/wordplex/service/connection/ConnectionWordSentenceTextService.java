@@ -1,8 +1,8 @@
-package com.youama.nexus.wordplex.service;
+package com.youama.nexus.wordplex.service.connection;
 
 import com.youama.nexus.core.Log;
 import com.youama.nexus.core.base.BaseService;
-import com.youama.nexus.wordplex.model.ConnectionWordSentenceTextModel;
+import com.youama.nexus.wordplex.model.connection.ConnectionWordSentenceTextModel;
 
 /**
  * @author David Belicza

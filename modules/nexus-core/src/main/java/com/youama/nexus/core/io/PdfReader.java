@@ -81,9 +81,6 @@ class PdfReader {
      */
     private String getText(PDDocument pdfDocument) throws IOException {
         PDFTextStripper pdfStripper = new PDFTextStripper();
-        pdfStripper.setStartPage(1);
-        pdfStripper.setEndPage(5);
-
         return pdfStripper.getText(pdfDocument);
     }
 
