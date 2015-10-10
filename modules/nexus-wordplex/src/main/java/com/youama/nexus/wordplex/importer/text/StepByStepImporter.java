@@ -17,11 +17,13 @@ import com.youama.nexus.wordplex.service.word.WordService;
  * @author David Belicza
  * @since 2015.09.27.
  */
-public class TextStepByStepImporter {
+public class StepByStepImporter {
 
     private long textId = -1;
 
     private int isValid = 0;
+
+    private long connectionCounter = 0;
 
     private List<BasicItem> text = null;
 
@@ -35,24 +37,16 @@ public class TextStepByStepImporter {
     }
 
     public boolean isValid() {
-        return false;
+        return true;
     }
 
-    private boolean getImportSate() {
-        if (isValid == 0) {
-            return isValid();
-        } else if (isValid == 1) {
-            return true;
-        }
-
-        return false;
+    public long getConnectionCounter() {
+        return connectionCounter;
     }
 
-    public boolean runImport() {
+    public void runImport() {
         addText();
         importWordSentenceConnectionEntities();
-
-        return getImportSate();
     }
 
     private void importWordSentenceConnectionEntities() {
@@ -107,7 +101,7 @@ public class TextStepByStepImporter {
             return wordModel.getWordId();
         }
 
-        return 0L;
+        return -1;
     }
 
     private void addConnection(long sentenceId, long wordId, int positionSentence, int positionWord) {
@@ -118,5 +112,6 @@ public class TextStepByStepImporter {
         connectionModel.setPositionSentence(positionSentence);
         connectionModel.setPositionWord(positionWord);
         connectionModel = connectionService.add(connectionModel);
+        connectionCounter++;
     }
 }

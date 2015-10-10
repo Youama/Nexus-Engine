@@ -3,7 +3,7 @@ package com.youama.nexus.wordplex.importer;
 import java.util.List;
 
 import com.youama.nexus.core.item.BasicItem;
-import com.youama.nexus.wordplex.importer.text.TextStepByStepImporter;
+import com.youama.nexus.wordplex.importer.text.StepByStepImporter;
 
 /**
  * @author David Belicza
@@ -11,14 +11,22 @@ import com.youama.nexus.wordplex.importer.text.TextStepByStepImporter;
  */
 public class ImporterFacade {
 
-    public boolean importTextStepByStep(List<BasicItem> text) {
-        TextStepByStepImporter importer = new TextStepByStepImporter();
-        importer.setText(text);
+    private StepByStepImporter stepByStepImporter;
 
-        if (importer.isValid()) {
-            return importer.runImport();
+    public boolean getImportTextStepByStepStatus() {
+        if (stepByStepImporter.getConnectionCounter() > 0) {
+            return true;
         }
 
         return false;
+    }
+
+    public void importTextStepByStep(List<BasicItem> text) {
+        stepByStepImporter = new StepByStepImporter();
+        stepByStepImporter.setText(text);
+
+        if (stepByStepImporter.isValid()) {
+            stepByStepImporter.runImport();
+        }
     }
 }
